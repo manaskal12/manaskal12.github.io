@@ -66,6 +66,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   font: 700 18px/1.3 var(--face);
 }
 .enter:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.enter.off { display: none; }
+@media (max-width: 600px) { .actions .enter { flex: 1 0 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .actions .enter.off { display: block; visibility: hidden; pointer-events: none; } }
 .route {
   pointer-events: auto; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); width: 100%; max-width: 660px;
   background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 12px; overflow: hidden;
@@ -262,7 +264,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     <div class="menu fnmenu" id="showMenu" hidden><p>場地</p><button id="goStage">主舞台・市集中間</button><button id="goLawn">草地音樂會・最後面</button></div>
     <div class="menu fnmenu" id="fnMenu" hidden><p>功能</p><button id="change">換角色</button><button id="timeBtn">切到傍晚</button><button id="shareBtn">做分享卡</button><button id="pactBtn">市集公約</button></div>
     <div class="actions">
-      <button class="enter" id="enter" hidden></button>
+      <button class="enter off" id="enter" aria-hidden="true" tabindex="-1"></button>
       <button class="speak" id="draw" aria-label="試手氣：隨機推薦一個攤位給你"><span aria-hidden="true">🎲 </span>試手氣</button>
       <button class="speak" id="speak">說句話</button>
     </div>
@@ -2187,7 +2189,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const n = inside ? null : nearest();
     if (n !== promptFor) {
       promptFor = n;
-      enterBtn.hidden = !n;
+      // 不用 hidden：手機上這顆按鈕固定佔一排，出現或消失都不會改變下方按鈕區的高度，畫面才不會跟著縮放跳動
+      enterBtn.classList.toggle('off', !n); enterBtn.setAttribute('aria-hidden', n ? 'false' : 'true'); enterBtn.tabIndex = n ? 0 : -1;
       if (n) enterBtn.textContent = n === STAGE ? '看今日節目' : n === LAWN ? '去聽草地音樂會' : n === INFO ? '認識我們的學校' : n === INTRO ? '認識 Manaskal' : `走進「${nameOf(n)}」`;
     }
     $('hint').hidden = travelled > 40;
@@ -2590,6 +2593,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 
   // ---------- 集章護照、樹名圖鑑、套圈圈、分享卡、倒數。紀錄只存在這台裝置，不用登入
   // 市集日期確定後填在這裡，例如 '2026-12-05'；空白時顯示「日期即將公布」
+  // 網站上線的網址，會印在一日攤主卡上；換網址時只要改這一行
+  const SITE_URL = 'manaskal12.github.io';
   const MARKET = { date: '2027-01-09', day: '1/9（六）', when: '1/9（六）13:00 開始', place: `${INFO.owner}操場` };
   // 樹的介紹是示範文字，順序對應一到六年級，正式版請老師確認
   const TREE_NOTES = [
@@ -2842,7 +2847,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1350;
     const c = cv.getContext('2d'), v = MINE.vendor, cd = countdownText();
     const head = '我開了一個虛擬一日攤位', sub = 'Manaskal 虛擬市集', line1 = '換你來開一攤！', line2 = `實體市集　${MARKET.when ? `${MARKET.when}・` : ''}${MARKET.place}`, line3 = cd ? `市集倒數　${cd}` : '';
-    const all = `${head}${sub}${line1}${line2}${line3}${nameOf(MINE)}今日攤主${(v && v.name) || ''}${MINE.id}${Object.values(STATUS).map(x => x.label).join('')}`;
+    const all = `${head}${sub}${line1}${line2}${line3}${SITE_URL}${nameOf(MINE)}今日攤主${(v && v.name) || ''}${MINE.id}${Object.values(STATUS).map(x => x.label).join('')}`;
     try { await Promise.race([Promise.all([document.fonts.load('700 40px "LXGW WenKai TC"', all), document.fonts.load('700 40px "Noto Sans TC"', all)]), new Promise(r => setTimeout(r, 2500))]); } catch (e) {}
     const D = THEMES.day, sky = c.createLinearGradient(0, 0, 0, 950);
     ['#4fb2ea', '#9bd5ee', '#f3e6bd', '#fbd7a2'].forEach((col, i) => sky.addColorStop(i / 3, col));
@@ -2868,10 +2873,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     c.beginPath(); c.roundRect(330, 128, 420, 62, 31); c.fillStyle = PAPER; c.fill(); c.strokeStyle = INK; c.lineWidth = 5; c.stroke();
     text(sub, 540, 160, `700 34px ${UI}`, INK, 380);
     text(head, 540, 256, `700 76px ${FACE}`, INK, 940, 18);
-    c.fillStyle = INK; c.fillRect(0, 1120, 1080, 230);
-    text(line1, 540, 1178, `700 60px ${FACE}`, PAPER, 1000);
-    text(line2, 540, 1250, `500 34px ${UI}`, '#f6e3b8', 1000);
-    if (line3) text(line3, 540, 1306, `700 32px ${UI}`, '#efc25a', 1000);
+    c.fillStyle = INK; c.fillRect(0, 1100, 1080, 250);
+    text(line1, 540, 1150, `700 54px ${FACE}`, PAPER, 1000);
+    if (SITE_URL) { c.font = `700 36px ${UI}`; const uw = Math.min(900, c.measureText(SITE_URL).width) + 64; c.beginPath(); c.roundRect(540 - uw / 2, 1184, uw, 56, 28); c.fillStyle = '#efc25a'; c.fill(); text(SITE_URL, 540, 1213, `700 36px ${UI}`, INK, 900); }
+    text(line2, 540, 1272, `500 30px ${UI}`, '#f6e3b8', 1000);
+    if (line3) text(line3, 540, 1318, `700 28px ${UI}`, '#efc25a', 1000);
     const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
     return { blob, cv };
   }

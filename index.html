@@ -40,6 +40,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 }
 .brand { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; padding: 6px 12px; }
 .brand b { display: block; font: 700 19px/1.25 var(--face); }
+/* 手機上走近攤位時，左上角的牌子先淡出，才不會蓋住攤主頭上的那句話 */
+@media (max-width: 600px) { .brand { transition: opacity .2s; } .brand.away { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .brand { transition: none; } }
 .brand span { display: block; font-size: 12px; line-height: 1.45; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .ticker {
   flex: 1 1 280px; min-width: 0; max-width: 560px; display: flex; gap: 8px; align-items: center;
@@ -2190,6 +2193,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (n !== promptFor) {
       promptFor = n;
       // 不用 hidden：手機上這顆按鈕固定佔一排，出現或消失都不會改變下方按鈕區的高度，畫面才不會跟著縮放跳動
+      brand.classList.toggle('away', !!n);
       enterBtn.classList.toggle('off', !n); enterBtn.setAttribute('aria-hidden', n ? 'false' : 'true'); enterBtn.tabIndex = n ? 0 : -1;
       if (n) enterBtn.textContent = n === STAGE ? '看今日節目' : n === LAWN ? '去聽草地音樂會' : n === INFO ? '認識我們的學校' : n === INTRO ? '認識 Manaskal' : `走進「${nameOf(n)}」`;
     }

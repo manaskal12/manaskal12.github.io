@@ -2032,7 +2032,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const v = st.vendor, ownerName = (v && v.name) || st.owner;
     // 攤主寫了自己的話或商品，就不再唸示範台詞
     const own = !!(v && (v.intro || v.items.length)), introLines = v && v.intro ? (v.intro.match(/[^。！？!?]+[。！？!?]*/g) || [v.intro]).map(s => s.trim()).filter(Boolean) : [];
-    activeLines = v ? [`我是${ownerName}。${v.slogan || ''}`, ...(own ? introLines : st.lines.slice(1)), ...v.items.map(x => `今天主打「${x.n}」，${x.d || `只要 ${x.p} 元`}`)] : st.lines;
+    activeLines = v ? [`我是${ownerName}。${v.slogan || ''}`, ...(own ? introLines : st.mine ? ['歡迎光臨，慢慢看喔！'] : st.lines.slice(1)), ...v.items.map(x => `今天主打「${x.n}」，${x.d || `只要 ${x.p} 元`}`)] : st.lines;
     $('ownTools').hidden = !canVendor || !vendorSession || STALLS.indexOf(st) < 0 || STALLS.indexOf(st) !== myStall;
     $('shout').hidden = !(v && v.slogan);
     if (!$('ownTools').hidden && v) renderStatusRow(st); else $('statusRow').textContent = '';
@@ -2209,9 +2209,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   let canVendor = false, vendorSession = false, me = null, pickerOpen = false, draft = null, mode = 'v', myStall = -1, vdraft = null, vstall = 0, db = null;
   const stallCfg = {}; let storedRole = '', retried = false, mineMode = false;
   // 一日攤主的攤位設定：只存在這台裝置
-  const MINE_SHOP_STORE = 'market-mine-v1';
+  const MINE_SHOP_STORE = 'market-mine-v1', MINE_HELLO = MINE.hello;
   function setMine(cfg, quiet) {
     MINE.vendor = cfg || undefined;
+    // 開張之後，攤位頭上那句話改用自己的口號；沒寫口號就說歡迎光臨，不再說「這攤還空著」
+    MINE.hello = cfg ? cfg.slogan || `歡迎光臨「${cfg.title || '我的小攤'}」！` : MINE_HELLO;
     if (cfg && CATS[cfg.kind]) Object.assign(MINE, CATS[cfg.kind], { kind: cfg.kind });
     if (!quiet) try { if (cfg) localStorage.setItem(MINE_SHOP_STORE, JSON.stringify(cleanCfg(cfg))); else localStorage.removeItem(MINE_SHOP_STORE); } catch (e) {}
   }

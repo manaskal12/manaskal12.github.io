@@ -810,8 +810,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     speed: (rnd() < .5 ? -1 : 1) * (26 + rnd() * 26), phase: rnd() * 6, av: npcAv(),
     off: rnd() * 16, say: pick(CHATTER),
   }));
-  const queue = Array.from({ length: 6 }, (_, i) => ({
-    x: 44 + i * 34, feet: 478 + (i % 2) * 5, u: .86 + rnd() * .1, phase: rnd() * 6, av: npcAv(),
+  // 排隊的人：四個，從櫃台右邊往外排成一條隊伍，彼此拉開距離，不擋住櫃台中間的牌子
+  const queue = Array.from({ length: 4 }, (_, i) => ({
+    x: 98 + i * 47, feet: 479 + (i % 2) * 4, u: .86 + rnd() * .1, phase: rnd() * 6, av: npcAv(),
   }));
   const audience = Array.from({ length: 9 }, (_, i) => ({
     x: STAGE.x - 124 + i * 31, feet: 462 + (i % 3) * 13, u: .9, phase: rnd() * 6, av: npcAv(),
@@ -3139,8 +3140,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
         drawAvatar(d.k.x, d.k.feet, d.k.u, d.k.av, { amp: reduced ? 0 : .8, phase: d.k.phase, face: Math.sign(d.k.speed) });
       } else {
         ctx.globalAlpha = inside && inside !== d.st ? crowdA : 1;
+        // 排隊的小動作：每隔幾秒往前挪一小步再站好，偶爾回頭張望；平常只有輕輕呼吸
+        const cyc = reduced ? 1 : (t * .17 + d.k.phase * .31) % 1, stepping = cyc < .12, step = stepping ? Math.sin(cyc / .12 * Math.PI) : 0;
         const breathe = reduced ? 0 : Math.sin(t * 1.6 + d.k.phase) * .1;
-        drawAvatar(d.k.x + d.dx, d.k.feet, d.k.u, d.k.av, { amp: breathe, phase: Math.PI / 2, face: -1 });
+        const look = !reduced && !stepping && (t * .09 + d.k.phase * .53) % 1 > .88 ? 1 : -1;
+        drawAvatar(d.k.x + d.dx - step * 7, d.k.feet, d.k.u, d.k.av, { amp: stepping ? .7 : breathe, phase: stepping ? cyc / .12 * Math.PI * 2 : Math.PI / 2, face: look });
       }
     }
     ctx.restore();

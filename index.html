@@ -130,6 +130,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 .menu { pointer-events: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 560px; padding: 8px; background: var(--ink); border: 2px solid var(--paper-2); border-radius: 12px; }
 .menu p { flex: 1 0 100%; margin: 0; text-align: center; color: var(--paper-2); font-size: 12px; }
 .menu button { min-height: 40px; padding: 4px 12px; background: var(--paper); color: var(--ink); border: 0; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.menu button small { display: block; font-size: 11px; line-height: 1.2; color: var(--ink-soft); }
 
 .picker {
   position: absolute; inset: 0; z-index: 5; overflow-y: auto; display: flex; background: rgba(20, 17, 50, .6);
@@ -696,6 +697,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   const SAYS = ['Mihumisang！', 'Uninang！', '這個好可愛！', '有帶環保杯嗎？', '先去吃點東西！', '等我一下，我拍個照！'];
   // 路人會照你說的話回答；Mihumisang 是布農語的「你好」，Uninang 是「謝謝」
   const SAY_REPLIES = { 'Mihumisang！': ['Mihumisang！'], 'Uninang！': ['Uninang！', '不客氣！'], '這個好可愛！': ['真的耶！', '我也想要一個'], '有帶環保杯嗎？': ['有！帶了！', '放在包包裡'], '先去吃點東西！': ['好啊，我也餓了', '走！'], '等我一下，我拍個照！': ['好，等你', '幫我也拍一張！'] };
+  const SAY_MEANING = { 'Mihumisang！': '布農語・你好', 'Uninang！': '布農語・謝謝' };
   const REPLIES = ['真的耶！', '我也想吃', '走，一起去', '哪一攤？'];
   const VISITORS = {
     grandma: { label: '菜籃阿嬤', tip: '哪攤好吃都知道', pants: '#5a4638', hair: '#b9b3c2', style: 0,
@@ -3164,7 +3166,10 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const head = document.createElement('p'); head.textContent = '選一句，頭上會冒出來';
     menu.append(head);
     SAYS.forEach(text => {
-      const b = document.createElement('button'); b.textContent = text;
+      // 布農語的句子在選單上附中文意思，冒到頭上時只顯示布農語
+      const b = document.createElement('button'), mean = SAY_MEANING[text];
+      if (mean) { b.append(text); const m = document.createElement('small'); m.textContent = mean; b.append(m); b.setAttribute('aria-label', `${text}，布農語「${mean}」`); }
+      else b.textContent = text;
       b.onclick = () => {
         menu.hidden = true;
         mySay = text; mySayUntil = clock + 4;

@@ -307,7 +307,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       <h1 id="pickTitle">今天你想扮成誰來逛？</h1>
       <div class="seg" id="modeSeg" hidden>
         <button id="modeVisitor">我來逛市集</button>
-        <button id="modeVendor">我是攤主</button>
+        <button id="modeVendor">當一日攤主</button>
       </div>
       <div id="visitorForm">
         <div class="mine">
@@ -371,6 +371,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       </div>
       <p class="note" id="pickNote"></p>
       <button class="go" id="go">走進市集</button>
+      <button class="lotskip" id="pickLeave" hidden>先不要，回到街上</button>
     </div>
   </div>
 
@@ -2993,7 +2994,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   $('stepNext').onclick = () => goStep(vstep + 1);
   $('propClear').onclick = () => { vdraft.props = []; renderStudio(); };
   function loadStudio() {
-    vdraft = !mineMode ? freshCfg(vstall) : cleanCfg(MINE.vendor || { name: '', title: '', intro: '', kind: MINE.kind, tone: -1, look: LOOK_BY_KIND[MINE.kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: 'go', items: [] });
+    vdraft = !mineMode ? freshCfg(vstall) : mineDraft ? cleanCfg(mineDraft) : cleanCfg(MINE.vendor || { name: '', title: '', intro: '', kind: MINE.kind, tone: -1, look: LOOK_BY_KIND[MINE.kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: 'go', items: [] });
     if (mineMode && !CATS[vdraft.kind]) vdraft.kind = MINE.kind;
     $('ownerName').value = vdraft.name;
     $('stallTitle').value = vdraft.title;
@@ -3021,7 +3022,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     try { localStorage.setItem('market-role-v1', vendor ? 'vendor' : 'visitor'); } catch (e) {}
   }
   function setCanVendor(v) {
-    canVendor = v; $('modeSeg').hidden = !v;
+    // 攤主自行佈置已取消：選單第二個選項固定是「當一日攤主」，這裡不再控制它
+    canVendor = v;
     if (!v) { vendorSession = false; if (mode === 's') setMode('v'); }
     // 上次是以攤主身分離開的，回來直接恢復攤主工具
     else if (storedRole === 'vendor' && myStall >= 0 && !vendorSession) { vendorSession = true; if (inside && STALLS.indexOf(inside) === myStall) openStop(inside); }
@@ -3032,15 +3034,20 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     vstall = myStall >= 0 ? myStall : 0;
     mineMode = startMode === 'm'; vstep = 1;
     mode = mineMode || (startMode === 's' && canVendor) ? 's' : 'v';
-    $('modeSeg').hidden = mineMode || !canVendor;
+    // 第一次進網頁只挑逛街角色；之後從「功能 → 換角色」或一日攤主的攤位打開，才出現「當一日攤主」
+    $('modeSeg').hidden = !me; $('pickLeave').hidden = !me;
     pickerOpen = true; $('picker').hidden = false; menu.hidden = true;
     renderMode();
     $('picker').scrollTop = 0;
     $('go').focus({ preventScroll: true });
   }
   function closePicker() { pickerOpen = false; $('picker').hidden = true; canvas.focus({ preventScroll: true }); }
-  $('modeVisitor').onclick = () => setMode('v');
-  $('modeVendor').onclick = () => setMode('s');
+  // 一日攤位還沒佈置完也可以先離開：不開張，剛剛選的先記著，下次打開接著改（重新整理網頁才會清掉）
+  let mineDraft = null;
+  $('pickLeave').onclick = () => { if (!me) return; if (mode === 's' && mineMode && vdraft) mineDraft = { ...vdraft, name: $('ownerName').value, title: $('stallTitle').value, intro: $('stallIntro').value }; closePicker(); };
+  // 換角色選單：「我來逛市集」挑逛街角色，「當一日攤主」直接佈置自己的一日攤位
+  $('modeVisitor').onclick = () => { if (mode === 'v') return; mineMode = false; mode = 'v'; renderMode(); };
+  $('modeVendor').onclick = () => { if (mode === 's' && mineMode) return; mineMode = true; vstep = 1; mode = 's'; renderMode(); $('picker').scrollTop = 0; };
   $('change').onclick = () => openPicker('v');
   const timeBtn = $('timeBtn');
   const paintTime = () => { timeBtn.textContent = dayTarget ? '切到傍晚' : '切到白天'; };
@@ -3110,12 +3117,15 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       return;
     }
     if (mineMode) {
+      // 第一次打開就直接當一日攤主：先給一個預設的逛街角色，街上才有自己
+      if (!me) { me = { r: 'v', a: 'cat', c: 0, s: 0, n: '逛街的人' }; try { localStorage.setItem(STORE, JSON.stringify(me)); } catch (e) {} }
       const cfg = cleanCfg(vdraft); if (!CATS[cfg.kind]) cfg.kind = MINE.kind;
       if (!cfg.name && me) cfg.name = cleanName(me.n);
       if (!cfg.title) cfg.title = strip(`${cfg.name || '我'}的小攤`, 8);
-      setMine(cfg); closePicker(); buildMenu();
+      mineDraft = null; setMine(cfg); closePicker(); buildMenu();
       cam = lastCam = MINE.x; travelled = 99; openStop(MINE);
       showCast('你的攤位開張了！只有你看得到，可以隨時回來改。', '一日攤主');
+      if (!pactSeen()) openPact();
       return;
     }
     if (!canVendor) return;
@@ -3875,7 +3885,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (finderOpen) { if (e.key === 'Escape') closeFinder(); return; }
     if (programOpen) { if (e.key === 'Escape') closeProgram(); return; }
     if (lotOpen) { if (e.key === 'Escape') closeLot(); return; }
-    if (pickerOpen) { if (e.key === 'Escape' && me) closePicker(); return; }
+    if (pickerOpen) { if (e.key === 'Escape' && me) $('pickLeave').onclick(); return; }
     if (e.key === 'ArrowLeft' && !inside) { keys.l = true; auto = null; e.preventDefault(); }
     if (e.key === 'ArrowRight' && !inside) { keys.r = true; auto = null; e.preventDefault(); }
     if (e.key === 'Escape' && !fnMenu.hidden) { setFn(false); return; }

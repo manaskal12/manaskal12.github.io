@@ -154,11 +154,32 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 .roles button[aria-pressed="true"] { background: var(--paper-2); border-color: var(--persimmon); box-shadow: inset 0 0 0 1px var(--persimmon); }
 .roles canvas { position: static; display: block; width: 64px; height: 72px; margin: 0 auto; touch-action: auto; cursor: pointer; }
 .roles b { display: block; font: 700 15px/1.25 var(--face); }
+.roles.mini { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
+.roles.mini canvas { width: 56px; height: 63px; }
+.roles.mini b { font-size: 13px; }
 .roles small { display: block; font-size: 12px; line-height: 1.35; color: var(--ink-soft); }
 .chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(62px, 1fr)); gap: 6px; margin-top: 5px; }
 .chips button { min-width: 0; min-height: 40px; padding: 2px; background: #fff; border: 2px solid var(--ink); border-radius: 8px; font-size: 14px; font-weight: 500; }
 .chips button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-#stallPreview { position: static; display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; border-radius: 12px; touch-action: auto; cursor: default; }
+#stallPreview { position: static; display: block; width: 100%; max-width: min(240px, 26vh); height: auto; margin: 0 auto; border-radius: 12px; touch-action: auto; cursor: default; }
+.studiotop { position: sticky; top: -16px; z-index: 2; display: grid; gap: 8px; margin: -16px -16px 0; padding: 12px 16px 8px; background: var(--paper); border-bottom: 2px solid var(--paper-2); border-radius: 16px 16px 0 0; }
+.steptabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.steptabs button { display: flex; align-items: center; justify-content: center; gap: 5px; min-width: 0; min-height: 44px; padding: 2px 4px; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.steptabs b { flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--paper-2); font-size: 12px; }
+.steptabs button[aria-current="step"] { background: var(--ink); color: var(--paper); }
+.steptabs button[aria-current="step"] b { background: var(--persimmon); color: #fff; }
+.stephint { margin: 0; text-align: center; font: 700 15px/1.45 var(--face); color: var(--persimmon-ink); }
+.stepbox { display: grid; gap: 14px; min-width: 0; }
+.stepnav { display: flex; gap: 8px; }
+.stepnav button { flex: 1; min-height: 44px; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; font-size: 15px; font-weight: 700; }
+.stepnav button[hidden] { display: none; }
+.prophead { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.prophead button { min-height: 34px; padding: 2px 10px; background: none; border: 1.5px solid var(--ink); border-radius: 7px; color: var(--ink); font-size: 13px; font-weight: 700; }
+.propgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 10px 8px; margin-top: 6px; }
+.propgrid button { position: relative; display: grid; gap: 3px; min-width: 0; padding: 4px 4px 6px; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; font-size: 14px; font-weight: 700; }
+.propgrid canvas { position: static; inset: auto; display: block; width: 100%; height: auto; border-radius: 6px; touch-action: auto; cursor: pointer; }
+.propgrid button[aria-pressed="true"] { background: var(--paper-2); border-color: var(--persimmon); box-shadow: inset 0 0 0 1px var(--persimmon); }
+.propgrid button[aria-pressed="true"]::after { content: "✓"; position: absolute; top: -8px; right: -8px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--persimmon); color: #fff; border: 2px solid var(--ink); font-size: 13px; }
 #vendorForm, #visitorForm { display: grid; gap: 12px; min-width: 0; }
 .chips.wrap { display: flex; flex-wrap: wrap; }
 .chips.wrap button { padding: 2px 11px; }
@@ -207,6 +228,12 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 .lotagain:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
 .lotskip { min-height: 42px; background: none; border: 0; font-size: 15px; font-weight: 700; text-decoration: underline; color: var(--ink-soft); }
 .lotnote { margin: -6px 0 0; font-size: 12px; color: var(--ink-soft); }
+.mapslot { display: grid; place-items: center; align-content: center; gap: 4px; min-height: 150px; margin: 2px 0; padding: 12px; text-align: center; background: var(--paper-2); border: 2px dashed var(--ink-soft); border-radius: 12px; color: var(--ink-soft); }
+.mapslot b { font: 700 17px/1.3 var(--face); color: var(--ink); }
+.mapslot span { font-size: 13px; line-height: 1.45; }
+.mapslot img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.stamps button, .trees button { position: relative; }
+.stamps .heartmark, .trees .heartmark { position: absolute; top: -2px; right: 8px; color: var(--persimmon); font-size: 18px; line-height: 1; font-style: normal; text-shadow: 0 0 2px #fff; }
 .finder h2 { display: flex; align-items: baseline; gap: 8px; margin: 4px 0 0; font: 700 17px/1.3 var(--face); }
 .finder h2::before { content: ""; align-self: center; width: 6px; height: 18px; border-radius: 3px; background: var(--persimmon); }
 .finder h2 small { font: 500 12px var(--ui); color: var(--ink-soft); }
@@ -240,6 +267,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 .stamps button.on i { border: 3px solid var(--c); box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px var(--c); background: #fff; color: var(--ink); transform: rotate(-9deg); }
 .stamppop { position: absolute; left: 50%; top: 20%; z-index: 4; width: 136px; height: 136px; margin-left: -68px; padding: 14px; display: grid; place-items: center; text-align: center; border-radius: 50%; background: rgba(255, 243, 214, .95); border: 5px solid var(--persimmon-ink); box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 7px var(--persimmon-ink); color: var(--persimmon-ink); font: 700 20px/1.2 var(--face); pointer-events: none; transform: rotate(-10deg); animation: stamppop 1.5s ease-out forwards; }
 @keyframes stamppop { 0% { transform: scale(2.2) rotate(-24deg); opacity: 0; } 18%, 75% { transform: scale(1) rotate(-10deg); opacity: 1; } 100% { transform: scale(1) rotate(-10deg); opacity: 0; } }
+#gameCv { position: static; display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; border: 2px solid var(--ink); border-radius: 12px; touch-action: none; cursor: pointer; }
 #ringCv { position: static; display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; border: 2px solid var(--ink); border-radius: 12px; touch-action: manipulation; cursor: pointer; }
 .ringhud { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0; font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .ringhud b { font: 700 19px/1.2 var(--face); color: var(--ink); }
@@ -294,33 +322,52 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
         <div><span class="sect">選一個角色</span><div class="roles" id="roles"></div></div>
       </div>
       <div id="vendorForm" hidden>
-        <div><span class="sect" id="stallChipsLabel">你的攤位</span><div class="chips wrap" id="stallChips"></div></div>
-        <canvas id="stallPreview" width="680" height="680" role="img" aria-label="攤位預覽，顯示你的裝扮、道具和口號"></canvas>
-        <div class="fields"><label for="stallTitle">攤位名字</label><input id="stallTitle" maxlength="8" autocomplete="off" placeholder="會寫在攤位招牌上，最多 8 個字"></div>
-        <div class="fields"><label for="ownerName">攤主名字</label><input id="ownerName" maxlength="8" autocomplete="off" placeholder="最多 8 個字"></div>
-        <div class="fields"><label for="stallIntro">攤主的話（客人走進攤位時，你會親口說給他聽）</label><textarea class="text" id="stallIntro" maxlength="120" rows="3" autocomplete="off" placeholder="介紹你的攤位、東西是怎麼做的、想對客人說的話，最多 120 個字"></textarea></div>
-        <div><span class="sect">攤位顏色</span><div class="swatches" id="vTones"></div></div>
-        <div><span class="sect">擺攤裝扮</span><div class="roles" id="looks"></div></div>
-        <div class="fields">
-          <div><span class="sect">衣服顏色</span><div class="swatches" id="vColors"></div></div>
-          <div><span class="sect">膚色</span><div class="swatches" id="vSkins"></div></div>
-        </div>
-        <div><span class="sect">燈箱狀態</span><div class="chips wrap" id="statusChips"></div></div>
-        <div><span class="sect">攤位道具（可多選）</span><div class="chips wrap" id="props"></div></div>
-        <div><span class="sect">今日叫賣口號</span><div class="slogans" id="slogans"></div>
-          <label class="sect" for="sloganOwn" style="margin-top:8px">或自己寫一句</label>
-          <input class="text" id="sloganOwn" maxlength="20" autocomplete="off" placeholder="最多 20 個字">
-        </div>
-        <div><span class="sect">主打商品（最多 3 樣，填了會取代示範商品）</span>
-          <ul class="mygoods" id="myGoods"></ul>
-          <div class="goodform">
-            <input class="text" id="gName" maxlength="12" autocomplete="off" placeholder="商品名稱" aria-label="商品名稱">
-            <input class="text" id="gPrice" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="價格" aria-label="價格">
-            <input class="text wide" id="gIntro" maxlength="40" autocomplete="off" placeholder="一句話介紹，攤主會親口說給客人聽" aria-label="商品介紹">
+        <div class="studiotop">
+          <canvas id="stallPreview" width="680" height="680" role="img" aria-label="攤位預覽，顯示你的裝扮、道具和口號"></canvas>
+          <div class="steptabs" id="stepTabs" role="group" aria-label="佈置步驟">
+            <button data-go="1"><b>1</b>招牌</button><button data-go="2"><b>2</b>攤主</button><button data-go="3"><b>3</b>擺道具</button><button data-go="4"><b>4</b>叫賣</button>
           </div>
-          <p class="err" id="gErr" hidden></p>
-          <button class="add" id="gAdd">加入商品</button>
+          <p class="stephint" id="stepHint" aria-live="polite"></p>
         </div>
+        <div class="stepbox" data-step="1">
+          <div><span class="sect" id="stallChipsLabel">你的攤位</span><div class="chips wrap" id="stallChips"></div></div>
+          <div class="fields"><label for="stallTitle">招牌上寫什麼</label><input id="stallTitle" maxlength="8" autocomplete="off" placeholder="攤位名字，最多 8 個字"></div>
+          <div><span class="sect">雨棚和櫃台的顏色</span><div class="swatches" id="vTones"></div></div>
+          <div><span class="sect">燈箱：告訴客人現在的狀況</span><div class="chips wrap" id="statusChips"></div></div>
+        </div>
+        <div class="stepbox" data-step="2" hidden>
+          <div class="fields"><label for="ownerName">攤主叫什麼名字</label><input id="ownerName" maxlength="8" autocomplete="off" placeholder="最多 8 個字"></div>
+          <div><span class="sect">髮型</span><div class="roles mini" id="hairs"></div></div>
+          <div><span class="sect">髮色</span><div class="swatches" id="hairCs"></div></div>
+          <div><span class="sect">帽子・頭帶</span><div class="roles mini" id="hats"></div></div>
+          <div><span class="sect">臉上的小配件</span><div class="roles mini" id="faces"></div></div>
+          <div class="fields">
+            <div><span class="sect">衣服顏色</span><div class="swatches" id="vColors"></div></div>
+            <div><span class="sect">膚色</span><div class="swatches" id="vSkins"></div></div>
+          </div>
+        </div>
+        <div class="stepbox" data-step="3" hidden>
+          <div class="prophead"><span class="sect" id="propCount">擺上道具</span><button id="propClear">全部拿掉</button></div>
+          <div class="propgrid" id="props"></div>
+        </div>
+        <div class="stepbox" data-step="4" hidden>
+          <div><span class="sect">叫賣口號（會冒在攤位上方）</span><div class="slogans" id="slogans"></div>
+            <label class="sect" for="sloganOwn" style="margin-top:8px">或自己寫一句</label>
+            <input class="text" id="sloganOwn" maxlength="20" autocomplete="off" placeholder="最多 20 個字">
+          </div>
+          <div class="fields"><label for="stallIntro">想對客人說的話（客人走進攤位時，攤主會說給他聽）</label><textarea class="text" id="stallIntro" maxlength="120" rows="3" autocomplete="off" placeholder="介紹你的攤位、東西是怎麼做的，最多 120 個字"></textarea></div>
+          <div><span class="sect">要賣的東西（最多 3 樣）</span>
+            <ul class="mygoods" id="myGoods"></ul>
+            <div class="goodform">
+              <input class="text" id="gName" maxlength="12" autocomplete="off" placeholder="商品名稱" aria-label="商品名稱">
+              <input class="text" id="gPrice" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="價格" aria-label="價格">
+              <input class="text wide" id="gIntro" maxlength="40" autocomplete="off" placeholder="一句話介紹，攤主會親口說給客人聽" aria-label="商品介紹">
+            </div>
+            <p class="err" id="gErr" hidden></p>
+            <button class="add" id="gAdd">加入商品</button>
+          </div>
+        </div>
+        <div class="stepnav"><button id="stepPrev">← 上一步</button><button id="stepNext">下一步 →</button></div>
       </div>
       <p class="note" id="pickNote"></p>
       <button class="go" id="go">走進市集</button>
@@ -343,6 +390,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   <div class="picker" id="finder" role="dialog" aria-modal="true" aria-labelledby="finderTitle" hidden>
     <div class="sheet finder">
       <h1 id="finderTitle">找攤位</h1>
+      <p class="note">攤位的佈置是遊戲裡的設定，實際以現場為主；攤位位置也可能調整，正式地圖會在市集前公布。</p>
+      <!-- 市集當天的實際地圖放這裡：把下面兩行換成 <img src="地圖檔名" alt="市集地圖：…"> 即可 -->
+      <div class="mapslot" id="finderMap"><b>市集地圖</b><span>正式地圖確定後會放在這裡</span></div>
       <div class="chips wrap" id="finderCats" role="group" aria-label="依類別篩選"></div>
       <div id="finderList"></div>
       <button class="lotskip" id="finderClose">關閉</button>
@@ -377,19 +427,29 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       <h2>布農樹名圖鑑<small>每個年級的攤位是一棵樹</small></h2>
       <div class="trees" id="passTrees"></div>
       <p class="note">樹的介紹是示範文字，正式版由老師確認。</p>
-      <h2>攤位印章<small>點一下帶你走過去</small></h2>
+      <h2>攤位印章<small>點一下帶你走過去・♥ 是你想去的攤位</small></h2>
       <div class="stamps" id="passStamps"></div>
       <button class="lotskip" id="passClose">關閉</button>
     </div>
   </div>
   <div class="picker" id="ring" role="dialog" aria-modal="true" aria-labelledby="ringTitle" hidden>
     <div class="sheet lotsheet">
-      <h1 id="ringTitle">套圈圈・十個圈</h1>
+      <h1 id="ringTitle">楓香套圈圈・十個圈</h1>
       <p class="ringhud"><b id="ringLeft"></b><b id="ringScore"></b><span id="ringBest"></span></p>
-      <canvas id="ringCv" width="680" height="740" role="img" aria-label="套圈圈遊戲：瞄準圈會在三排瓶子上來回移動，移到瓶口時按「丟！」"></canvas>
+      <canvas id="ringCv" width="680" height="740" role="img" aria-label="楓香套圈圈：瞄準圈會在三排楓香樹苗上來回移動，移到樹苗上時按「丟！」"></canvas>
       <p class="note" id="ringMsg" aria-live="polite"></p>
       <button class="go" id="ringThrow">丟！</button>
       <button class="lotskip" id="ringClose">不玩了</button>
+    </div>
+  </div>
+  <div class="picker" id="game" role="dialog" aria-modal="true" aria-labelledby="gameTitle" hidden>
+    <div class="sheet lotsheet">
+      <h1 id="gameTitle">小遊戲</h1>
+      <p class="ringhud"><b id="gameLeft"></b><b id="gameScore"></b></p>
+      <canvas id="gameCv" width="680" height="740" role="img" aria-label="班級攤小遊戲"></canvas>
+      <p class="note" id="gameMsg" aria-live="polite"></p>
+      <button class="go" id="gameGo">開始</button>
+      <button class="lotskip" id="gameClose">不玩了</button>
     </div>
   </div>
   <div class="picker" id="share" role="dialog" aria-modal="true" aria-labelledby="shareTitle" hidden>
@@ -408,10 +468,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       <div><b id="whoName"></b><br><span id="whoStall"></span></div>
       <button class="leave" id="leave">回到街上</button>
     </div>
-    <div class="owntools" id="ownTools" hidden><div class="statusrow" id="statusRow"></div><button id="shout">喊出今日口號</button><button id="editStall">編輯我的攤位</button><button id="mineShare" hidden>做一張一日攤主卡</button></div>
+    <div class="owntools" id="ownTools" hidden><div class="statusrow" id="statusRow"></div><button id="shout">喊出今日口號</button><button id="editStall">佈置我的攤位</button><button id="mineShare" hidden>做一張一日攤主卡</button></div>
     <button class="say" id="say"><span id="sayText"></span><small id="sayMore"></small></button>
     <button class="playbtn" id="mineOpen" hidden>我要當攤主，開一攤</button>
-    <button class="playbtn" id="ringPlay" hidden><span aria-hidden="true">🎯 </span>玩一局套圈圈</button>
+    <button class="playbtn" id="ringPlay" hidden><span aria-hidden="true">🎯 </span>玩一局「楓香套圈圈」</button>
+    <button class="playbtn" id="gamePlay" hidden><span aria-hidden="true">🎮 </span><span id="gamePlayText">玩小遊戲</span></button>
     <h2 class="goodshead" id="goodsHead">主打商品</h2>
     <ul class="goods" id="goods"></ul>
   </section>
@@ -424,69 +485,103 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   const INK = '#1d1a36', PAPER = '#fff3d6', WOOD = '#5b3a2a';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const TONES = [
+    { label: '青綠', aw: ['#1f8a8a', '#f7ecd0'], cloth: '#176a70', dark: false },
+    { label: '鵝黃', aw: ['#e9b33b', '#fff3d6'], cloth: '#b97a1f', dark: true },
+    { label: '朱紅', aw: ['#d9432f', '#fff3d6'], cloth: '#9c2c22', dark: false },
+    { label: '桃紅', aw: ['#c85c9a', '#f7ecd0'], cloth: '#8b3f7c', dark: false },
+    { label: '湛藍', aw: ['#3f6fb0', '#f4efe4'], cloth: '#2c4f86', dark: false },
+    { label: '草綠', aw: ['#4f9c5a', '#f7ecd0'], cloth: '#36743f', dark: false },
+    { label: '暖橘', aw: ['#e0783a', '#fff3d6'], cloth: '#a8521f', dark: false },
+    { label: '葡萄紫', aw: ['#7a5ab0', '#f4efe4'], cloth: '#56408a', dark: false },
+  ];
+  // 報名的攤位：照這個順序沿街排，前一半在主舞台前、後一半在主舞台後。販售內容確認後，改 what 和 lines、加 items 就好
+  const KIND_SHORT_ALL = { coffee: '咖啡', bread: '點心', fried: '燒烤', craft: '手作', icecream: '冰淇淋', meal: '餐點', play: '玩樂', drink: '飲品', plant: '植栽', hair: '剪髮' };
+  const OWNER_STYLES = ['bob', 'beanie', 'visor', 'bun', 'band', 'meal', 'play', 'drink'];
+  const OWNER_SHIRTS = ['#f7ecd0', '#d86a5a', '#6fa8c9', '#4fa7a0', '#c9744a', '#fff3d6', '#efc25a', '#c98ab8'];
+  const OWNER_SKINS = ['#f2c49b', '#f4cda8', '#e6b285', '#f5d0b0'], OWNER_HAIRS = ['#2a2030', '#5b3a2a', '#4a2a3a', '#6b6470'];
+  const BACKS = ['#40304f', '#463246', '#452a3e', '#3d2f55', '#2f3a5c', '#3a3a2e', '#3a2f55'];
+  const BAG_LINE = '記得帶購物袋，一起當無塑市集的好朋友！', CUP_LINE = '記得帶自己的杯子和餐具，一起當無塑市集的好朋友！';
+  // 攤主扮裝：只用佈置畫面裡原有的選項（髮型、帽子・頭帶、臉上配件、髮色第幾個、衣服顏色第幾個、膚色第幾個）
+  // 攤主自己在「佈置我的攤位」改過扮裝，就以攤主改的為準
+  const lk = (hairStyle, hat, face, hairC, c, s) => ({ hairStyle, hat, face, hairC, c, s });
+  const LATER = '價格現場公布';
+  // 攤主交回販售資料的攤位：寫了 items 就不再顯示「品項確認中」。順序不要動，攤位編號（A01…）跟著順序走
+  const SHOP_LIST = [
+    ['fried', '小森時光', '津君', '炸物・蜜餞小番茄', 5, { look: lk('pony', 'straw', 'none', 2, 2, 1), tip: '嚐一口杉林的好滋味',
+      hello: '嚐一口杉林的好滋味！',
+      lines: ['歡迎來到「小森時光」！我是津君。', '我們從高雄杉林出發，串起土地的故事、在地好物和人的溫度。', '以在地農產為起點，透過飲食、手作和低碳小旅行實踐地方創生，支持在地農業和青年留鄉。', '今天有小米甜甜圈和蔬菜炸物，還有蜜餞小番茄。', '從一口美味，認識杉林的風土和人情味！', CUP_LINE],
+      items: [{ n: '炸物（小米甜甜圈、蔬菜）', d: '$100／份', c: 0 }, { n: '蜜餞小番茄', d: LATER, c: 0 }] }],
+    ['plant', '麒麟貓工作室', '廖桑', '植栽・手作體驗', 0, { deco: ['fern'], look: lk('short', 'none', 'both', 0, 3, 0), tip: '來做一盆自己的綠植',
+      hello: '來做一盆自己的綠植！', action: '想體驗', thanks: '謝謝你！市集當天記得來找廖桑體驗喔！',
+      lines: ['歡迎來到「麒麟貓工作室」！我是廖桑。', '我們用綠植設計，搭配水泥模造、玻璃藝術、真皮皮革、水晶選品和雷射雕刻，手造出獨一無二的作品。', '今天有多肉植物、觀葉植物、鹿角蕨和空氣鳳梨。', '還有手作體驗課程：多肉組盆、苔球、鹿角蕨上板，都可以來玩玩看！', '晚上的月亮晚會，我們也還在這裡喔。', BAG_LINE],
+      items: [{ n: '繽紛多肉組盆課程', d: LATER, c: 0 }, { n: '療癒滾滾苔球課程', d: LATER, c: 0 }, { n: '鹿角蕨上板課程', d: LATER, c: 0 }] }],
+    ['coffee', '水邊坐坐', 'mooi', '咖啡', 4, { deco: ['surf'], look: lk('wavy', 'visor', 'none', 1, 5, 2) }],
+    ['craft', '小怡飾品', '欣怡', '髮飾・小物', 3, { deco: ['trinket'], look: lk('bob', 'flower', 'none', 2, 4, 1),
+      hello: '可愛小物都在這裡！',
+      lines: ['歡迎來到「小怡飾品」！我是欣怡。', '這裡有精緻可愛的髮夾、髮飾、鑰匙圈和各種小物。', '還有玩偶小包包，慢慢挑，一定有你喜歡的！', BAG_LINE],
+      items: [{ n: '髮夾', d: LATER, c: 0 }, { n: '包包', d: LATER, c: 0 }, { n: '美甲', d: LATER, c: 0 }] }],
+    ['bread', '芷渝手作甜點', '芷渝', '手作甜點', 1, { look: lk('bun', 'toque', 'none', 0, 0, 0),
+      hello: '手作甜點，一份 50！',
+      lines: ['歡迎來到「芷渝手作甜點」！我是芷渝。', '今天帶來手作的蛋糕和小點心。', '每一份都是 50 元，挑一份嚐嚐看吧！', CUP_LINE],
+      items: [{ n: '蛋糕', d: '$50／份', c: 0 }, { n: '小點心', d: '$50／份', c: 0 }] }],
+    ['craft', 'Jolie’s手作', '裘莉', '鉤織手作', 7, { deco: ['crochet'], look: lk('long', 'none', 'glasses', 1, 1, 1),
+      hello: '來看看一針一線的溫度！',
+      lines: ['歡迎來到「Jolie’s手作」！我是裘莉。', '我很喜歡鉤織時屬於自己的寧靜時光，會仔細揣摩腦海裡的每一個想法。', '每件作品，都是我和自己相處最美好的時光。在這裡，可以遇見與眾不同的溫度。', '今天有鉤織吊飾、達摩擺飾，還有手作包包。', BAG_LINE],
+      items: [{ n: '七色小花吊飾', d: '$580／$680', c: 0 }, { n: '達摩擺飾', d: '$450', c: 0 }, { n: '手作包包', d: LATER, c: 0 }] }],
+    ['meal', '邀請中攤位', '邀請中', '', 6, { invite: true, look: lk('short', 'cap', 'mask', 0, 0, 0), role: '攤位邀請中', statusText: '邀請中', tip: '先記住這個位置',
+      hello: '這個攤位正在邀請中，敬請期待！', lines: ['這裡是預留的攤位，正在邀請中。', '確定之後會在這裡公布，敬請期待！'] }],
+    ['craft', '糸.糸.縫', '芳蘭', '手縫布偶', 2, { deco: ['plush'], look: lk('bun', 'none', 'glasses', 2, 2, 3) }],
+    ['drink', '花酵', '俊英', '飲品', 3, { look: lk('long', 'flower', 'none', 0, 4, 0) }],
+    ['drink', '悠綠客檸檬', '存存', '凍檸茶・檸檬爆米花', 1, { deco: ['lemon'], look: lk('curly', 'cap', 'none', 2, 1, 2),
+      hello: '自家種的檸檬，來一杯！',
+      lines: ['歡迎來到「悠綠客檸檬」！我是存存。', '我們用的是自家種的優利卡黃檸檬，產地直送。', '凍檸茶現做現榨，果香清爽回甘、不會死甜。', '還有獨家的黃檸檬爆米花，酥脆裡帶著清新檸香，一口接一口停不下來！', '來杯凍檸茶配爆米花，嚐嚐檸檬的好滋味。', CUP_LINE],
+      items: [{ n: '凍檸茶', d: '$70・現做，清爽不死甜', c: 0 }, { n: '黃檸檬爆米花', d: '$120／包・6 包 $500', c: 0 }] }],
+    ['meal', '芋見米好cinavu', '溫雅玲', '小米吉拿富', 7, { deco: ['cinavu'], look: lk('pony', 'band', 'none', 0, 0, 3), tip: '嚐嚐部落美食吉拿富',
+      hello: '來嚐嚐小米吉拿富！',
+      lines: ['歡迎來到「芋見米好 cinavu」！我是溫雅玲。', '我們傳承部落美食「吉拿富」。', '今天有小米豬肉粽和芋頭豬肉粽，兩種口味都可以嚐嚐！', '晚上的月亮晚會，我們也還在這裡喔。', CUP_LINE],
+      items: [{ n: '小米豬肉粽', d: LATER, c: 0 }, { n: '芋頭豬肉粽', d: LATER, c: 0 }] }],
+    ['craft', '種子與陶', '旺哥', '種子飾品・柴燒陶', 6, { deco: ['seeds', 'pottery'], look: lk('buzz', 'none', 'beard', 0, 5, 2),
+      hello: '來找陪伴你的種子與陶！',
+      lines: ['歡迎來到「種子與陶」！我是旺哥。', '每顆種子，都代表一個單純熱愛手作的希望；陶，則是和另一半相互支持、陪伴的心。', '我把各式種子依照外形搭配組合，做成小巧精緻的飾品，替生活的小角落添一點趣味。', '柴燒陶藝讓火、土、灰互相融合，燒出最原始天然的樣子。', '歡迎一起來尋找陪伴自己生活的種子與陶！', BAG_LINE],
+      items: [{ n: '種子飾品', d: '$100–880', c: 0 }, { n: '柴燒陶器', d: '$300–8000', c: 0 }] }],
+    ['icecream', '小露吃', '攤主', '冰淇淋', 4, { look: lk('curly', 'none', 'beard', 1, 3, 2),
+      hello: '來一球冰淇淋消暑！',
+      lines: ['歡迎來到「小露吃」！', '今天的冰淇淋有香草、芒果和芋頭三種口味。', '口味還在確認中，以市集當天現場為準喔！', CUP_LINE],
+      items: [{ n: '香草冰淇淋', d: '口味暫定', c: 0 }, { n: '芒果冰淇淋', d: '口味暫定', c: 0 }, { n: '芋頭冰淇淋', d: '口味暫定', c: 0 }] }],
+    ['craft', '拾物木作', '阿倪', '木作體驗', 5, { cat: 'life', action: '想去', deco: ['wood'], look: lk('short', 'capback', 'glasses', 2, 3, 1) }],
+    ['fried', '日光小林黃金香腸', '攤主', '黃金香腸', 2, { look: lk('buzz', 'band', 'none', 0, 0, 2),
+      hello: '來一根黃金香腸！',
+      lines: ['歡迎來到「日光小林黃金香腸」！', '我們賣的就是黃金香腸，逛累了來一根吧！', CUP_LINE],
+      items: [{ n: '黃金香腸', d: LATER, c: 0 }] }],
+    ['drink', '美濃草高高', '文相', '愛玉飲料', 0, { deco: ['aiyu'], look: lk('short', 'straw', 'none', 0, 2, 1) }],
+    ['craft', '邊畫邊話', '美辰', '畫畫體驗', 3, { cat: 'life', action: '想去', deco: ['easel'], look: lk('bob', 'none', 'none', 1, 1, 0) }],
+    ['hair', '剪單有品', '品品', '快剪', 4, { look: lk('pony', 'none', 'glasses', 3, 2, 0), tip: '剪一個清爽的髮型',
+      hello: '來剪個清爽髮型！', action: '想剪', thanks: '謝謝你！市集當天記得來找品品剪喔！',
+      lines: ['歡迎來到「剪單有品」！我是品品。', '現場快剪，幫你剪出帥哥、美女的髮型！', '男生剪髮 100 元、女生 150 元，只修劉海 50 元。', '剪個清清爽爽的髮型，再繼續逛市集！', BAG_LINE],
+      items: [{ n: '男生剪髮', d: '$100', c: 0 }, { n: '女生剪髮', d: '$150', c: 0 }, { n: '修劉海', d: '$50', c: 0 }] }],
+  ];
+  const FOOD_KINDS = ['coffee', 'bread', 'fried', 'icecream', 'meal', 'drink'];
+  // 攤位商品按鈕上的字：吃的寫想吃、喝的寫想喝、手作和植栽寫想買；個別攤位可以在 SHOP_LIST 用 action 另外指定
+  const ACTION_BY_KIND = { craft: '想買', plant: '想買', coffee: '想喝', drink: '想喝', icecream: '想吃', bread: '想吃', fried: '想吃', meal: '想吃', play: '想玩', hair: '想剪' };
+  const SHOP_STALLS = SHOP_LIST.map(([kind, name, owner, what, tone, extra], i) => {
+    const t = TONES[tone], ready = !!(extra && extra.items && extra.items.length);
+    return { kind, name, owner, short: KIND_SHORT_ALL[kind], role: what ? (ready ? what : `${what}・品項確認中`) : '品項確認中', roleSet: what || KIND_SHORT_ALL[kind],
+      aw: t.aw, cloth: t.cloth, dark: t.dark, back: BACKS[i % BACKS.length], shirt: OWNER_SHIRTS[i % OWNER_SHIRTS.length], apron: '#fff3d6',
+      skin: OWNER_SKINS[i % OWNER_SKINS.length], hair: OWNER_HAIRS[i % OWNER_HAIRS.length], style: OWNER_STYLES[i % OWNER_STYLES.length],
+      status: 'go', dot: '#2e9e6b', statusText: ready ? what : '品項確認中',
+      hello: `歡迎來到「${name}」！`,
+      lines: [`歡迎來到「${name}」！`, '今天要帶什麼來，還在跟攤主確認中，市集前會公布喔。', FOOD_KINDS.includes(kind) ? CUP_LINE : BAG_LINE],
+      thanks: '謝謝你！市集當天記得來找我喔！', action: ACTION_BY_KIND[kind] || '想去', items: [], ...(extra || {}) };
+  });
   const RAW = [
-    { kind: 'coffee', id: 'A-01', short: '咖啡', name: '山嵐手沖', owner: '阿哲', role: '咖啡攤攤主',
-      aw: ['#1f8a8a', '#f7ecd0'], cloth: '#176a70', back: '#40304f', shirt: '#f7ecd0', apron: '#2b4d57', skin: '#f2c49b', hair: '#2a2030', style: 'beanie',
-      plate: ['順暢'], plateC: '#2e9e6b', dot: '#2e9e6b', statusText: '順暢，現在來不用等',
-      hello: '嘿，路過聞到了嗎？今天磨桂花拿鐵。',
-      lines: ['我是阿哲。豆子是自己在梅山烘的，今天帶了三支。', '桂花拿鐵是這次的主打，桂花是我媽曬的，喝起來很香但不會太甜。', '現在不用排隊，想喝冰的跟我說一聲就好。'],
-      thanks: '收到！我會多留一杯的量。這只是先讓我知道，不用先付錢喔。', action: '想買',
-      items: [{ n: '桂花拿鐵', d: '$90・本週主打', c: 48 }, { n: '烏龍冷萃', d: '$110・限量 30 瓶', c: 31 }, { n: '手沖單品', d: '$120・現點現沖', c: 17 }] },
-    { kind: 'bread', id: 'A-02', short: '點心', name: '小麥的烤箱', owner: '小麥阿姨', role: '點心攤攤主',
-      aw: ['#e9b33b', '#fff3d6'], cloth: '#b97a1f', back: '#463246', shirt: '#d86a5a', apron: '#fff3d6', skin: '#f4cda8', hair: '#6b6470', style: 'bun',
-      plate: ['快賣完'], plateC: '#e9912b', dot: '#e9912b', statusText: '小米甜甜圈只剩 6 個',
-      hello: '小米甜甜圈只剩 6 個，要快喔！',
-      lines: ['來來來，我是小麥阿姨，這些都是今天清晨三點起來烤的。', '小米甜甜圈是投票選出來的限定款，大家都說小米味要再濃一點，我就多放了。', '鹽可頌已經賣完了，下午三點還會再出一爐小米甜甜圈，只有 30 個！'],
-      thanks: '好好好，阿姨知道了！下次我就多烤一點。不用先付錢喔。', action: '想買',
-      items: [{ n: '小米甜甜圈', d: '$75・剩 6 個', c: 126 }, { n: '鹽可頌', d: '$55', sold: true }, { n: '桂圓核桃吐司', d: '$180・每條現切', c: 58 }] },
-    { kind: 'fried', id: 'B-03', short: '烤炸物', name: '炸阿炸', owner: '阿炸師傅', role: '烤炸物攤攤主',
-      aw: ['#d9432f', '#fff3d6'], cloth: '#9c2c22', back: '#452a3e', shirt: '#fff3d6', apron: '#2d2a4e', skin: '#e6b285', hair: '#fff3d6', style: 'band',
-      plate: ['排隊中', '叫到27號'], plateC: '#d9432f', dot: '#d9432f', statusText: '叫到 27 號，約等 15 分鐘',
-      hello: '叫到 27 號囉，現在排大概 15 分鐘！',
-      lines: ['我炸地瓜球、烤串烤了二十年了，排隊的都是老朋友啦。', '現在大概要等 15 分鐘。不想站著等，可以先去旁邊逛，快到了我會廣播。', '三點半有一個暗號，跟我說「芝麻開門」，就多送你三顆。'],
-      thanks: '了解！我會多備一點料，到現場再跟我點就好。', action: '想買',
-      items: [{ n: '黃金地瓜球', d: '$50・一包約 15 顆', c: 203 }, { n: '炭烤杏鮑菇串', d: '$70', c: 89 }, { n: '炸芋頭條', d: '$60', c: 64 }] },
-    { kind: 'craft', id: 'C-04', short: '手作', name: '線線手作', owner: '小線', role: '手作攤攤主',
-      aw: ['#c85c9a', '#f7ecd0'], cloth: '#8b3f7c', back: '#3d2f55', shirt: '#6fa8c9', apron: '#f7ecd0', skin: '#f5d0b0', hair: '#4a2a3a', style: 'bob',
-      plate: ['順暢'], plateC: '#2e9e6b', dot: '#2e9e6b', statusText: '順暢，15:20 有刺繡體驗',
-      hello: '慢慢看，每一件都不太一樣喔。',
-      lines: ['嗨，我是小線。這些布都是舊衣服和老布行的零碼布。', '每個胸針都是手繡的，所以長得都不太一樣，你可以挑一個最像你的。', '下午三點二十分我會開一場小小的刺繡體驗，名額只有 8 位。'],
-      thanks: '謝謝你！我會照這個數字準備布料，不用先付錢喔。', action: '想買',
-      items: [{ n: '手繡胸針', d: '$180・每款僅一件', c: 42 }, { n: '零碼布帆布袋', d: '$450', c: 23 }, { n: '刺繡體驗', d: '$300・15:20・限 8 位', c: 11 }] },
+    ...SHOP_STALLS,
     { kind: 'stage', id: '舞台', short: '舞台', name: '主舞台', owner: '主持人小光', role: '今日節目',
       dot: '#5d5170', statusText: '今日節目',
       hello: '歡迎來到主舞台！',
       lines: ['歡迎來到市集正中間的主舞台！我是主持人小光。', '今天每位攤主都會上台叫賣一分鐘，大家可以用手機投票。', '15:40 是巴楠花打擊樂表演，歡迎來舞台前一起打拍子。', '晚上 18:20 也在這裡，是月亮晚會，大家一起在星空下聽部落故事。'],
       thanks: '好，開始前提醒你！', action: '提醒我', actionOn: '已提醒',
       items: [{ n: '街頭樂團開唱', d: '14:30 到 14:42', c: 52, start: 870, end: 882 }, { n: '攤主叫賣大賽', d: '15:00 到 15:15', c: 96, start: 900, end: 915 }, { n: '巴楠花打擊樂表演', d: '15:40 到 15:55', c: 134, start: 940, end: 955 }, { n: '月亮晚會：星空下的部落故事', d: '18:20 到 19:50', c: 31, start: 1100, end: 1190 }] },
-    { kind: 'icecream', id: 'C-05', short: '冰淇淋', name: '山風冰舖', owner: '阿冰', role: '冰淇淋攤攤主',
-      aw: ['#3f6fb0', '#f4efe4'], cloth: '#2c4f86', back: '#2f3a5c', shirt: '#f4efe4', apron: '#6fb8d9', skin: '#f2c49b', hair: '#5b3a2a', style: 'visor',
-      plate: ['熱賣中'], plateC: '#e8452f', dot: '#e8452f', statusText: '熱賣中，小米牛奶口味最受歡迎',
-      hello: '天氣熱，來一球冰的！',
-      lines: ['我是阿冰，冰淇淋都是前一天晚上自己攪的。', '小米牛奶口味用的是部落種的小米，吃得到一點點顆粒。', '桂花烏龍雪酪不含奶，不能喝牛奶的朋友也可以吃。'],
-      thanks: '收到！我會多準備一桶，現場再點就好，不用先付錢喔。', action: '想買',
-      items: [{ n: '小米牛奶冰淇淋', d: '$60・單球', c: 57 }, { n: '桂花烏龍雪酪', d: '$70・不含奶', c: 33 }, { n: '雙球甜筒', d: '$100・口味任選', c: 21 }] },
-    { kind: 'meal', id: 'D-06', short: '餐點', name: '山上的灶', owner: '阿月', role: '餐點攤攤主',
-      aw: ['#4f9c5a', '#f7ecd0'], cloth: '#36743f', back: '#3a3a2e', shirt: '#c9744a', apron: '#f7ecd0', skin: '#e6b285', hair: '#2a2030', style: 'meal',
-      plate: ['順暢'], plateC: '#2e9e6b', dot: '#2e9e6b', statusText: '順暢，竹筒飯每半小時出一批',
-      hello: '肚子餓了嗎？竹筒飯剛烤好！',
-      lines: ['我是阿月，今天的飯菜都是一大早在灶上煮的。', '竹筒飯要烤一個多小時，每半小時出一批，香味是竹子烤出來的。', '野菜湯每天的菜不一樣，看當天採到什麼。'],
-      thanks: '好喔！我會多煮一點，現場再跟我點，不用先付錢。', action: '想買',
-      items: [{ n: '竹筒飯', d: '$80・每半小時一批', c: 74 }, { n: '小米飯糰', d: '$50', c: 46 }, { n: '野菜湯', d: '$40・每天不同', c: 28 }] },
-    { kind: 'play', id: 'E-07', short: '玩樂', name: '來玩一下', owner: '阿樂', role: '玩樂攤攤主',
-      aw: ['#e0783a', '#fff3d6'], cloth: '#a8521f', back: '#3d2f55', shirt: '#4fa7a0', apron: '#fff3d6', skin: '#f5d0b0', hair: '#5b3a2a', style: 'play',
-      plate: ['熱賣中'], plateC: '#e8452f', dot: '#e8452f', statusText: '熱賣中，套圈圈最多人玩',
-      hello: '來來來，套中就送你！',
-      lines: ['我是阿樂，這攤不賣吃的，賣的是開心。', '套圈圈十個圈五十元，套中瓶子就可以挑一個小獎品。', '彈珠台和抽抽樂比較適合小朋友，大人也可以來挑戰。'],
-      thanks: '收到！我會多準備一些圈圈和獎品，現場再玩就好，不用先付錢。', action: '想玩', actionOn: '已想玩',
-      items: [{ n: '套圈圈', d: '$50・十個圈', c: 88 }, { n: '彈珠台', d: '$30・一局', c: 41 }, { n: '抽抽樂', d: '$20・一次', c: 36 }] },
-    { kind: 'drink', id: 'E-08', short: '飲品', name: '山泉茶飲', owner: '阿泉', role: '飲品攤攤主',
-      aw: ['#7a5ab0', '#f4efe4'], cloth: '#56408a', back: '#3a2f55', shirt: '#4fa7a0', apron: '#f4efe4', skin: '#f2c49b', hair: '#2a2030', style: 'drink',
-      plate: ['順暢'], plateC: '#2e9e6b', dot: '#2e9e6b', statusText: '順暢，洛神花茶剛冰好',
-      hello: '走累了嗎？來一杯冰涼的！',
-      lines: ['我是阿泉，飲料都是今天早上現煮再冰鎮的。', '洛神花茶用的是部落自己種的洛神，酸酸甜甜很解渴。', '刺蔥檸檬氣泡飲加了一點點刺蔥，是山上的香味；冬瓜檸檬可以跟我說要半糖。'],
-      thanks: '收到！我會多冰幾壺，現場再點就好，不用先付錢喔。', action: '想買',
-      items: [{ n: '洛神花茶', d: '$50・部落自種洛神', c: 64 }, { n: '刺蔥檸檬氣泡飲', d: '$70・本週主打', c: 38 }, { n: '冬瓜檸檬', d: '$45・可調甜度', c: 29 }] },
     { kind: 'lawn', id: '草地', short: '草地', name: '草地音樂會：山林共聲', owner: '樂手阿布', role: '山林共聲・16:00–17:20',
       dot: '#4c9a55', statusText: '草地音樂會：山林共聲',
       hello: '走累了嗎？來草地聽首歌吧！',
@@ -495,12 +590,14 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       items: [{ n: '木吉他自彈自唱', d: '16:00 到 16:20・阿布', c: 31 }, { n: '口簧琴與鼻笛小聚', d: '16:30 到 16:50・部落長輩', c: 44 }, { n: '部落青年合唱', d: '17:00 到 17:20・壓軸', c: 58 }] },
   ];
   const STAGE = RAW.find(s => s.kind === 'stage'), LAWN = RAW.find(s => s.kind === 'lawn');
-  // 大人攤：照這份名單的順序排，前一半在主舞台前、後一半在主舞台後（預留到 15 攤）
+  // 大人攤：照 SHOP_LIST 的順序排，前一半在主舞台前、後一半在主舞台後
   const ADULT = RAW.filter(s => s !== STAGE && s !== LAWN);
   // 類別共用：同一類的攤位長得一樣，新攤位只要指定 kind
-  const CAT_KEYS = ['short', 'aw', 'cloth', 'back', 'shirt', 'apron', 'skin', 'hair', 'style'];
+  const CAT_KEYS = ['short', 'aw', 'cloth', 'dark', 'back', 'shirt', 'apron', 'skin', 'hair', 'style'];
   const CATS = {};
-  for (const s of ADULT) if (!CATS[s.kind]) { CATS[s.kind] = {}; for (const k of CAT_KEYS) CATS[s.kind][k] = s[k]; }
+  // 小森時光（第一攤）從手作改成炸物後，手作類（四年級班級攤、一日攤主的手作攤）仍沿用它原本的外觀，畫面不會跟著變
+  { const s = ADULT[0]; CATS.craft = {}; for (const k of CAT_KEYS) CATS.craft[k] = s[k]; CATS.craft.short = KIND_SHORT_ALL.craft; }
+  for (const s of ADULT) if (!CATS[s.kind]) { CATS[s.kind] = {}; for (const k of CAT_KEYS) CATS[s.kind][k] = s[k]; CATS[s.kind].short = KIND_SHORT_ALL[s.kind]; }
   // 班級攤：一到六年級排在一起。品項還沒確定，類別先放示範，確定後改 CLASS_KINDS 和內容即可
   const GRADES = ['一', '二', '三', '四', '五', '六'];
   const GRADE_COLORS = ['#e85d2f', '#e9b33b', '#4f9c5a', '#3f6fb0', '#7a5ab0', '#c85c9a'];
@@ -508,19 +605,21 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   // 正式名單若少了某一類大人攤，班級攤先借第一攤的外觀，不會畫不出來
   { const KIND_SHORT = { drink: '飲品', bread: '點心', play: '玩樂', craft: '手作', meal: '餐點', icecream: '冰淇淋' }; for (const k of CLASS_KINDS) if (!CATS[k]) CATS[k] = { ...CATS[ADULT[0].kind], short: KIND_SHORT[k] }; }
   // 各年級攤名：布農語的樹名
+  // 各年級的小遊戲名稱（三年級固定是套圈圈），遊戲內容在下面「班級攤小遊戲」
+  const GAME_TITLES = ['無患子戳泡泡', '構樹接果實', '楓香套圈圈', '松鼠找橡實', '鹽膚木翻翻牌', '赤楊木種樹趣'];
   const CLASS_NAMES = [['DahuDahu', '無患子'], ['Huha', '構樹'], ['Dala', '楓香'], ['Havutaz', '青剛櫟'], ['Halus', '羅氏鹽膚木'], ['Hainunan', '赤楊木']];
   const CLASS = GRADES.map((g, i) => ({
     ...CATS[CLASS_KINDS[i]], kind: CLASS_KINDS[i], grade: i + 1, id: `G${i + 1}`, name: CLASS_NAMES[i][0], owner: `${g}年級全班`, role: `${g}年級班級攤・品項確認中`, roleSet: `${g}年級班級攤`,
     status: 'go', dot: '#2e9e6b', statusText: '班級攤・品項確認中', tip: `去給${g}年級加油`,
     hello: `這是${g}年級的攤位 ${CLASS_NAMES[i][0]}，歡迎來看看！`,
-    lines: [`我們是${g}年級，攤位叫 ${CLASS_NAMES[i][0]}，是布農語「${CLASS_NAMES[i][1]}」的意思！`, '要賣什麼還在跟老師一起討論，市集前會公布喔。', '到時候歡迎來我們的攤位逛逛，給我們加油！'],
-    thanks: '謝謝你！', action: '想買', items: [] }));
+    lines: [`我們是${g}年級，攤位叫 ${CLASS_NAMES[i][0]}，是布農語「${CLASS_NAMES[i][1]}」的意思！`, `我們攤位有小遊戲「${GAME_TITLES[i]}」，按下面的按鈕來玩玩看！`, '要賣什麼還在跟老師一起討論，市集前會公布喔。', '到時候歡迎來我們的攤位逛逛，給我們加油！'],
+    thanks: '謝謝你！', action: ACTION_BY_KIND[CLASS_KINDS[i]] || '想買', items: [] }));
   CLASS.forEach(s => { s.zone = 'class'; });
   const HALF = Math.ceil(ADULT.length / 2);
-  ADULT.forEach((s, i) => { s.zone = i < HALF ? 'front' : 'back'; });
+  ADULT.forEach((s, i) => { s.zone = i < HALF ? 'front' : 'back'; s.id = (i < HALF ? 'A' : 'B') + String(i < HALF ? i + 1 : i - HALF + 1).padStart(2, '0'); });
   STAGE.zone = LAWN.zone = 'show';
   // 一日攤主：留給觀眾自己開的攤位，放在班級攤和大人攤之間。內容只存在這台裝置，別人看不到，也不算進護照、試手氣和找攤位
-  const MINE = { ...CATS[ADULT[0].kind], kind: ADULT[0].kind, zone: 'mine', mine: true, id: '我的', name: '這攤等你來開', owner: '未來的攤主', role: '一日攤主體驗',
+  const MINE = { ...CATS.craft, kind: 'craft', zone: 'mine', mine: true, id: '我的', name: '這攤等你來開', owner: '未來的攤主', role: '一日攤主體驗',
     status: 'go', dot: '#e85d2f', statusText: '一日攤主體驗',
     hello: '這攤還空著，換你當攤主？',
     lines: ['這個攤位還沒有人顧，是留給你的！', '按下面的「我要當攤主」，就可以取攤名、佈置攤位、放上你想賣的東西。', '你開的攤位只有你自己看得到，可以隨時回來改。'],
@@ -549,6 +648,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       '市集沿著操場排開：一進來是一到六年級的班級攤，主舞台在市集中間，走到最後面是大草地音樂會。',
       '今天還有「萬物有靈藝術祭」靜態展，展區開放時間是 13:00–16:00，歡迎去逛逛。',
       '這是無菸、無塑的市集，記得帶自己的餐具和杯子來喔！',
+      '街上的攤位佈置和位置都是遊戲設定，實際以現場為主，正式地圖市集前公布。',
       '往前走，就可以認識我們的學校。',
     ],
     items: [] };
@@ -583,15 +683,18 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   const EVENTS = [...STAGE.items, ...LAWN.items, ...INFO.items].filter((x, i, a) => x.start != null && a.indexOf(x) === i).sort((p, q) => p.start - q.start);
   const ROUTE = [INTRO, ...STOPS.filter(s => s !== INFO && s !== INTRO)];
   const BROADCASTS = [
-    '炸阿炸目前叫到 27 號，約 15 分鐘後再過來剛好。',
-    '小麥的烤箱：小米甜甜圈只剩 6 個，下午三點再出爐一批。',
-    '線線手作的刺繡體驗還有 3 個名額。',
-    '山風冰舖：小米牛奶冰淇淋剛補了一桶。',
+    '無塑市集提醒：記得帶自己的杯子、餐具和購物袋喔！',
+    '還沒公布品項的攤位，市集前會陸續更新。',
+    '攤位佈置和位置以現場為主，正式地圖市集前公布。',
+    '不知道先逛哪一攤？按「試手氣」讓手氣幫你挑。',
+    '走進攤位就能蓋章，集章護照在下方的「護照」。',
   ];
-  const CHATTER = ['這家好香', '小米甜甜圈還有嗎', '等等去排烤炸物', '下午要投票', '想買那個胸針', '今天人好多'];
+  const CHATTER = ['這攤好可愛', '等等去吃冰淇淋', '想帶一盆植栽回家', '有帶環保杯嗎', '下午去聽音樂會', '今天人好多'];
   const COLORS = ['#e85d2f', '#efc25a', '#4fa7a0', '#6fa8c9', '#c98ab8', '#f7ecd0'];
   const SKINS = ['#f5d0b0', '#f2c49b', '#e6b285', '#b97f55'];
-  const SAYS = ['這攤好香！', '好喜歡喔！', '一起逛嗎？', '推薦這一攤！', '等等去排烤炸物！'];
+  const SAYS = ['Mihumisang！', 'Uninang！', '這個好可愛！', '有帶環保杯嗎？', '先去吃點東西！', '等我一下，我拍個照！'];
+  // 路人會照你說的話回答；Mihumisang 是布農語的「你好」，Uninang 是「謝謝」
+  const SAY_REPLIES = { 'Mihumisang！': ['Mihumisang！'], 'Uninang！': ['Uninang！', '不客氣！'], '這個好可愛！': ['真的耶！', '我也想要一個'], '有帶環保杯嗎？': ['有！帶了！', '放在包包裡'], '先去吃點東西！': ['好啊，我也餓了', '走！'], '等我一下，我拍個照！': ['好，等你', '幫我也拍一張！'] };
   const REPLIES = ['真的耶！', '我也想吃', '走，一起去', '哪一攤？'];
   const VISITORS = {
     grandma: { label: '菜籃阿嬤', tip: '哪攤好吃都知道', pants: '#5a4638', hair: '#b9b3c2', style: 0,
@@ -711,9 +814,18 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       ctx.fillStyle = '#fbf8ef'; for (let x = -13; x <= 13; x += 3.2) { circle(x, -66.9, 1.15); ctx.fill(); }
     },
     front() { ctx.fillStyle = '#c23b2e'; ctx.fillRect(5.5, -36, 8, 3); ctx.fillStyle = '#efc25a'; ctx.fillRect(6.9, -35.4, 5, 1.6); } };
+  // 攤主打扮分開選：髮型、髮色、帽子或頭帶、臉上的小配件
+  const HAIR_STYLES = { short: '短髮', buzz: '平頭', curly: '捲捲頭', bob: '鮑伯頭', pony: '馬尾', bun: '包包頭', wavy: '大波浪', long: '長直髮' };
+  const HAIR_COLORS = ['#2a2030', '#a8512f', '#5b3a2a', '#2e5866', '#b9b3c2'];  // 紅褐（柿子色調）、深青，和市集的暖色、青綠呼應
+  const HATS = { none: '不戴', headband: '彩織頭帶', cap: '鴨舌帽', band: '師傅頭巾', toque: '烘焙高帽', straw: '斗笠', visor: '遮陽帽', flower: '花飾', capback: '反戴棒球帽' };
+  const FACES = { none: '不戴', glasses: '眼鏡', beard: '鬍子', both: '鬍子＋眼鏡', mask: '派對面具' };
+  const HAIR_KEYS = Object.keys(HAIR_STYLES), HAT_KEYS = Object.keys(HATS), FACE_KEYS = Object.keys(FACES);
+  // 舊版存的是一整套裝扮（look），換算成分開的選項
+  const lookParts = key => { const L = LOOKS[key] || LOOKS.toque; return { hairStyle: HAIR_KEYS.includes(L.style) ? L.style : 'short', hat: HAT_KEYS.includes(L.owner) ? L.owner : 'none', face: L.owner === 'beard' ? 'both' : L.owner === 'mask' ? 'mask' : 'none', hairC: Math.max(0, HAIR_COLORS.indexOf(L.hair)) }; };
   const LOOKS = {
     toque: { label: '烘焙高帽', owner: 'toque', style: 'bob', hair: '#2a2030' },
     cap: { label: '咖啡師扁帽', owner: 'cap', style: 'short', hair: '#5b3a2a' },
+    beard: { label: '鬍子眼鏡', owner: 'beard', style: 'short', hair: '#2a2030' },
     band: { label: '師傅頭巾', owner: 'band', style: 'buzz', hair: '#2a2030' },
     flower: { label: '手作花飾', owner: 'flower', style: 'wavy', hair: '#5a3326' },
     straw: { label: '農家斗笠', owner: 'straw', style: 'curly', hair: '#b9b3c2' },
@@ -721,20 +833,13 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     long: { label: '長髮花飾', owner: 'flower', style: 'long', hair: '#2a2030' },
     mask: { label: '派對面具', owner: 'mask', style: 'short', hair: '#3a2a20' },
   };
-  const PROPS = { mega: '大聲公', board: '手寫看板', cat: '招財貓', flag: '攤位大旗', basket: '試吃籃', plant: '植栽' };
+  const PROPS = { balloon: '氣球', lantern: '紅燈籠', millet: '小米穗', seeds: '種子吊飾', signplush: '招牌布偶', bunting: '彩旗串', fern: '蕨類吊盆', surf: '衝浪板', easel: '畫架', cat: '招財貓', flag: '攤位大旗', board: '手寫看板', mega: '大聲公', basket: '試吃籃', plant: '盆栽' };
+  // 道具小圖：每個道具在攤位上的位置 [左, 上, 寬, 高]，用來裁出小圖
+  const PROP_FOCUS = { balloon: [-178, 84, 110, 92], lantern: [-112, 176, 224, 64], millet: [-136, 186, 52, 54], seeds: [-150, 226, 130, 104], signplush: [-150, 128, 110, 92], bunting: [-132, 330, 264, 50], fern: [-160, 220, 110, 92],
+    surf: [72, 262, 140, 180], easel: [-215, 290, 125, 150], cat: [96, 336, 100, 104], flag: [92, 46, 90, 75], board: [-200, 352, 100, 90], mega: [-70, 268, 110, 92], basket: [42, 340, 82, 68], plant: [-122, 340, 82, 100] };
   // props change their contents with the kind of stall
   // stall colour themes the vendor can pick (awning stripes + counter trim)
-  const TONES = [
-    { label: '青綠', aw: ['#1f8a8a', '#f7ecd0'], cloth: '#176a70', dark: false },
-    { label: '鵝黃', aw: ['#e9b33b', '#fff3d6'], cloth: '#b97a1f', dark: true },
-    { label: '朱紅', aw: ['#d9432f', '#fff3d6'], cloth: '#9c2c22', dark: false },
-    { label: '桃紅', aw: ['#c85c9a', '#f7ecd0'], cloth: '#8b3f7c', dark: false },
-    { label: '湛藍', aw: ['#3f6fb0', '#f4efe4'], cloth: '#2c4f86', dark: false },
-    { label: '草綠', aw: ['#4f9c5a', '#f7ecd0'], cloth: '#36743f', dark: false },
-    { label: '暖橘', aw: ['#e0783a', '#fff3d6'], cloth: '#a8521f', dark: false },
-    { label: '葡萄紫', aw: ['#7a5ab0', '#f4efe4'], cloth: '#56408a', dark: false },
-  ];
-  const toneOf = st => { const k = st.vendor ? st.vendor.tone : -1; return Number.isInteger(k) && k >= 0 && k < TONES.length ? TONES[k] : { aw: st.aw, cloth: st.cloth, dark: st.kind === 'bread' }; };
+  const toneOf = st => { const k = st.vendor ? st.vendor.tone : -1; return Number.isInteger(k) && k >= 0 && k < TONES.length ? TONES[k] : { aw: st.aw, cloth: st.cloth, dark: !!st.dark }; };
   const nameOf = st => (st.vendor && st.vendor.title) || st.name;
   const MAX_ITEMS = 3;
   const PROP_KIND = {
@@ -746,12 +851,16 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     meal: { board: ['現煮', '吃飽飽'], basket: '試吃', plant: 'wheat' },
     play: { board: ['好玩', '試手氣'], basket: '試玩', plant: 'flower' },
     drink: { board: ['冰涼', '解渴'], basket: '試喝', plant: 'mint' },
+    plant: { board: ['綠意', '帶回家'], basket: '摸摸看', plant: 'mint' },
+    hair: { board: ['清爽', '現剪'], basket: '試試看', plant: 'flower' },
   };
 
   const STATUS = { go: { label: '順暢', c: '#2e9e6b' }, hot: { label: '熱賣中', c: '#e8452f' }, low: { label: '快賣完', c: '#e9912b' }, queue: { label: '排隊中', c: '#c9342b' }, sold: { label: '完售', c: '#5a5468' } };
   const STATUS_KEYS = Object.keys(STATUS);
   const defaultStatus = st => st.status ? st.status : st.kind === 'bread' ? 'low' : st.kind === 'fried' ? 'queue' : st.kind === 'icecream' || st.kind === 'play' ? 'hot' : 'go';
   const statusOf = st => (st.vendor && st.vendor.status) || defaultStatus(st);
+  // 邀請中的攤位燈箱寫「邀請中」，不顯示營業狀態
+  const plateOf = st => st.invite && !st.vendor ? { label: '邀請中', c: '#5a5468' } : STATUS[statusOf(st)];
   const PRESET_SLOGANS = ['現做現賣，錯過等明年！', '不買沒關係，來聊聊天！'];
   const VIS_KEYS = ['grandma', 'uncle', 'photog', 'explorer', 'cat', 'hero', 'musician', 'bununW', 'bunun'], LOOK_KEYS = Object.keys(LOOKS), PROP_KEYS = Object.keys(PROPS);
   const roleOf = av => VISITORS[av.a] || VISITORS.cat;
@@ -1197,6 +1306,22 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
         for (const [dx, dy, m] of [[-.6, -.1, .72], [.6, -.08, .74], [0, -.55, .9], [0, 0, 1]]) { circle(k.x + dx * k.r, 372 + dy * k.r, k.r * m); ctx.fill(); }
       }
     }
+    // 芒草（padan，學校名字「巴楠」的由來）：一叢叢長在後面的樹林邊
+    const leaf = mix('#2a3a44', '#5f9a4c', dayT), leaf2 = mix('#232f3a', '#4a8040', dayT), plume = mix('#8a7e9a', '#f1ead6', dayT), plume2 = mix('#706684', '#dcc9a6', dayT);
+    ctx.lineCap = 'round';
+    // 只長在兩區：Manaskal 入口拱門附近，和靠近草地音樂會的地方
+    for (const [z0, z1] of [[-330, -110], [LAWN.x * .6 - 230, LAWN.x * .6 + 40]]) for (let x = z0; x <= z1; x += 60) {
+      const px = x + Math.sin(x * .37) * 14;
+      if (px < a - 40 || px > b + 40) continue;
+      if (hsOn && px > HS_X - 60 && px < HS_X + 330) continue;
+      const k = .55 + (Math.sin(x * .13) + 1) * .12, base = 438, wind = q => reduced ? 0 : Math.sin(t * 1.2 + px * .02 + q * .7) * 3;
+      for (let q = 0; q < 7; q++) { const dx = (q - 3) * 5 * k, h = (56 + (q * 37) % 22) * k; ctx.strokeStyle = q % 2 ? leaf : leaf2; ctx.lineWidth = 2.6 * k; ctx.beginPath(); ctx.moveTo(px + dx * .4, base); ctx.quadraticCurveTo(px + dx, base - h * .6, px + dx + (q - 3) * 7 * k + wind(q), base - h * .8); ctx.stroke(); }
+      for (let q = 0; q < 4; q++) {
+        const dx = (q - 1.5) * 8 * k, h = (86 + (q * 23) % 18) * k, tx = px + dx + (q - 1.5) * 5 * k + wind(q) * 1.3, ty = base - h;
+        ctx.strokeStyle = leaf2; ctx.lineWidth = 1.6 * k; ctx.beginPath(); ctx.moveTo(px + dx * .3, base); ctx.quadraticCurveTo(px + dx * .7, base - h * .55, tx, ty); ctx.stroke();
+        for (let r = 0; r < 5; r++) { ctx.strokeStyle = r % 2 ? plume : plume2; ctx.lineWidth = 2.6 * k; ctx.beginPath(); ctx.moveTo(tx, ty + r * 3.4 * k); ctx.quadraticCurveTo(tx + (5 + q) * k, ty + (r * 3.4 - 5) * k, tx + (11 + q * 2) * k, ty + (r * 3.4 + 5) * k); ctx.stroke(); }
+      }
+    }
     if (a < 80 && b > -80) drawHouse(-70);
     if (a < 330 && b > 180) drawHouse(190);
     if (a < 500 && b > 340) drawMillet(345, 500, t);
@@ -1461,10 +1586,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 
   const DEFAULT_OWNER = { meal: ['bun', ''], play: ['short', 'cap'], visor: ['pony', 'visor'], beanie: ['short', 'beanie'], bun: ['curly', ''], band: ['short', 'band'], bob: ['pony', ''], drink: ['long', 'flower'] };
   function drawOwner(st, t, talking, wave) {
-    const x = -28, c = 304, v = st.vendor, vr = v && (LOOKS[v.look] || LOOKS.toque);
+    // 攤主自己佈置過就用攤主的扮裝，否則用 SHOP_LIST 幫他設定的 look，都沒有才用預設
+    const x = -28, c = 304, v = st.vendor || st.look;
     const shirt = v ? COLORS[v.c] || COLORS[0] : st.shirt, skin = v ? SKINS[v.s] || SKINS[0] : st.skin;
-    const [hair, wear] = v ? [vr.style, vr.owner] : (DEFAULT_OWNER[st.style] || ['short', '']);
-    const hairC = v ? vr.hair : st.style === 'band' ? '#2a2030' : st.hair;
+    const [hair, wear] = v ? [v.hairStyle || 'short', v.hat || 'none'] : (DEFAULT_OWNER[st.style] || ['short', '']), face = (v && v.face) || 'none';
+    const hairC = v ? HAIR_COLORS[v.hairC] || HAIR_COLORS[0] : st.style === 'band' ? '#2a2030' : st.hair;
     if (hair === 'long') { ctx.save(); ctx.translate(x, c + 20); ctx.scale(1.2, 1.2); ctx.translate(-x, -(c + 20)); ctx.beginPath(); ctx.moveTo(x - 23, c - 6); ctx.quadraticCurveTo(x - 27, c + 26, x - 18, c + 44); ctx.lineTo(x + 18, c + 44); ctx.quadraticCurveTo(x + 27, c + 26, x + 23, c - 6); ctx.closePath(); fs(hairC, INK, 2); ctx.restore(); }
     rr(x - 21, 322, 42, 44, 11); fs(shirt, INK, 2);
     rr(x - 13, 332, 26, 34, 3); fs(v ? '#fff3d6' : st.apron, INK, 1.6);
@@ -1507,11 +1633,27 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (wear === 'toque') { rr(x - 17, c - 42, 34, 32, 10); fs('#fffaf0', INK, 2); rr(x - 19, c - 16, 38, 8, 3); fs('#fffaf0', INK, 1.8); }
     else if (wear === 'straw') { ctx.beginPath(); ctx.moveTo(x - 40, c - 8); ctx.lineTo(x, c - 40); ctx.lineTo(x + 40, c - 8); ctx.closePath(); fs('#d8b56a', INK, 2); ctx.strokeStyle = 'rgba(122,82,46,.45)'; ctx.lineWidth = 1.3; for (const f of [.35, .65]) { ctx.beginPath(); ctx.moveTo(x - 40 * f, c - 40 + 32 * f); ctx.lineTo(x + 40 * f, c - 40 + 32 * f); ctx.stroke(); } }
     else if (wear === 'visor') { rr(x - 21, c - 13, 42, 7, 3); fs('#4fa7a0', INK, 1.6); rr(x + 6, c - 9, 26, 5, 2); fs('#4fa7a0', INK, 1.5); }
+    // 反戴的藍色棒球帽：帽簷朝後，額頭這邊看得到調整扣的小開口
+    else if (wear === 'capback') { ctx.beginPath(); ctx.arc(x, c - 4, 21, Math.PI, 0); ctx.closePath(); fs('#3f6fb0', INK, 2); rr(x - 31, c - 9, 22, 5, 2); fs('#2c4f86', INK, 1.5); ctx.beginPath(); ctx.arc(x + 2, c - 4, 5, Math.PI, 0); ctx.closePath(); fs(skin, INK, 1.3); ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, c - 4, 15, Math.PI * 1.15, Math.PI * 1.6); ctx.stroke(); }
     else if (wear === 'cap') { ctx.beginPath(); ctx.arc(x, c - 4, 21, Math.PI, 0); ctx.closePath(); fs('#5b3a2a', INK, 2); rr(x + 8, c - 9, 22, 5, 2); fs('#5b3a2a', INK, 1.5); }
     else if (wear === 'beanie') { ctx.beginPath(); ctx.arc(x, c - 2, 21, Math.PI, 0); ctx.closePath(); fs(st.hair, INK, 2); rr(x - 22, c - 7, 44, 7, 3); fs('#9c6b4a', INK, 1.6); }
     else if (wear === 'band') { rr(x - 21, c - 11, 42, 7, 2); fs('#fff3d6', INK, 1.6); }
-    else if (wear === 'flower') { for (let k = 0; k < 5; k++) { const ag = k / 5 * 6.2832; circle(x - 15 + Math.cos(ag) * 4.5, c - 15 + Math.sin(ag) * 4.5, 3.6); fs('#c85c9a', INK, 1.3); } circle(x - 15, c - 15, 2.6); fs('#efc25a', INK, 1); }
-    if (wear === 'mask') {
+    else if (wear === 'headband') {
+      // woven headband: white band with red edges and small patterned panels, red tail at the side
+      ctx.beginPath(); ctx.moveTo(x + 19, c - 10); ctx.quadraticCurveTo(x + 28, c - 6, x + 29, c + 6); ctx.lineTo(x + 24, c + 4); ctx.quadraticCurveTo(x + 23, c - 3, x + 18, c - 5); ctx.closePath(); fs('#e0262f', INK, 1.3);
+      rr(x - 21, c - 14, 42, 9, 2); fs('#fbf8ef', INK, 1.5);
+      ctx.fillStyle = '#d9342f'; ctx.fillRect(x - 20, c - 13.5, 40, 1.8); ctx.fillRect(x - 20, c - 7, 40, 1.8);
+      for (const px of [-12, 0, 12]) { ctx.fillStyle = '#efc25a'; ctx.beginPath(); ctx.moveTo(x + px, c - 11.5); ctx.lineTo(x + px + 3, c - 9.5); ctx.lineTo(x + px, c - 7.5); ctx.lineTo(x + px - 3, c - 9.5); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#3f9c4f'; circle(x + px, c - 9.5, .9); ctx.fill(); }
+    }
+    if (face === 'beard' || face === 'both') {
+      // short full beard along the jaw, with a moustache; the mouth stays visible
+      const bc = '#6b4a36';
+      ctx.beginPath(); ctx.moveTo(x - 19.5, c + 2); ctx.quadraticCurveTo(x - 19, c + 21, x, c + 23); ctx.quadraticCurveTo(x + 19, c + 21, x + 19.5, c + 2);
+      ctx.quadraticCurveTo(x + 15, c + 11, x + 8, c + 12); ctx.quadraticCurveTo(x, c + 16, x - 8, c + 12); ctx.quadraticCurveTo(x - 15, c + 11, x - 19.5, c + 2); ctx.closePath(); fs(bc, INK, 1.6);
+      ctx.beginPath(); ctx.moveTo(x, c + 5); ctx.quadraticCurveTo(x - 7, c + 3.5, x - 9.5, c + 8); ctx.quadraticCurveTo(x - 4, c + 6.5, x, c + 7.5); ctx.quadraticCurveTo(x + 4, c + 6.5, x + 9.5, c + 8); ctx.quadraticCurveTo(x + 7, c + 3.5, x, c + 5); ctx.closePath(); fs(bc, INK, 1.2);
+    }
+    if (wear === 'flower') { for (let k = 0; k < 5; k++) { const ag = k / 5 * 6.2832; circle(x - 15 + Math.cos(ag) * 4.5, c - 15 + Math.sin(ag) * 4.5, 3.6); fs('#c85c9a', INK, 1.3); } circle(x - 15, c - 15, 2.6); fs('#efc25a', INK, 1); }
+    if (face === 'mask') {
       // festive eye mask: eyes still show through the holes
       for (const d of [-1, 1]) { ctx.strokeStyle = INK; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x + d * 18, c - 2); ctx.lineTo(x + d * 21, c - 6); ctx.stroke(); }
       ctx.beginPath(); ctx.moveTo(x - 19, c - 5); ctx.quadraticCurveTo(x, c - 10, x + 19, c - 5); ctx.lineTo(x + 17, c + 6); ctx.quadraticCurveTo(x + 9, c + 10, x + 3, c + 5); ctx.quadraticCurveTo(x, c + 3, x - 3, c + 5); ctx.quadraticCurveTo(x - 9, c + 10, x - 17, c + 6); ctx.closePath(); fs('#7a5ab0', INK, 1.8);
@@ -1523,8 +1665,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (blink) { ctx.beginPath(); ctx.moveTo(x - 10, c + 1); ctx.lineTo(x - 4, c + 1); ctx.moveTo(x + 4, c + 1); ctx.lineTo(x + 10, c + 1); ctx.stroke(); }
     else { circle(x - 7, c + 1, 2.3); ctx.fill(); circle(x + 7, c + 1, 2.3); ctx.fill(); }
     ctx.fillStyle = 'rgba(226,96,84,.42)'; circle(x - 12, c + 7, 3.4); ctx.fill(); circle(x + 12, c + 7, 3.4); ctx.fill();
+    if (face === 'glasses' || face === 'both') { ctx.strokeStyle = INK; ctx.lineWidth = 1.8; for (const d of [-1, 1]) { circle(x + d * 7.5, c + 1, 5.6); ctx.fillStyle = 'rgba(220,240,250,.25)'; ctx.fill(); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(x - 2, c); ctx.quadraticCurveTo(x, c - 1.5, x + 2, c); ctx.moveTo(x - 13, c); ctx.lineTo(x - 19.5, c - 2); ctx.moveTo(x + 13, c); ctx.lineTo(x + 19.5, c - 2); ctx.stroke(); }
     if (talking) { ctx.beginPath(); ctx.ellipse(x, c + 10, 4, 1.4 + Math.abs(Math.sin(t * 17)) * 3.2, 0, 0, 6.2832); ctx.fillStyle = '#7a2c2c'; ctx.fill(); ctx.stroke(); }
-    else { ctx.beginPath(); ctx.arc(x, c + 7, 5, .25, Math.PI - .25); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.arc(x, c + 7, 5, .25, Math.PI - .25); ctx.strokeStyle = face === 'beard' || face === 'both' ? '#fff3d6' : INK; ctx.stroke(); ctx.strokeStyle = INK; }
     ctx.restore();
   }
   function drawProps(st, t, stage) {
@@ -1618,8 +1761,333 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       }
     }
   }
+  // 攤位固定的佈置：衝浪板、蕨類吊盆。寫在攤位資料的 deco 裡
+  function fern(x, y, k, t, seed) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(k, k);
+    ctx.strokeStyle = INK; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(0, -24); ctx.lineTo(-11, 0); ctx.moveTo(0, -24); ctx.lineTo(11, 0); ctx.moveTo(0, -24); ctx.lineTo(0, 0); ctx.stroke();
+    const sway = reduced ? 0 : Math.sin(t * 1.2 + seed) * .06;
+    const frond = (ang, len, col) => {
+      ctx.save(); ctx.rotate(ang + sway);
+      ctx.strokeStyle = '#2f6f3f'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(len * .35, len * .35, len * .2, len); ctx.stroke();
+      for (let f = .12; f < .96; f += .1) {
+        const px = 2 * f * (1 - f) * len * .35 + f * f * len * .2, py = 2 * f * (1 - f) * len * .35 + f * f * len, w = 7 * (1 - f * .7);
+        for (const d of [-1, 1]) { ctx.beginPath(); ctx.ellipse(px + d * w * .7, py, w * .7, 2.6, d * .9, 0, 6.2832); ctx.fillStyle = col; ctx.fill(); }
+      }
+      ctx.restore();
+    };
+    [[-1.1, 34, '#4fae6c'], [-.55, 44, '#3f9c5f'], [0, 50, '#5ab872'], [.55, 44, '#3f9c5f'], [1.1, 34, '#4fae6c'], [-.3, 38, '#6fc27f'], [.3, 38, '#6fc27f']].forEach(([a, l, c]) => frond(a, l, c));
+    ctx.beginPath(); ctx.moveTo(-14, -2); ctx.lineTo(14, -2); ctx.quadraticCurveTo(12, 12, 0, 12); ctx.quadraticCurveTo(-12, 12, -14, -2); ctx.closePath(); fs('#b8865a', INK, 1.8);
+    ctx.strokeStyle = 'rgba(90,56,30,.5)'; ctx.lineWidth = 1; for (const yy of [2, 6]) { ctx.beginPath(); ctx.moveTo(-12, yy); ctx.lineTo(12, yy); ctx.stroke(); }
+    ctx.restore();
+  }
+  const decoHas = (st, k) => !!((st.deco && st.deco.includes(k)) || (st.vendor && st.vendor.props && st.vendor.props.includes(k)));
+  function drawDeco(st, t, stage) {
+    const has = k => decoHas(st, k), bob = i => reduced ? 0 : Math.sin(t * 1.7 + i * 1.9 + st.x) * 3;
+    if (stage === 'post') {
+      if (has('surf')) {
+        const sx = has('cat') ? 180 : 140;
+      ctx.save(); ctx.translate(sx, 360); ctx.rotate(.13);
+      ctx.beginPath(); ctx.moveTo(0, -84); ctx.bezierCurveTo(19, -60, 19, 50, 0, 76); ctx.bezierCurveTo(-19, 50, -19, -60, 0, -84); ctx.closePath(); fs('#4fb8c9', INK, 2.4);
+      ctx.save(); ctx.clip();
+      ctx.fillStyle = '#fff3d6'; ctx.fillRect(-20, -10, 40, 9);
+      ctx.fillStyle = '#e85d2f'; ctx.fillRect(-20, -1, 40, 5);
+      ctx.fillStyle = 'rgba(255,255,255,.35)'; ctx.fillRect(-9, -76, 4, 140);
+      ctx.restore();
+      ctx.strokeStyle = 'rgba(29,26,54,.45)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(0, -78); ctx.lineTo(0, 70); ctx.stroke();
+      for (const [cx, cy] of [[-5, 34], [6, 46]]) { ctx.beginPath(); ctx.moveTo(cx - 4, cy); ctx.quadraticCurveTo(cx, cy - 6, cx + 4, cy); ctx.quadraticCurveTo(cx, cy + 6, cx - 4, cy); ctx.fillStyle = '#efc25a'; ctx.fill(); }
+      ctx.restore();
+      }
+      if (has('easel')) {
+      // a drawing board on an easel beside the left post, with a jar of brushes at its foot
+      const ex = has('board') ? -204 : -152; ctx.lineCap = 'round';
+      for (const [x0, x1] of [[ex - 22, ex - 6], [ex + 22, ex + 6], [ex, ex]]) { ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x0, 436); ctx.lineTo(x1, 300); ctx.stroke(); ctx.strokeStyle = '#a8743e'; ctx.lineWidth = 3.4; ctx.stroke(); }
+      rr(ex - 28, 372, 56, 6, 2); fs('#a8743e', INK, 1.6);
+      rr(ex - 26, 312, 52, 60, 3); fs('#fffaf0', INK, 2.2);
+      ctx.save(); rr(ex - 22, 316, 44, 52, 2); ctx.clip();
+      ctx.fillStyle = '#bfe3f2'; ctx.fillRect(ex - 22, 316, 44, 52);
+      circle(ex + 10, 328, 6); ctx.fillStyle = '#efc25a'; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(ex - 24, 360); ctx.lineTo(ex - 8, 338); ctx.lineTo(ex + 4, 352); ctx.lineTo(ex + 12, 344); ctx.lineTo(ex + 24, 360); ctx.lineTo(ex + 24, 370); ctx.lineTo(ex - 24, 370); ctx.closePath(); ctx.fillStyle = '#4f9c5a'; ctx.fill();
+      ctx.fillStyle = '#e85d2f'; ctx.fillRect(ex - 22, 360, 44, 8);
+      ctx.restore();
+      // palette hooked on the easel
+      ctx.save(); ctx.translate(ex + 4, 392); ctx.rotate(-.2);
+      ctx.beginPath(); ctx.ellipse(0, 0, 17, 11, 0, 0, 6.2832); fs('#d9b57a', INK, 1.6); circle(8, 3, 3); fs(mix('#2a2238', '#6b4630', dayT));
+      [['#e85d2f', -9, -3], ['#efc25a', -3, -6], ['#3f6fb0', 4, -6], ['#4f9c5a', -8, 4]].forEach(([c, dx, dy]) => { circle(dx, dy, 2.6); ctx.fillStyle = c; ctx.fill(); });
+      ctx.restore();
+      // brush jar
+      for (const [dx, col, h] of [[-6, '#e85d2f', 30], [0, '#3f6fb0', 36], [6, '#efc25a', 28]]) { ctx.strokeStyle = INK; ctx.lineWidth = 3.6; ctx.beginPath(); ctx.moveTo(ex - 34 + dx * .4, 424); ctx.lineTo(ex - 34 + dx, 424 - h); ctx.stroke(); ctx.strokeStyle = '#c9a15f'; ctx.lineWidth = 2; ctx.stroke(); circle(ex - 34 + dx, 424 - h - 2, 2.6); fs(col, INK, 1); }
+      rr(ex - 44, 414, 20, 22, 4); fs('#6fa8c9', INK, 1.8); ctx.fillStyle = 'rgba(255,255,255,.4)'; ctx.fillRect(ex - 40, 418, 3, 14);
+      }
+    }
+    if (stage === 'awning') {
+      if (has('millet')) { for (const [mx, i] of [[-110, 0], [110, 1]]) milletBunch(mx, 214, .55, reduced ? 0 : Math.sin(t * 1.3 + i * 2 + st.x) * .05); }
+      if (has('seeds')) {
+        // 植物種子吊飾：一串串薏苡珠、紅豆、橡實和小陶珠，底下掛一片陶片和流蘇
+        const seed = (type, x, y) => {
+          if (type === 'job') { ctx.beginPath(); ctx.ellipse(x, y, 3.2, 4.2, 0, 0, 6.2832); fs('#d8d2c4', INK, 1); ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fillRect(x - 1.6, y - 2.4, 1.2, 2.2); }
+          else if (type === 'bean') { ctx.beginPath(); ctx.ellipse(x, y, 2.6, 3.2, .3, 0, 6.2832); fs('#c23b2e', INK, .9); }
+          else if (type === 'acorn') { ctx.beginPath(); ctx.ellipse(x, y + 1, 3, 3.8, 0, 0, 6.2832); fs('#a8743e', INK, 1); ctx.beginPath(); ctx.ellipse(x, y - 2, 3.8, 2, 0, 0, 6.2832); fs('#5b3a2a', INK, .9); }
+          else { circle(x, y, 3.4); fs(type, INK, 1); ctx.fillStyle = 'rgba(255,255,255,.45)'; circle(x - 1.2, y - 1.2, 1); ctx.fill(); }
+        };
+        const strands = has('fern') ? [[-136, 236, 62, ['job', 'bean', '#c9744a', 'job', 'acorn', 'job']], [-84, 240, 46, ['acorn', 'job', '#3f6fb0', 'bean']], [30, 240, 44, ['bean', 'job', 'acorn', 'job']]] : [[-118, 236, 64, ['job', 'bean', '#c9744a', 'job', 'acorn', 'job']], [-92, 238, 50, ['acorn', 'job', '#3f6fb0', 'bean', 'job']], [-66, 238, 40, ['job', '#c9744a', 'job', 'bean']],
+          [30, 240, 44, ['bean', 'job', 'acorn', 'job']], [124, 236, 62, ['job', '#3f6fb0', 'job', 'bean', 'acorn', 'job']]];
+        strands.forEach(([sx, sy, len, beads], i) => {
+          const sw = reduced ? 0 : Math.sin(t * 1.4 + i * 1.3 + st.x) * 2.4, ex = sx + sw, ey = sy + len;
+          ctx.strokeStyle = '#8a6a48'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(sx, sy - 4); ctx.lineTo(ex, ey); ctx.stroke();
+          beads.forEach((b, k) => { const f = (k + 1) / (beads.length + 1); seed(b, sx + sw * f, sy + len * f); });
+          ctx.save(); ctx.translate(ex, ey + 6); ctx.rotate(sw * .04);
+          circle(0, 0, 6.5); fs(i % 2 ? '#d9b07a' : '#7fa7b8', INK, 1.4); circle(0, 0, 1.8); fs(INK);
+          ctx.strokeStyle = 'rgba(29,26,54,.35)'; ctx.lineWidth = .9; ctx.beginPath(); ctx.arc(0, 0, 4.2, .4, 2.4); ctx.stroke();
+          ctx.strokeStyle = '#c23b2e'; ctx.lineWidth = 1.4; for (const d of [-2, 0, 2]) { ctx.beginPath(); ctx.moveTo(0, 6); ctx.lineTo(d, 14); ctx.stroke(); }
+          ctx.restore();
+        });
+      }
+      if (has('fern')) { fern(-108, 258, 1, t, st.x); fern(126, 252, .8, t, st.x + 2); fern(-60, 246, .62, t, st.x + 4); }
+      if (has('lantern')) for (const [lx, i] of [[-78, 0], [78, 1]]) {
+        ctx.save(); ctx.translate(lx, 186); ctx.rotate(reduced ? 0 : Math.sin(t * 1.5 + i * 2 + st.x) * .06);
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 8); ctx.stroke();
+        rr(-6, 7, 12, 4, 1); fs('#efc25a', INK, 1.2);
+        ctx.beginPath(); ctx.ellipse(0, 22, 12, 12, 0, 0, 6.2832); fs('#d9342f', INK, 1.8);
+        ctx.strokeStyle = 'rgba(120,20,20,.45)'; ctx.lineWidth = 1; for (const k of [-6, 0, 6]) { ctx.beginPath(); ctx.ellipse(0, 22, Math.abs(k) + 1.5, 11.5, 0, 0, 6.2832); ctx.stroke(); }
+        ctx.fillStyle = 'rgba(255,220,150,.35)'; ctx.beginPath(); ctx.ellipse(-4, 18, 3, 6, 0, 0, 6.2832); ctx.fill();
+        rr(-6, 33, 12, 4, 1); fs('#efc25a', INK, 1.2);
+        ctx.strokeStyle = '#efc25a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 37); ctx.lineTo(0, 48); ctx.stroke();
+        glow(0, 22, 26, 26, 'rgba(255,120,80,.6)');
+        ctx.restore();
+      }
+      if (has('balloon')) {
+        const bl = [[-144, 116, '#e85d2f'], [-124, 100, '#efc25a'], [-108, 120, '#4fa7a0']];
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.2;
+        bl.forEach(([bx, by], i) => { ctx.beginPath(); ctx.moveTo(-110, 192); ctx.quadraticCurveTo(bx + 6, by + 40, bx, by + 13 + bob(i)); ctx.stroke(); });
+        bl.forEach(([bx, by, col], i) => {
+          const y = by + bob(i);
+          ctx.beginPath(); ctx.ellipse(bx, y, 11, 13, 0, 0, 6.2832); fs(col, INK, 1.8);
+          ctx.beginPath(); ctx.moveTo(bx - 3, y + 15); ctx.lineTo(bx + 3, y + 15); ctx.lineTo(bx, y + 12); ctx.closePath(); fs(col, INK, 1);
+          ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.beginPath(); ctx.ellipse(bx - 4, y - 5, 2.5, 4, -.4, 0, 6.2832); ctx.fill();
+        });
+      }
+    }
+    if (stage === 'top' && st.deco && st.deco.includes('lemon')) {
+      // 檸檬攤：櫃台右邊一小堆綠檸檬和黃檸檬、一顆切半的，飲料杯口夾檸檬片，玻璃罐裡泡著檸檬片
+      const lemon = (x, y, col, rot) => {
+        ctx.save(); ctx.translate(x, y); ctx.rotate(rot || 0);
+        ctx.beginPath(); ctx.ellipse(0, 0, 7, 5.4, 0, 0, 6.2832); fs(col, INK, 1.4);
+        ctx.beginPath(); ctx.ellipse(7.2, 0, 1.8, 1.4, 0, 0, 6.2832); fs(col, INK, 1);
+        ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.beginPath(); ctx.ellipse(-2.5, -2, 2.4, 1.3, -.3, 0, 6.2832); ctx.fill();
+        ctx.restore();
+      };
+      const slice = (x, y, r, col, half) => {
+        ctx.beginPath(); half ? ctx.arc(x, y, r, Math.PI, 0) : ctx.arc(x, y, r, 0, 6.2832); ctx.closePath(); fs(col === 'g' ? '#8cc63f' : '#f2d43a', INK, 1);
+        ctx.beginPath(); half ? ctx.arc(x, y, r - 1.6, Math.PI, 0) : ctx.arc(x, y, r - 1.6, 0, 6.2832); ctx.closePath(); fs(col === 'g' ? '#d8efa8' : '#fbefa0');
+        ctx.strokeStyle = col === 'g' ? 'rgba(110,160,50,.8)' : 'rgba(220,180,40,.8)'; ctx.lineWidth = .8;
+        for (let k = 0; k < (half ? 4 : 8); k++) { const a = half ? Math.PI + (k + .5) * Math.PI / 4 : k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a) * (r - 1.8), y + Math.sin(a) * (r - 1.8)); ctx.stroke(); }
+      };
+      for (const [jx, sy, c] of [[-97, 326, 'y'], [-90, 335, 'g'], [-65, 328, 'g'], [-58, 337, 'y']]) slice(jx, sy, 4.2, c);
+      slice(84, 333, 5, 'y', true);
+      lemon(100, 344, '#8cc63f', .1); lemon(114, 345, '#f2d43a', -.1); lemon(107, 336, '#f2d43a', .3); lemon(121, 337, '#8cc63f', -.4);
+      slice(94, 335, 4.6, 'y');
+    }
+    if (stage === 'counter' && st.deco && st.deco.includes('burger')) for (const wx of [-86, 86]) {
+      circle(wx, 434, 13); fs('#2d2a4e', INK, 2); circle(wx, 434, 6); fs('#9aa0aa', INK, 1.4); circle(wx, 434, 2); fs(INK);
+    }
+    if (stage === 'counter' && has('bunting')) {
+      ctx.strokeStyle = INK; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(-124, 354); ctx.quadraticCurveTo(0, 366, 124, 354); ctx.stroke();
+      const cols = ['#e85d2f', '#efc25a', '#4fa7a0', '#c85c9a', '#6fa8c9'];
+      for (let i = 0; i < 13; i++) { const f = (i + .5) / 13, x = -124 + 248 * f, y = 354 + 4 * f * (1 - f) * 6 + 1; ctx.beginPath(); ctx.moveTo(x - 7, y); ctx.lineTo(x + 7, y); ctx.lineTo(x, y + 13); ctx.closePath(); fs(cols[i % 5], INK, 1.2); }
+    }
+  }
+  // 手縫布偶：小熊、兔子、貓、娃娃、小雞，身上有虛線縫線
+  function plush(x, base, k, type) {
+    ctx.save(); ctx.translate(x, base); ctx.scale(k, k);
+    const C = { bear: ['#c98a5a', '#f0d4b4'], bunny: ['#f7f1e6', '#f2b8c6'], cat: ['#f0a54a', '#ffe0b8'], dog: ['#e9d3b0', '#fff8ec'], chick: ['#efc25a', '#ffe9a8'] }[type];
+    const stitch = (x0, y0, x1, y1) => { ctx.save(); ctx.setLineDash([2, 2]); ctx.strokeStyle = 'rgba(29,26,54,.55)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); ctx.restore(); };
+    if (type === 'bunny') for (const d of [-1, 1]) { ctx.beginPath(); ctx.ellipse(d * 5, -36, 3.6, 10, d * .15, 0, 6.2832); fs(C[0], INK, 1.5); ctx.beginPath(); ctx.ellipse(d * 5, -35, 1.6, 7, d * .15, 0, 6.2832); fs(C[1]); }
+    if (type === 'bear') for (const d of [-1, 1]) { circle(d * 8, -29, 4.4); fs(C[0], INK, 1.5); circle(d * 8, -29, 2); fs(C[1]); }
+    if (type === 'cat') for (const d of [-1, 1]) { ctx.beginPath(); ctx.moveTo(d * 10, -25); ctx.lineTo(d * 8.5, -35); ctx.lineTo(d * 2, -29); ctx.closePath(); fs(C[0], INK, 1.5); }
+    // body and feet
+    ctx.beginPath(); ctx.ellipse(0, -8, 10, 9, 0, 0, 6.2832); fs(C[0], INK, 1.6);
+    for (const d of [-1, 1]) { ctx.beginPath(); ctx.ellipse(d * 6, -1, 4, 3, 0, 0, 6.2832); fs(C[0], INK, 1.3); }
+    ctx.beginPath(); ctx.ellipse(0, -7, 5.5, 5, 0, 0, 6.2832); fs(C[1]);
+    stitch(0, -16, 0, -2);
+    // head
+    circle(0, -22, 10); fs(C[0], INK, 1.6);
+    if (type === 'dog') { for (const d of [-1, 1]) { ctx.beginPath(); ctx.ellipse(d * 9.5, -21, 3.8, 7.5, d * -.25, 0, 6.2832); fs('#a8754a', INK, 1.4); } circle(5, -25, 3.2); fs('#a8754a'); }
+    if (type === 'bear' || type === 'cat' || type === 'dog') { ctx.beginPath(); ctx.ellipse(0, -19, 4.5, 3.4, 0, 0, 6.2832); fs(C[1]); }
+    ctx.fillStyle = INK;
+    if (type === 'bunny') { for (const d of [-1, 1]) { ctx.beginPath(); ctx.moveTo(d * 4 - 1.6, -23); ctx.lineTo(d * 4 + 1.6, -21); ctx.moveTo(d * 4 - 1.6, -21); ctx.lineTo(d * 4 + 1.6, -23); ctx.strokeStyle = INK; ctx.lineWidth = 1.2; ctx.stroke(); } }
+    else for (const d of [-1, 1]) { circle(d * 4, -22.5, 1.4); ctx.fill(); }
+    if (type === 'chick') { ctx.beginPath(); ctx.moveTo(-2.5, -20); ctx.lineTo(2.5, -20); ctx.lineTo(0, -16.5); ctx.closePath(); fs('#e8772f', INK, .8); ctx.beginPath(); ctx.moveTo(0, -32); ctx.quadraticCurveTo(-3, -36, 1, -37); ctx.strokeStyle = INK; ctx.lineWidth = 1.4; ctx.stroke(); }
+    else { circle(0, -19.5, 1.1); ctx.fill(); }
+    ctx.fillStyle = 'rgba(232,96,84,.45)'; circle(-6.5, -19, 1.8); ctx.fill(); circle(6.5, -19, 1.8); ctx.fill();
+    if (type === 'bear') { ctx.fillStyle = '#e85d8a'; ctx.beginPath(); ctx.moveTo(-4, -13); ctx.lineTo(0, -11); ctx.lineTo(4, -13); ctx.lineTo(4, -9); ctx.lineTo(0, -11); ctx.lineTo(-4, -9); ctx.closePath(); ctx.fill(); }
+    if (type === 'cat') stitch(-6, -27, -3, -24);
+    ctx.restore();
+  }
   function drawItems(st, t) {
     const y = 350;
+    if (st.deco && st.deco.includes('burger')) {
+      // 漢堡攤車：左邊鐵板煎著肉排，右邊一排漢堡和兩瓶醬料
+      rr(-116, y - 10, 66, 10, 2); fs('#3a3440', INK, 2); ctx.fillStyle = '#e8562f'; for (let gx = -110; gx < -54; gx += 10) ctx.fillRect(gx, y - 3, 6, 2);
+      for (const px of [-104, -84, -64]) { ctx.beginPath(); ctx.ellipse(px, y - 12, 8, 3.2, 0, 0, 6.2832); fs('#7a3f2a', INK, 1.3); }
+      steam(-94, y - 16, t, 4, 10, 44); steam(-70, y - 16, t + 1.2, 4, 10, 48);
+      const burger = (x, k) => {
+        ctx.save(); ctx.translate(x, y); ctx.scale(k, k);
+        ctx.beginPath(); ctx.ellipse(0, -3, 11, 3.6, 0, 0, 6.2832); fs('#d9963f', INK, 1.3);
+        rr(-11.5, -10, 23, 5, 2.5); fs('#7a3f2a', INK, 1.2);
+        ctx.fillStyle = '#efc25a'; ctx.beginPath(); ctx.moveTo(-11, -10); ctx.lineTo(11, -10); ctx.lineTo(7, -6.5); ctx.lineTo(0, -9); ctx.lineTo(-7, -6.5); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#6fbf4a'; ctx.beginPath(); for (let q = -12; q <= 12; q += 4) { ctx.moveTo(q + 2.4, -11); ctx.arc(q, -11, 2.4, 0, Math.PI); } ctx.fill();
+        ctx.beginPath(); ctx.moveTo(-11.5, -12); ctx.quadraticCurveTo(-11, -25, 0, -25); ctx.quadraticCurveTo(11, -25, 11.5, -12); ctx.closePath(); fs('#e0a04a', INK, 1.4);
+        ctx.fillStyle = '#fff3d6'; for (const [dx, dy] of [[-5, -20], [0, -22], [5, -19], [-1, -17]]) { ctx.beginPath(); ctx.ellipse(dx, dy, 1.2, .7, .4, 0, 6.2832); ctx.fill(); }
+        ctx.restore();
+      };
+      burger(28, 1); burger(54, 1.1); burger(80, 1);
+      rr(98, y - 26, 8, 26, 3); fs('#d9342f', INK, 1.3); rr(100, y - 31, 4, 6, 1); fs('#d9342f', INK, 1);
+      rr(110, y - 24, 8, 24, 3); fs('#efc25a', INK, 1.3); rr(112, y - 29, 4, 6, 1); fs('#efc25a', INK, 1);
+      return;
+    }
+    if (st.deco && st.deco.includes('wood')) {
+      // 木作攤：左邊是砧板、木碗和木湯匙，右邊是用木料拼成的小狗、小鳥和小鹿
+      const W1 = '#d9b07a', W2 = '#c48f58', W3 = '#a8743e', W4 = '#e8c99a';
+      const block = (x, yy, w, h, col, r) => { rr(x, yy, w, h, r || 2); fs(col, INK, 1.4); ctx.strokeStyle = 'rgba(90,56,30,.35)'; ctx.lineWidth = .8; for (let gy = yy + 3; gy < yy + h - 1; gy += 3.5) { ctx.beginPath(); ctx.moveTo(x + 1.5, gy); ctx.quadraticCurveTo(x + w / 2, gy + 1, x + w - 1.5, gy); ctx.stroke(); } };
+      ctx.save(); ctx.translate(-104, y); ctx.rotate(-.12);
+      rr(-11, -40, 22, 34, 6); fs(W2, INK, 1.6); rr(-3, -48, 6, 10, 3); fs(W2, INK, 1.4); circle(0, -44, 1.6); fs(INK);
+      ctx.strokeStyle = 'rgba(90,56,30,.4)'; ctx.lineWidth = .9; for (const gx of [-6, -1, 5]) { ctx.beginPath(); ctx.moveTo(gx, -36); ctx.quadraticCurveTo(gx + 2, -22, gx, -9); ctx.stroke(); }
+      ctx.restore();
+      ctx.lineCap = 'round';
+      for (const [sx, a] of [[-82, -.5], [-72, -.2]]) { ctx.save(); ctx.translate(sx, y - 10); ctx.rotate(a); ctx.strokeStyle = INK; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -20); ctx.stroke(); ctx.strokeStyle = W4; ctx.lineWidth = 2.2; ctx.stroke(); ctx.beginPath(); ctx.ellipse(0, -22, 3.6, 5, 0, 0, 6.2832); fs(W4, INK, 1.2); ctx.restore(); }
+      ctx.beginPath(); ctx.moveTo(-93, y - 14); ctx.quadraticCurveTo(-92, y, -76, y); ctx.quadraticCurveTo(-60, y, -59, y - 14); ctx.closePath(); fs(W3, INK, 1.6);
+      ctx.beginPath(); ctx.ellipse(-76, y - 14, 17, 3.4, 0, 0, 6.2832); fs(W1, INK, 1.2);
+      ctx.strokeStyle = 'rgba(255,235,200,.35)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(-88, y - 9); ctx.quadraticCurveTo(-82, y - 3, -74, y - 2.5); ctx.stroke();
+      // block dog
+      block(12, y - 18, 22, 11, W1); for (const lx of [14, 29]) block(lx, y - 8, 4, 8, W3, 1);
+      block(28, y - 30, 13, 13, W2); block(38, y - 25, 6, 6, W4, 1.5); block(28, y - 33, 4, 7, W3, 1);
+      ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(12, y - 16); ctx.lineTo(7, y - 22); ctx.stroke(); ctx.strokeStyle = W3; ctx.lineWidth = 1.6; ctx.stroke();
+      circle(36, y - 26, 1.2); fs(INK); circle(43.5, y - 23, 1.3); fs(INK);
+      // block bird on a peg
+      block(56, y - 6, 18, 6, W3); ctx.fillStyle = INK; ctx.fillRect(64, y - 14, 2, 8);
+      ctx.beginPath(); ctx.ellipse(65, y - 21, 10, 8, 0, 0, 6.2832); fs(W4, INK, 1.4);
+      ctx.beginPath(); ctx.moveTo(56, y - 22); ctx.lineTo(50, y - 28); ctx.lineTo(57, y - 26); ctx.closePath(); fs(W2, INK, 1.1);
+      ctx.beginPath(); ctx.moveTo(74, y - 23); ctx.lineTo(80, y - 21); ctx.lineTo(74, y - 19); ctx.closePath(); fs('#e8772f', INK, 1);
+      ctx.beginPath(); ctx.ellipse(63, y - 19, 5, 3, -.3, 0, 6.2832); fs(W2, INK, 1); circle(69, y - 23, 1.2); fs(INK);
+      // block deer with twig antlers
+      block(86, y - 20, 22, 11, W2); for (const lx of [88, 103]) block(lx, y - 10, 4, 10, W3, 1);
+      block(103, y - 33, 6, 15, W1, 1.5); block(101, y - 40, 14, 9, W1, 2);
+      ctx.strokeStyle = '#6b4a2e'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(104, y - 40); ctx.lineTo(101, y - 48); ctx.moveTo(102.5, y - 44.5); ctx.lineTo(98, y - 47); ctx.moveTo(111, y - 40); ctx.lineTo(114, y - 48); ctx.moveTo(112.5, y - 44.5); ctx.lineTo(117, y - 46); ctx.stroke();
+      circle(111, y - 36, 1.2); fs(INK); circle(115, y - 34, 1.3); fs('#5a3326');
+      ctx.fillStyle = '#fff3d6'; for (const [dx, dy] of [[92, -16], [97, -13], [101, -17]]) { circle(dx, y + dy, 1.2); ctx.fill(); }
+      return;
+    }
+    if (st.deco && st.deco.includes('pottery')) {
+      // 陶杯陶碗：左邊疊碗和一只大碗，右邊一排陶杯；釉色是陶土紅、青瓷藍、米白和深褐
+      const bowl = (x, base, w, h, col, rim) => {
+        ctx.beginPath(); ctx.moveTo(x - w, base - h); ctx.quadraticCurveTo(x - w * .95, base, x, base); ctx.quadraticCurveTo(x + w * .95, base, x + w, base - h); ctx.closePath(); fs(col, INK, 1.6);
+        ctx.beginPath(); ctx.ellipse(x, base - h, w, 3, 0, 0, 6.2832); fs(rim, INK, 1.2);
+        ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x - w * .7, base - h + 4); ctx.quadraticCurveTo(x - w * .6, base - 3, x - w * .2, base - 1.5); ctx.stroke();
+      };
+      const cup = (x, base, w, h, col, glaze, handle) => {
+        if (handle) { ctx.beginPath(); ctx.arc(x + w + 1, base - h / 2, 4.2, -Math.PI / 2, Math.PI / 2); ctx.strokeStyle = INK; ctx.lineWidth = 4; ctx.stroke(); ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke(); }
+        ctx.beginPath(); ctx.moveTo(x - w, base - h); ctx.lineTo(x + w, base - h); ctx.lineTo(x + w * .82, base); ctx.lineTo(x - w * .82, base); ctx.closePath(); fs(col, INK, 1.5);
+        ctx.fillStyle = glaze; ctx.beginPath(); ctx.moveTo(x - w, base - h); ctx.lineTo(x + w, base - h); ctx.lineTo(x + w * .95, base - h * .55); ctx.quadraticCurveTo(x + w * .3, base - h * .35, x, base - h * .5); ctx.quadraticCurveTo(x - w * .5, base - h * .65, x - w * .95, base - h * .5); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(x, base - h, w, 2.2, 0, 0, 6.2832); fs('#3a2a24', INK, 1);
+      };
+      bowl(-96, y - 13, 15, 9, '#7fa7b8', '#a9c7d2'); bowl(-96, y - 6, 16, 8, '#d9b07a', '#ecd2a6'); bowl(-96, y, 17, 7, '#b8623a', '#d68a5e');
+      bowl(-64, y, 13, 11, '#5a4a52', '#7a6a70');
+      cup(22, y, 8, 18, '#b8623a', '#e9dcc4', true); cup(46, y, 7, 15, '#7fa7b8', '#dceaf0'); cup(68, y, 8, 18, '#d9b07a', '#7a5a3c', true); cup(92, y, 7, 14, '#5a4a52', '#a9c7d2'); 
+      rr(102, y - 4, 18, 4, 2); fs('#8a5a3c', INK, 1.2); cup(111, y - 4, 6, 12, '#e9dcc4', '#7fa7b8');
+      return;
+    }
+    if (st.deco && st.deco.includes('trinket')) {
+      // 小怡飾品：左邊一張髮夾展示卡（蝴蝶結和小髮夾），中間幾瓶指甲油，右邊鑰匙圈小架和一個玩偶小包包
+      rr(-116, y - 36, 54, 36, 4); fs('#fff8ee', INK, 2);
+      const bow = (bx, by, col) => { for (const d of [-1, 1]) { ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + d * 9, by - 5); ctx.lineTo(bx + d * 9, by + 5); ctx.closePath(); fs(col, INK, 1.2); } circle(bx, by, 2.6); fs('#fff3d6', INK, 1); };
+      bow(-102, y - 26, '#e85d8a'); bow(-78, y - 26, '#efc25a'); bow(-102, y - 11, '#4fa7a0');
+      for (const [cx, col] of [[-84, '#c98ab8'], [-74, '#6fa8c9']]) { rr(cx - 3, y - 16, 6, 12, 2); fs(col, INK, 1.1); ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.fillRect(cx - 1, y - 14, 1.4, 8); }
+      for (const [nx, col] of [[-54, '#e8452f'], [-45, '#c98ab8'], [-36, '#efc25a']]) { rr(nx - 3.5, y - 12, 7, 12, 2.5); fs(col, INK, 1.2); rr(nx - 2, y - 19, 4, 7, 1); fs(INK); }
+      ctx.fillStyle = WOOD; ctx.fillRect(14, y - 4, 40, 4); ctx.fillRect(32, y - 46, 4, 42); ctx.fillRect(18, y - 46, 32, 3);
+      [[22, '#e85d2f', 'heart'], [34, '#efc25a', 'star'], [46, '#4fa7a0', 'dot']].forEach(([kx, col, sh]) => {
+        ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(kx, y - 43); ctx.lineTo(kx, y - 33); ctx.stroke(); circle(kx, y - 33, 2.2); ctx.stroke();
+        if (sh === 'heart') { ctx.beginPath(); ctx.moveTo(kx, y - 18); ctx.bezierCurveTo(kx - 10, y - 25, kx - 6, y - 33, kx, y - 28); ctx.bezierCurveTo(kx + 6, y - 33, kx + 10, y - 25, kx, y - 18); fs(col, INK, 1.2); }
+        else if (sh === 'star') { ctx.beginPath(); for (let k = 0; k < 10; k++) { const a = -Math.PI / 2 + k * Math.PI / 5, r = k % 2 ? 3 : 7; ctx.lineTo(kx + Math.cos(a) * r, y - 24 + Math.sin(a) * r); } ctx.closePath(); fs(col, INK, 1.2); }
+        else { circle(kx, y - 24, 5.5); fs(col, INK, 1.2); circle(kx, y - 24, 2); fs('#fff3d6'); }
+      });
+      // 玩偶小包包：熊耳朵、提把
+      const px = 86; ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(px, y - 26, 9, Math.PI, 0); ctx.stroke();
+      for (const d of [-1, 1]) { circle(px + d * 13, y - 25, 5); fs('#c98a5a', INK, 1.4); circle(px + d * 13, y - 25, 2.2); fs('#f0d4b4'); }
+      rr(px - 17, y - 27, 34, 27, 10); fs('#c98a5a', INK, 2);
+      ctx.beginPath(); ctx.ellipse(px, y - 10, 7, 5, 0, 0, 6.2832); fs('#f0d4b4');
+      ctx.fillStyle = INK; circle(px - 6, y - 17, 1.6); ctx.fill(); circle(px + 6, y - 17, 1.6); ctx.fill(); circle(px, y - 11, 1.5); ctx.fill();
+      ctx.fillStyle = 'rgba(232,96,84,.5)'; circle(px - 10, y - 12, 2.2); ctx.fill(); circle(px + 10, y - 12, 2.2); ctx.fill();
+      return;
+    }
+    if (st.deco && st.deco.includes('crochet')) {
+      // Jolie’s 手作：左邊兩尊達摩擺飾，中間一顆毛線球和鉤針，右邊一個鉤織包，最右邊一串七色小花吊飾
+      const daruma = (dx, k, col) => {
+        ctx.save(); ctx.translate(dx, y); ctx.scale(k, k);
+        ctx.beginPath(); ctx.ellipse(0, -13, 12, 13.5, 0, 0, 6.2832); fs(col, INK, 2);
+        ctx.beginPath(); ctx.ellipse(0, -16, 7.5, 6.5, 0, 0, 6.2832); fs('#fff3e6', INK, 1.2);
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.2; for (const d of [-1, 1]) { ctx.beginPath(); ctx.moveTo(d * 2, -21); ctx.quadraticCurveTo(d * 5, -23, d * 7, -20); ctx.stroke(); }
+        ctx.fillStyle = INK; circle(-3, -17, 1.6); ctx.fill(); circle(3, -17, 1.6); ctx.fill();
+        ctx.strokeStyle = '#efc25a'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(0, -8, 7, .3, Math.PI - .3); ctx.stroke();
+        ctx.restore();
+      };
+      daruma(-100, 1.15, '#d9342f'); daruma(-76, .9, '#3f6fb0');
+      circle(-52, y - 9, 9); fs('#c85c9a', INK, 1.6); ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1; for (const r of [3, 6]) { ctx.beginPath(); ctx.arc(-52, y - 9, r, -.6, 2.2); ctx.stroke(); }
+      ctx.strokeStyle = INK; ctx.lineWidth = 3.4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-62, y - 24); ctx.lineTo(-44, y - 6); ctx.stroke(); ctx.strokeStyle = '#d9b07a'; ctx.lineWidth = 1.8; ctx.stroke();
+      // 鉤織包：一格格鉤針紋，上面兩條提把
+      const bx = 42; ctx.strokeStyle = INK; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.arc(bx, y - 32, 10, Math.PI, 0); ctx.stroke(); ctx.strokeStyle = '#e9b33b'; ctx.lineWidth = 1.2; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(bx - 18, y - 32); ctx.lineTo(bx + 18, y - 32); ctx.lineTo(bx + 15, y); ctx.lineTo(bx - 15, y); ctx.closePath(); fs('#f2d38a', INK, 2);
+      ctx.strokeStyle = 'rgba(150,100,40,.6)'; ctx.lineWidth = 1; for (let r = 0; r < 4; r++) for (let k = 0; k < 5; k++) { const vx = bx - 13 + k * 6.5, vy = y - 28 + r * 7; ctx.beginPath(); ctx.moveTo(vx - 2.4, vy); ctx.lineTo(vx, vy + 3); ctx.lineTo(vx + 2.4, vy); ctx.stroke(); }
+      for (const [fx, fy, col] of [[bx - 8, y - 14, '#e85d2f'], [bx + 8, y - 20, '#4fa7a0']]) { for (let k = 0; k < 5; k++) { const a = k / 5 * 6.2832; circle(fx + Math.cos(a) * 3, fy + Math.sin(a) * 3, 2.4); fs(col, INK, .7); } circle(fx, fy, 1.6); fs('#fff3d6'); }
+      // 七色小花吊飾：一根小木架，掛一串七種顏色的鉤織小花
+      ctx.fillStyle = WOOD; ctx.fillRect(74, y - 4, 40, 4); ctx.fillRect(104, y - 64, 3.5, 60); ctx.fillRect(80, y - 64, 27, 3);
+      ctx.strokeStyle = '#8a6a48'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(86, y - 61); ctx.lineTo(86, y - 8); ctx.stroke();
+      ['#e8452f', '#e0783a', '#efc25a', '#5aa85d', '#3f9fd4', '#3f6fb0', '#9a6ab8'].forEach((col, i) => {
+        const fx = 86, fy = y - 56 + i * 7.4;
+        for (let k = 0; k < 5; k++) { const a = k / 5 * 6.2832 + i; circle(fx + Math.cos(a) * 2.6, fy + Math.sin(a) * 2.6, 2.2); fs(col, INK, .6); }
+        circle(fx, fy, 1.3); fs('#fff3d6');
+      });
+      return;
+    }
+    if (st.deco && st.deco.includes('plush')) {
+      // 手縫布偶攤：櫃台上坐滿布偶，中間一籃線團和針
+      plush(-98, y, 1, 'bunny'); plush(-70, y, .9, 'bear');
+      rr(12, y - 14, 30, 14, 4); fs('#c9a15f', INK, 1.6); for (const [dx, col] of [[19, '#e85d2f'], [27, '#4fa7a0'], [35, '#efc25a']]) { circle(dx, y - 16, 5); fs(col, INK, 1.2); }
+      ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(30, y - 22); ctx.lineTo(40, y - 32); ctx.stroke();
+      plush(58, y, .95, 'cat'); plush(84, y, 1.05, 'dog'); plush(108, y, .8, 'chick');
+      return;
+    }
+    if (st.deco && st.deco.includes('cinavu')) {
+      // 芋見米好：左邊一盤芋頭（一顆切開，看得到紫色斑點），右邊葉子包的吉拿富，最右邊一顆打開，露出小米和豬肉
+      rr(-120, y - 5, 84, 5, 2); fs('#c9a15f', INK, 1.5);
+      const taro = (x, yy, k, rot) => {
+        ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.scale(k, k);
+        ctx.beginPath(); ctx.ellipse(0, 0, 10, 13, 0, 0, 6.2832); fs('#8a6a52', INK, 1.6);
+        ctx.strokeStyle = 'rgba(50,30,20,.55)'; ctx.lineWidth = 1;
+        for (const ry of [-6, 0, 6]) { ctx.beginPath(); ctx.ellipse(0, ry, 9.5 - Math.abs(ry) * .3, 2.2, 0, .2, Math.PI - .2); ctx.stroke(); }
+        ctx.beginPath(); ctx.moveTo(-2.5, -12); ctx.lineTo(0, -19); ctx.lineTo(2.5, -12); ctx.closePath(); fs('#b48ac9', INK, 1);
+        ctx.restore();
+      };
+      taro(-106, y - 17, 1, -.2); taro(-84, y - 19, 1.1, .12);
+      ctx.beginPath(); ctx.ellipse(-56, y - 12, 13, 8, 0, 0, 6.2832); fs('#8a6a52', INK, 1.6);
+      ctx.beginPath(); ctx.ellipse(-56, y - 13, 10, 5.6, 0, 0, 6.2832); fs('#efe6f2');
+      ctx.fillStyle = '#9a6ab8'; for (const [dx, dy] of [[-6, -1], [-3, -3], [1, 0], [4, -2], [-3, 2], [3, 2.4], [0, -3.6], [7, 0]]) { circle(-56 + dx, y - 13 + dy, 1); ctx.fill(); }
+      // 葉子包的吉拿富：綠色葉包，用棉繩十字綁起來
+      rr(8, y - 4, 110, 4, 2); fs('#8a5a3c', INK, 1.4);
+      const cin = (x, b) => {
+        rr(x - 11, b - 15, 22, 15, 4); fs('#5f8f3a', INK, 1.6);
+        ctx.strokeStyle = 'rgba(220,240,180,.5)'; ctx.lineWidth = 1; for (const dx of [-6, 6]) { ctx.beginPath(); ctx.moveTo(x + dx - 3, b - 13); ctx.lineTo(x + dx + 2, b - 2); ctx.stroke(); }
+        ctx.strokeStyle = '#e3cf9a'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(x, b - 15); ctx.lineTo(x, b); ctx.moveTo(x - 11, b - 8); ctx.lineTo(x + 11, b - 8); ctx.stroke();
+      };
+      cin(22, y - 4); cin(46, y - 4); cin(34, y - 19);
+      // 打開的一顆：葉子攤開，裡面是小米糕和豬肉
+      ctx.beginPath(); ctx.moveTo(66, y - 4); ctx.lineTo(74, y - 16); ctx.lineTo(102, y - 16); ctx.lineTo(112, y - 4); ctx.closePath(); fs('#4f7f30', INK, 1.6);
+      ctx.strokeStyle = 'rgba(220,240,180,.45)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(70, y - 7); ctx.lineTo(108, y - 7); ctx.stroke();
+      rr(77, y - 17, 24, 11, 4); fs('#e9c25a', INK, 1.5);
+      ctx.fillStyle = '#c99a3a'; for (const [dx, dy] of [[-8, -3], [-4, 1], [0, -2], [5, 1], [8, -3], [2, 2.5], [-6, 2.5]]) { circle(89 + dx, y - 11.5 + dy, .9); ctx.fill(); }
+      for (const [dx, w] of [[-3, 6], [4, 5]]) { rr(89 + dx - w / 2, y - 14, w, 4, 1.5); fs('#b5624a', INK, .8); }
+      steam(89, y - 20, t, 3, 6, 30);
+      return;
+    }
     if (st.kind === 'coffee') {
       for (const x of [-96, -72, 52, 78]) {
         rr(x - 9, y - 21, 18, 21, 3); fs('#fff8e6', INK, 2); ctx.fillStyle = '#b5764a'; ctx.fillRect(x - 8, y - 14, 16, 6);
@@ -1637,8 +2105,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       rr(5, y - 25, 34, 25, 8); fs('#c98a45', INK, 2);
       ctx.strokeStyle = '#8a4f22'; ctx.lineWidth = 1.8; for (const d of [15, 22, 29]) { ctx.beginPath(); ctx.moveTo(d, y - 21); ctx.lineTo(d - 3, y - 12); ctx.stroke(); }
       rr(52, y - 5, 62, 6, 2); fs('#8a5a3c', INK, 1.6);
-      rr(62, y - 26, 42, 21, 3); fs(PAPER, '#d9432f', 2);
-      label('完售', 83, y - 15, `700 15px ${FACE}`, '#d9432f');
+      rr(68, y - 22, 30, 17, 4); fs('#f7e3c8', INK, 1.8); ctx.fillStyle = '#c85c5a'; ctx.fillRect(69, y - 16, 28, 3);
+      for (const dx of [74, 83, 92]) { circle(dx, y - 24, 2.6); fs('#d9342f', INK, 1); }
+      ctx.beginPath(); ctx.arc(83, y - 5, 25, Math.PI, 0); ctx.fillStyle = 'rgba(220,240,250,.28)'; ctx.fill(); ctx.strokeStyle = INK; ctx.lineWidth = 1.8; ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,255,255,.75)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(83, y - 5, 19, Math.PI * 1.15, Math.PI * 1.4); ctx.stroke();
+      circle(83, y - 31, 3); fs('#9aa0aa', INK, 1.2);
     } else if (st.kind === 'fried') {
       rr(-108, y - 29, 58, 29, 6); fs('#6c7088', INK, 2);
       ctx.fillStyle = '#e9b33b'; ctx.fillRect(-103, y - 27, 48, 6);
@@ -1646,29 +2117,46 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       steam(-90, y - 34, t, 5, 12, 62); steam(-68, y - 34, t + 1.3, 5, 12, 66);
       for (const x of [24]) {
         for (const [dx, dy] of [[-6, -29], [6, -29], [0, -35]]) { circle(x + dx, y + dy, 5.4); fs('#e0a23c', INK, 1.5); }
-        ctx.beginPath(); ctx.moveTo(x - 13, y - 26); ctx.lineTo(x + 13, y - 26); ctx.lineTo(x, y); ctx.closePath(); fs('#efd9ae', INK, 2);
+        ctx.beginPath(); ctx.moveTo(x - 15, y - 24); ctx.lineTo(x + 15, y - 24); ctx.quadraticCurveTo(x + 13, y, x, y); ctx.quadraticCurveTo(x - 13, y, x - 15, y - 24); ctx.closePath(); fs('#e9e0cc', INK, 2);
       }
       // charcoal grill with skewers
       rr(44, y - 14, 68, 14, 3); fs('#3a3440', INK, 2);
       ctx.fillStyle = '#e8562f'; for (let gx = 50; gx < 108; gx += 9) { ctx.fillRect(gx, y - 6, 5, 3); }
       ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 1.4; for (let gx = 48; gx < 110; gx += 6) { ctx.beginPath(); ctx.moveTo(gx, y - 14); ctx.lineTo(gx, y - 10); ctx.stroke(); }
-      for (const [sx, k] of [[56, 0], [78, 1], [100, 0]]) {
-        ctx.strokeStyle = '#c9a15f'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(sx - 14, y - 17); ctx.lineTo(sx + 10, y - 17); ctx.stroke();
-        for (let m = 0; m < 3; m++) { rr(sx - 10 + m * 7, y - 21, 6, 8, 2); fs(k ? '#b9805a' : '#c9a37a', INK, 1.1); }
+      for (const [sx, k] of [[55, 0], [70, 1], [85, 0], [100, 1]]) {
+        rr(sx - 7, y - 21, 14, 7, 3.5); fs(k ? '#a83c2a' : '#c0502f', INK, 1.3);
+        ctx.strokeStyle = 'rgba(40,16,10,.55)'; ctx.lineWidth = 1; for (const d of [-2.5, 1.5]) { ctx.beginPath(); ctx.moveTo(sx + d, y - 20); ctx.lineTo(sx + d + 1.5, y - 15); ctx.stroke(); }
       }
       steam(78, y - 22, t + .7, 4, 10, 46);
     } else if (st.kind === 'meal') {
-      // big pot on the left, bamboo-tube rice on a tray on the right
-      rr(-110, y - 30, 56, 30, 8); fs('#6c7088', INK, 2);
-      rr(-114, y - 34, 64, 7, 3); fs('#8a90a8', INK, 1.8); circle(-82, y - 37, 3.4); fs('#3a3440', INK, 1.4);
-      for (const hx of [-118, -50]) { rr(hx, y - 25, 6, 5, 2); fs('#3a3440', INK, 1.2); }
-      steam(-92, y - 40, t, 5, 12, 60); steam(-72, y - 40, t + 1.1, 5, 12, 64);
+      const mixed = st.deco && st.deco.includes('bamboo');
+      if (mixed) {
+        // 混合攤：左邊擺手作小物（布包和一盒手作胸針）
+        rr(-116, y - 30, 40, 30, 3); fs('#f7ecd0', INK, 2);
+        ['#e0785a', '#1f8a8a', '#e9b33b', '#c85c9a', '#6fa8c9', '#7fb88a'].forEach((col, i) => { circle(-106 + (i % 3) * 10, y - 22 + Math.floor(i / 3) * 13, 4.2); fs(col, INK, 1.2); });
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.8; ctx.beginPath(); ctx.arc(-60, y - 30, 7, Math.PI, 0); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(-72, y - 30); ctx.lineTo(-48, y - 30); ctx.lineTo(-46, y); ctx.lineTo(-74, y); ctx.closePath(); fs('#c9744a', INK, 1.8);
+        ctx.fillStyle = '#efc25a'; for (const dx of [-66, -60, -54]) { ctx.beginPath(); ctx.moveTo(dx, y - 20); ctx.lineTo(dx + 3, y - 16); ctx.lineTo(dx, y - 12); ctx.lineTo(dx - 3, y - 16); ctx.closePath(); ctx.fill(); }
+      } else {
+        // big pot on the left
+        rr(-110, y - 30, 56, 30, 8); fs('#6c7088', INK, 2);
+        rr(-114, y - 34, 64, 7, 3); fs('#8a90a8', INK, 1.8); circle(-82, y - 37, 3.4); fs('#3a3440', INK, 1.4);
+        for (const hx of [-118, -50]) { rr(hx, y - 25, 6, 5, 2); fs('#3a3440', INK, 1.2); }
+        steam(-92, y - 40, t, 5, 12, 60); steam(-72, y - 40, t + 1.1, 5, 12, 64);
+      }
       rr(12, y - 6, 100, 6, 2); fs('#8a5a3c', INK, 1.6);
-      for (const [bx, h] of [[26, 30], [48, 34], [70, 30], [92, 32]]) {
+      const tube = (bx, h) => {
         rr(bx - 8, y - 6 - h, 16, h, 3); fs('#7fae4a', INK, 1.8);
         ctx.strokeStyle = 'rgba(40,70,30,.55)'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(bx - 8, y - 6 - h * .45); ctx.lineTo(bx + 8, y - 6 - h * .45); ctx.stroke();
         ctx.beginPath(); ctx.ellipse(bx, y - 6 - h, 7, 3, 0, 0, 6.2832); fs('#fbf8ef', INK, 1.3);
-      }
+      };
+      const cake = (bx, k) => {
+        rr(bx - 9, y - 23, 18, 17, 6); fs(k ? '#b48ac9' : '#f4efe4', INK, 1.6);
+        ctx.fillStyle = k ? '#8a5aa8' : '#c9b38a'; for (const [dx, dy] of [[-3, -17], [3, -13], [-1, -10]]) { circle(bx + dx, y + dy, 1.4); ctx.fill(); }
+      };
+      // 芋見米好：竹筒飯和芋頭米糕交錯；其他餐點攤只擺芋頭米糕
+      if (mixed) { tube(26, 32); cake(48, 1); tube(70, 34); cake(92, 1); }
+      else [[26, 1], [48, 0], [70, 1], [92, 0]].forEach(([bx, k]) => cake(bx, k));
     } else if (st.kind === 'play') {
       // ring toss: bottles with a ring caught on one, a peg of spare rings
       rr(-116, y - 6, 74, 6, 2); fs('#8a5a3c', INK, 1.6);
@@ -1698,19 +2186,69 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
         circle(cx + 1, y - 57, 2.4); fs('#d9342f', INK, 1);
       });
     } else if (st.kind === 'drink') {
-      // two glass dispensers on the left, filled cups on the right
-      for (const [jx, col] of [[-94, '#c23b5a'], [-62, '#efc25a']]) {
+      // two glass dispensers on the left, filled cups on the right（愛玉攤：飲料是金黃色的，裡面有一塊塊愛玉凍）
+      const aiyu = !!(st.deco && st.deco.includes('aiyu'));
+      const jelly = (x0, y0, w, h) => { ctx.fillStyle = 'rgba(255,248,215,.75)'; for (let k = 0; k < 4; k++) { const jx = x0 + 2 + (k * 7) % (w - 4), jy = y0 + h - 5 - Math.floor(k / 2) * 5; ctx.fillRect(jx, jy, 3.6, 3.2); } };
+      for (const [jx, col] of aiyu ? [[-94, '#e3bd4a'], [-62, '#f0d77a']] : [[-94, '#c23b5a'], [-62, '#efc25a']]) {
         rr(jx - 13, y - 46, 26, 40, 6); fs('rgba(230,240,250,.88)', INK, 2);
         ctx.fillStyle = col; ctx.fillRect(jx - 11, y - 32, 22, 24);
         ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fillRect(jx - 8, y - 42, 3, 30);
+        if (aiyu) jelly(jx - 11, y - 32, 22, 24);
         rr(jx - 15, y - 50, 30, 6, 2); fs('#8a5a3c', INK, 1.6);
         rr(jx - 3, y - 7, 6, 7, 1); fs('#9aa0aa', INK, 1.2);
       }
-      for (const [cx, col] of [[30, '#c23b5a'], [56, '#9fd36a'], [82, '#efc25a']]) {
+      if (aiyu) {
+        // 竹編盤上的真愛玉果：綠色、帶淺色小點的橢圓果實，兩個剖半露出裡面金黃色的愛玉籽
+        ctx.save(); ctx.translate(-26, y); ctx.scale(1.45, 1.45); ctx.translate(26, -y);
+        ctx.beginPath(); ctx.ellipse(-26, y - 3, 22, 5, 0, 0, 6.2832); fs('#c9a15f', INK, 1.6);
+        ctx.strokeStyle = 'rgba(110,70,36,.45)'; ctx.lineWidth = .8; ctx.beginPath(); ctx.ellipse(-26, y - 3, 15, 3, 0, 0, 6.2832); ctx.stroke();
+        const fig = (x, yy, rot) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.beginPath(); ctx.ellipse(0, 0, 6.5, 9.5, 0, 0, 6.2832); fs('#4f7f3a', INK, 1.4); ctx.fillStyle = '#a8c98a'; for (const [dx, dy] of [[-2.5, -4], [2, -2], [-1, 2], [3, 4], [-3, 5], [1, -6]]) { circle(dx, dy, .8); ctx.fill(); } rr(-1.2, -12, 2.4, 3, 1); fs('#6b4a2e', INK, .8); ctx.restore(); };
+        const half = (x, yy, rot) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.beginPath(); ctx.ellipse(0, 0, 6.5, 9.5, 0, 0, 6.2832); fs('#3f6f30', INK, 1.4); ctx.beginPath(); ctx.ellipse(0, 0, 4.6, 7.6, 0, 0, 6.2832); fs('#ecd28a'); ctx.fillStyle = '#b8863a'; for (let k = 0; k < 14; k++) { circle(Math.sin(k * 2.4) * 3, -6 + k * .9, .7); ctx.fill(); } ctx.restore(); };
+        fig(-40, y - 10, -1.2); fig(-28, y - 13, .2); half(-15, y - 9, 1.25); half(-30, y - 6, 1.5);
+        ctx.restore();
+      }
+      const lemonStall = !!(st.deco && st.deco.includes('lemon'));
+      if (lemonStall) {
+        // 悠綠客檸檬：右邊一個木碗，爆米花堆成圓圓高高的一球
+        const bx = 50, rimY = y - 18;
+        const pops = [];
+        // 沿著半橢圓一圈圈排，外圈最後畫，頂端是圓弧
+        for (const [k, n] of [[.25, 2], [.6, 5], [1, 9]]) for (let i = 0; i <= n; i++) { const a = Math.PI * i / n; pops.push([-Math.cos(a) * 27 * k, 2 - Math.sin(a) * 17 * k]); }
+        for (const [dx, dy] of pops) { for (const [ox, oy, r] of [[0, 0, 4.2], [3, -2, 3.2], [-3, -2, 3.2]]) { circle(bx + dx + ox, rimY + dy + oy, r); fs('#fdf3c2', INK, .9); } circle(bx + dx, rimY + dy - 1, 1.6); fs('#f2d43a'); }
+        ctx.fillStyle = '#8cc63f'; for (const [dx, dy] of [[-12, -6], [10, -10], [-2, -16], [18, -2]]) ctx.fillRect(bx + dx, rimY + dy, 2.4, 1.2);
+        ctx.beginPath(); ctx.moveTo(bx - 34, rimY); ctx.quadraticCurveTo(bx - 31, y - 1, bx - 10, y - 1); ctx.lineTo(bx + 10, y - 1); ctx.quadraticCurveTo(bx + 31, y - 1, bx + 34, rimY); ctx.closePath(); fs('#b98048', INK, 2);
+        ctx.strokeStyle = 'rgba(90,50,24,.45)'; ctx.lineWidth = 1; for (const [o, w] of [[5, 30], [10, 25]]) { ctx.beginPath(); ctx.moveTo(bx - w, rimY + o); ctx.quadraticCurveTo(bx, rimY + o + 3, bx + w, rimY + o); ctx.stroke(); }
+        ctx.strokeStyle = 'rgba(255,230,190,.45)'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(bx - 26, rimY + 4); ctx.quadraticCurveTo(bx - 22, y - 5, bx - 12, y - 4); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(bx, rimY, 34, 3.2, 0, 0, Math.PI); ctx.strokeStyle = '#7a4a2a'; ctx.lineWidth = 2.4; ctx.stroke();
+      }
+      for (const [cx, col] of lemonStall ? [] : aiyu ? [[30, '#e3bd4a'], [56, '#f0d77a'], [82, '#e3bd4a']] : [[30, '#c23b5a'], [56, '#9fd36a'], [82, '#efc25a']]) {
         ctx.beginPath(); ctx.moveTo(cx - 9, y - 28); ctx.lineTo(cx + 9, y - 28); ctx.lineTo(cx + 7, y); ctx.lineTo(cx - 7, y); ctx.closePath(); fs('rgba(235,245,250,.92)', INK, 1.8);
         ctx.beginPath(); ctx.moveTo(cx - 8, y - 19); ctx.lineTo(cx + 8, y - 19); ctx.lineTo(cx + 6.5, y - 1.5); ctx.lineTo(cx - 6.5, y - 1.5); ctx.closePath(); ctx.fillStyle = col; ctx.fill();
+        if (aiyu) jelly(cx - 7, y - 18, 14, 16);
         ctx.strokeStyle = INK; ctx.lineWidth = 2.2; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(cx + 2, y - 24); ctx.lineTo(cx + 6, y - 40); ctx.stroke();
       }
+    } else if (st.kind === 'plant') {
+      // potted plants along the counter: leafy, succulent, cactus
+      const pot = (x, w, h, col) => { ctx.beginPath(); ctx.moveTo(x - w / 2, y - h); ctx.lineTo(x + w / 2, y - h); ctx.lineTo(x + w / 2 - 4, y); ctx.lineTo(x - w / 2 + 4, y); ctx.closePath(); fs(col, INK, 1.8); rr(x - w / 2 - 2, y - h - 3, w + 4, 5, 2); fs(col, INK, 1.4); };
+      const leafy = (x, top, k) => { [[-.75, 20], [-.35, 27], [0, 31], [.35, 27], [.75, 20]].forEach(([a, l], n) => { ctx.save(); ctx.translate(x, top); ctx.rotate(a); ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(-7, -l * k * .55, 0, -l * k); ctx.quadraticCurveTo(7, -l * k * .55, 0, 0); ctx.closePath(); fs(['#3f9c5f', '#4fae6c', '#2f7d4f'][n % 3], INK, 1.3); ctx.restore(); }); };
+      const rosette = (x, top) => { for (const [dx, dy, r] of [[-7, -3, 5], [7, -3, 5], [0, -6, 5.5], [-4, -11, 4.2], [4, -11, 4.2], [0, -15, 3.6]]) { circle(x + dx, top + dy, r); fs(dy < -10 ? '#9fd0a0' : '#7fb88a', INK, 1.1); } };
+      const cactus = (x, top) => { rr(x - 5.5, top - 30, 11, 32, 5.5); fs('#4f9c5a', INK, 1.6); rr(x + 3, top - 20, 10, 6, 3); fs('#4f9c5a', INK, 1.3); rr(x + 8, top - 28, 5, 12, 2.5); fs('#4f9c5a', INK, 1.3); circle(x, top - 31, 3.2); fs('#e85d8a', INK, 1.1); };
+      leafy(-98, y - 20, 1); pot(-98, 26, 20, '#b8623a');
+      rosette(-64, y - 16); pot(-64, 22, 16, '#e9e0cc');
+      cactus(36, y - 18); pot(36, 22, 18, '#6fa8c9');
+      leafy(74, y - 22, 1.15); pot(74, 30, 22, '#c9744a');
+      rosette(106, y - 14); pot(106, 18, 14, '#efc25a');
+    } else if (st.kind === 'hair') {
+      // mirror on a stand, spray bottle, scissors, comb and folded towels
+      rr(-114, y - 64, 46, 58, 10); fs('#8a5a3c', INK, 2); rr(-108, y - 58, 34, 46, 7); fs('#cfe3ee', INK, 1.4);
+      ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(-100, y - 22); ctx.lineTo(-84, y - 48); ctx.moveTo(-94, y - 18); ctx.lineTo(-86, y - 32); ctx.stroke();
+      rr(-95, y - 6, 8, 6, 1); fs('#8a5a3c', INK, 1.4);
+      rr(-62, y - 24, 12, 24, 3); fs('#6fa8c9', INK, 1.6); rr(-59, y - 31, 6, 8, 1); fs('#efe4c9', INK, 1.2); rr(-53, y - 31, 7, 3, 1); fs('#efe4c9', INK, 1);
+      ctx.save(); ctx.translate(22, y - 12); ctx.rotate(-.35); ctx.lineCap = 'round';
+      for (const d of [-1, 1]) { ctx.strokeStyle = INK; ctx.lineWidth = 4.4; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(24, d * -5); ctx.stroke(); ctx.strokeStyle = '#d8dadf'; ctx.lineWidth = 2.4; ctx.stroke(); circle(-6, d * 5, 4.6); ctx.strokeStyle = INK; ctx.lineWidth = 3.6; ctx.stroke(); ctx.strokeStyle = '#d9342f'; ctx.lineWidth = 2; ctx.stroke(); }
+      circle(0, 0, 1.6); fs(INK); ctx.restore();
+      rr(52, y - 13, 32, 7, 2); fs('#2d2a4e', INK, 1.4); ctx.fillStyle = '#2d2a4e'; for (let k = 0; k < 8; k++) ctx.fillRect(54 + k * 3.6, y - 7, 1.8, 6);
+      [['#efc25a', 0], ['#4fa7a0', 8], ['#fff3d6', 16]].forEach(([col, dy]) => { rr(88, y - 24 + dy, 26, 8, 3); fs(col, INK, 1.3); });
     } else if (st.kind === 'craft') {
       rr(-112, y - 34, 58, 34, 3); fs('#f7ecd0', INK, 2);
       const c = ['#e0785a', '#1f8a8a', '#e9b33b', '#c85c9a', '#6fa8c9', '#7fb88a'];
@@ -1723,6 +2261,29 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       for (const [x, col] of [[10, '#e0785a'], [30, '#1f8a8a']]) { rr(x - 7, y - 21, 14, 21, 2); fs(col, INK, 2); ctx.fillStyle = WOOD; ctx.fillRect(x - 9, y - 23, 18, 4); ctx.fillRect(x - 9, y - 3, 18, 3); }
     }
   }
+  // 拾物木作的牆上：三片原木切片彩繪成的瓢蟲，用麻繩掛在小釘子上（照攤主提供的相片）
+  function wallBugs(st, t) {
+    const bug = (x, y, r, shell, rot, spots, i) => {
+      const sw = reduced ? 0 : Math.sin(t * 1.3 + i * 2 + st.x) * .04;
+      ctx.save(); ctx.translate(x, y - r - 9); ctx.rotate(sw);
+      circle(0, 0, 1.8); fs('#9aa0aa', INK, 1);
+      ctx.strokeStyle = '#c9a15f'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(-r * .5, r * .55 + 9 - r * .2); ctx.lineTo(0, 0); ctx.lineTo(r * .5, r * .55 + 9 - r * .2); ctx.stroke();
+      ctx.translate(0, r + 9); ctx.rotate(rot);
+      circle(0, 0, r); fs('#6b4a30', INK, 1.6);                     // 樹皮
+      circle(0, 0, r - 1.8); fs('#d9b07a');                           // 原木切面
+      ctx.strokeStyle = 'rgba(110,70,36,.35)'; ctx.lineWidth = .7; circle(0, 0, r - 3.5); ctx.stroke();
+      const sr = r * .72;
+      ctx.beginPath(); ctx.arc(0, -r * .34, sr * .5, Math.PI, 0); ctx.closePath(); fs('#1d1a36');   // 頭
+      ctx.fillStyle = '#fff'; circle(-sr * .2, -r * .44, 1.1); ctx.fill(); circle(sr * .2, -r * .44, 1.1); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(0, r * .12, sr, sr * .82, 0, 0, 6.2832); fs(shell, INK, 1.2);  // 殼
+      ctx.strokeStyle = '#1d1a36'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(0, r * .12 - sr * .82); ctx.lineTo(0, r * .12 + sr * .82); ctx.stroke();
+      ctx.fillStyle = '#1d1a36'; for (const [dx, dy, k] of spots) { circle(dx * sr, r * .12 + dy * sr, sr * k); ctx.fill(); }
+      ctx.restore();
+    };
+    bug(-82, 300, 12, '#d9342f', -.15, [[-.5, -.3, .17], [.5, -.3, .17], [-.45, .35, .15], [.45, .35, .15], [0, .1, .12]], 0);
+    bug(54, 302, 13, '#e8772f', .2, [[-.55, -.2, .14], [.55, -.2, .14], [-.3, .25, .12], [.3, .25, .12], [-.6, .45, .1], [.6, .45, .1], [0, -.45, .1]], 1);
+    bug(18, 286, 10, '#d9342f', -.3, [[-.45, -.15, .2], [.45, -.15, .2], [-.35, .45, .17], [.35, .45, .17]], 2);
+  }
   // per-kind goods on the back shelf (behind the owner)
   function drawShelf(st) {
     const sy = 266;
@@ -1732,12 +2293,20 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       ctx.fillStyle = INK; ctx.fillRect(x0 + 6, sy + 6, 3, 7); ctx.fillRect(x0 + 41, sy + 6, 3, 7);
       for (let i = 0; i < 3; i++) {
         const jx = x0 + 9 + i * 16;
-        if (st.kind === 'coffee') { rr(jx - 6, sy - 17, 12, 17, 3); fs(['#c98a45', '#7a4a30', '#e9b33b'][i], INK, 1.5); ctx.fillStyle = '#fff3d6'; ctx.fillRect(jx - 4, sy - 11, 8, 5); }
+        if (st.deco && st.deco.includes('burger')) { rr(jx - 4, sy - 16, 8, 16, 2.5); fs(['#d9342f', '#efc25a', '#5a8a3c'][i], INK, 1.2); rr(jx - 1.5, sy - 20, 3, 5, 1); fs('#fff3d6', INK, .8); }
+        else if (st.deco && st.deco.includes('wood')) { if (i === 1) { ctx.beginPath(); ctx.moveTo(jx - 7, sy - 8); ctx.quadraticCurveTo(jx - 6, sy, jx, sy); ctx.quadraticCurveTo(jx + 6, sy, jx + 7, sy - 8); ctx.closePath(); fs('#a8743e', INK, 1.2); } else { rr(jx - 5, sy - 10, 10, 10, 1.5); fs(i ? '#e8c99a' : '#c48f58', INK, 1.2); rr(jx - 3, sy - 15, 6, 5, 1); fs('#d9b07a', INK, 1); } }
+        else if (st.deco && st.deco.includes('pottery')) { ctx.beginPath(); ctx.moveTo(jx - 6, sy - 12); ctx.lineTo(jx + 6, sy - 12); ctx.lineTo(jx + 5, sy); ctx.lineTo(jx - 5, sy); ctx.closePath(); fs(['#b8623a', '#7fa7b8', '#d9b07a'][i], INK, 1.3); ctx.beginPath(); ctx.ellipse(jx, sy - 12, 6, 1.6, 0, 0, 6.2832); fs('#3a2a24', INK, .8); }
+        else if (st.deco && st.deco.includes('crochet')) { circle(jx, sy - 7, 6.5); fs(['#c85c9a', '#efc25a', '#4fa7a0'][i], INK, 1.3); ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = .9; ctx.beginPath(); ctx.arc(jx, sy - 7, 3.5, -.6, 2.2); ctx.stroke(); }
+        else if (st.deco && st.deco.includes('trinket')) { rr(jx - 3.5, sy - 11, 7, 11, 2.5); fs(['#e85d8a', '#6fa8c9', '#efc25a'][i], INK, 1.2); rr(jx - 2, sy - 17, 4, 6, 1); fs(INK); }
+        else if (st.deco && st.deco.includes('plush')) plush(jx, sy, .55, ['bear', 'bunny', 'chick', 'cat', 'dog', 'bear'][i + (side > 0 ? 3 : 0)]);
+        else if (st.kind === 'coffee') { rr(jx - 6, sy - 17, 12, 17, 3); fs(['#c98a45', '#7a4a30', '#e9b33b'][i], INK, 1.5); ctx.fillStyle = '#fff3d6'; ctx.fillRect(jx - 4, sy - 11, 8, 5); }
         else if (st.kind === 'bread') { ctx.beginPath(); ctx.ellipse(jx, sy - 6, 7.5, 6, 0, Math.PI, 0); ctx.closePath(); fs('#d9963f', INK, 1.5); ctx.strokeStyle = '#8a4f22'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(jx - 3, sy - 9); ctx.lineTo(jx - 1, sy - 4); ctx.moveTo(jx + 2, sy - 10); ctx.lineTo(jx + 4, sy - 5); ctx.stroke(); }
         else if (st.kind === 'meal') { for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.ellipse(jx, sy - 3 - k * 4, 6.5, 2.4, 0, 0, Math.PI); ctx.lineTo(jx - 6.5, sy - 3 - k * 4); fs(['#f4efe4', '#c9744a', '#f4efe4'][k], INK, 1.1); } }
         else if (st.kind === 'play') { ctx.strokeStyle = INK; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(jx, sy); ctx.lineTo(jx + 1, sy - 10); ctx.stroke(); ctx.beginPath(); ctx.ellipse(jx + 1, sy - 17, 5.5, 7, 0, 0, 6.2832); fs(['#e85d2f', '#3f6fb0', '#efc25a', '#c85c9a', '#4f9c5a', '#e85d2f'][(i + (side > 0 ? 3 : 0))], INK, 1.3); ctx.fillStyle = 'rgba(255,255,255,.5)'; circle(jx - 1, sy - 20, 1.4); ctx.fill(); }
         else if (st.kind === 'icecream') { if (i === 1) { for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(jx - 5, sy - 18 + k * 4); ctx.lineTo(jx + 5, sy - 18 + k * 4); ctx.lineTo(jx, sy); ctx.closePath(); fs('#d9a05a', INK, 1.2); } } else { rr(jx - 5, sy - 14, 10, 14, 2); fs('#f4efe4', INK, 1.4); ctx.fillStyle = i ? '#e85d8a' : '#7a4a30'; for (const [ddx, ddy] of [[-2, -10], [2, -8], [-1, -5], [2, -3]]) ctx.fillRect(jx + ddx, sy + ddy, 2, 1.5); } }
-        else if (st.kind === 'drink') { rr(jx - 4.5, sy - 18, 9, 18, 3); fs(['#c23b5a', '#9fd36a', '#efc25a'][i], INK, 1.4); rr(jx - 2, sy - 23, 4, 6, 1); fs('#fff3d6', INK, 1); }
+        else if (st.kind === 'drink') { rr(jx - 4.5, sy - 18, 9, 18, 3); fs((st.deco && st.deco.includes('aiyu') ? ['#e3bd4a', '#f0d77a', '#e3bd4a'] : ['#c23b5a', '#9fd36a', '#efc25a'])[i], INK, 1.4); rr(jx - 2, sy - 23, 4, 6, 1); fs('#fff3d6', INK, 1); }
+        else if (st.kind === 'plant') { ctx.beginPath(); ctx.moveTo(jx - 6, sy - 10); ctx.lineTo(jx + 6, sy - 10); ctx.lineTo(jx + 4.5, sy); ctx.lineTo(jx - 4.5, sy); ctx.closePath(); fs(['#b8623a', '#e9e0cc', '#c9744a'][i], INK, 1.3); for (const d of [-1, 1]) { ctx.beginPath(); ctx.ellipse(jx + d * 3, sy - 15, 3.2, 5.5, d * .5, 0, 6.2832); fs(['#4fae6c', '#3f9c5f', '#6fc27f'][i], INK, 1); } }
+        else if (st.kind === 'hair') { rr(jx - 5, sy - 17, 10, 17, 3); fs(['#f4efe4', '#c98ab8', '#6fa8c9'][i], INK, 1.4); rr(jx - 1.5, sy - 22, 3, 5, 1); fs(INK); rr(jx - 1.5, sy - 23.5, 6, 2, 1); fs(INK); ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.fillRect(jx - 3, sy - 13, 6, 3); }
         else if (st.kind === 'fried') { rr(jx - 4, sy - 19, 8, 19, 2.5); fs(['#d9432f', '#efc25a', '#5a8a3c'][i], INK, 1.5); rr(jx - 2, sy - 23, 4, 5, 1); fs('#fff3d6', INK, 1); }
         else { const col = ['#c85c9a', '#1f8a8a', '#e9b33b'][i]; rr(jx - 6, sy - 16, 12, 16, 2); fs(col, INK, 1.5); ctx.strokeStyle = 'rgba(255,243,214,.8)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(jx - 6, sy - 10); ctx.lineTo(jx + 6, sy - 10); ctx.moveTo(jx - 6, sy - 5); ctx.lineTo(jx + 6, sy - 5); ctx.stroke(); }
       }
@@ -1778,6 +2347,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     ctx.fillStyle = 'rgba(40,24,16,.22)'; for (let px = -106 + 9; px < 106; px += 19) { circle(px, 214, 1.2); ctx.fill(); circle(px, 340, 1.2); ctx.fill(); }
     glow(0, 280, 130, 74, 'rgba(255,205,130,.5)');
     drawShelf(st);
+    if (st.deco && st.deco.includes('wood')) wallBugs(st, t);
     // string of bulbs swagging under the awning
     ctx.strokeStyle = INK; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(-104, 236); ctx.quadraticCurveTo(0, 260, 104, 236); ctx.stroke();
     for (let i = 0; i < 9; i++) {
@@ -1788,6 +2358,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     }
     // posts
     for (const px of [-116, 104]) { rr(px, 188, 12, 248, 2); fs(WOOD, INK, 2.2); ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.fillRect(px + 2, 192, 3, 240); }
+    drawDeco(st, t, 'post');
     const speaking = inside === st && typing;
     drawProps(st, t, 'ground');
     if (st.grade) { ctx.save(); ctx.translate(-28, 352); ctx.scale(.84, .84); ctx.translate(28, -352); }
@@ -1808,10 +2379,12 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     rr(-122, 428, 244, 8, 1); fs(mix('#2a2238', '#6b4630', dayT), INK, 2);
     rr(-130, 340, 260, 14, 3); fs('#9a6440', INK, 2.4);
     ctx.fillStyle = 'rgba(255,255,255,.18)'; ctx.fillRect(-126, 343, 252, 3);
+    drawDeco(st, t, 'counter');
     rr(-44, 384, 88, 32, 4); fs(PAPER, INK, 2);
     label(st.id, 0, 400, `700 19px ${UI}`, INK);
     if (st.vendor) nameTag(0, 424, `今日攤主 ${st.vendor.name || st.owner}`, 'vendor');
     if (!st.mine || st.vendor) drawItems(st, t);
+    drawDeco(st, t, 'top');
     drawProps(st, t, 'top');
     // awning: header beam, then scalloped stripes
     rr(-122, 180, 244, 10, 2); fs(WOOD, INK, 2.2);
@@ -1822,16 +2395,19 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       ctx.fillStyle = 'rgba(0,0,0,.07)'; ctx.beginPath(); ctx.moveTo(bx0 + 2, 228); ctx.lineTo(bx1 - 2, 228); ctx.arc((bx0 + bx1) / 2, 230, 14, 0, Math.PI); ctx.closePath(); ctx.fill();
     }
     ctx.strokeStyle = 'rgba(29,26,54,.35)'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(-110, 198); ctx.lineTo(110, 198); ctx.stroke();
+    drawDeco(st, t, 'awning');
     // sign board on top
     rr(-96, 138, 192, 48, 7); fs(WOOD, INK, 2.5);
     rr(-89, 145, 178, 34, 4); fs(mix('#3a2a24', '#6e4733', dayT)); ctx.strokeStyle = 'rgba(255,243,214,.35)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.fillStyle = '#e9b33b'; for (const nx of [-90, 90]) { circle(nx, 151, 2.2); ctx.fill(); circle(nx, 173, 2.2); ctx.fill(); }
     { const nm = nameOf(st); label(nm, 0, 163, `700 ${Math.min(26, Math.floor(168 / Math.max(1, [...nm].length)))}px ${FACE}`, PAPER); }
     if (st.grade) drawGradeDeco(st, t);
+    if (decoHas(st, 'signplush')) { plush(-108, 182, .78, 'bunny'); plush(108, 182, .78, 'bear'); }
     const sway = reduced ? 0 : Math.sin(t * 1.6 + st.x) * .05;
+    if (st.vendor && st.vendor.plate === false) { ctx.restore(); return; }
     ctx.save(); ctx.translate(82, 228); ctx.rotate(sway);
     ctx.strokeStyle = INK; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(-15, 22); ctx.lineTo(0, 8); ctx.lineTo(15, 22); ctx.stroke();
-    const key = statusOf(st), info = st.mine && !st.vendor ? { label: '等你開', c: '#5a5468' } : STATUS[key], tall = key === 'queue' && st.kind === 'fried', pw = key === 'go' || key === 'sold' ? 58 : 68, ph = tall ? 44 : 29;
+    const key = statusOf(st), info = st.mine && !st.vendor ? { label: '等你開', c: '#5a5468' } : plateOf(st), tall = key === 'queue' && st.kind === 'fried', pw = key === 'go' || key === 'sold' ? 58 : 68, ph = tall ? 44 : 29;
     const lit = reduced ? 1 : .9 + .1 * Math.sin(t * 7 + st.x);
     glow(0, 21 + ph / 2, pw * .95, ph * 1.2, `rgba(255,235,170,${.7 * lit})`);
     rr(-pw / 2, 21, pw, ph, 6); fs('#26233f', INK, 2);
@@ -1969,7 +2545,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       }
     }
     ctx.fillStyle = P.sil;
-    for (const c of crowd) {
+    // 灌木只畫一半，每隔一叢跳過
+    for (const c of crowd.filter((_, i) => i % 2 === 0)) {
       if (c.x < x0 - 80 || c.x > x1 + 80) continue;
       const bush = mix('#1b2a30', '#2f7a44', dayT), hi = mix('#24363a', '#4c9a55', dayT);
       ctx.beginPath(); for (const [dx, dy, m] of [[-30, 14, .85], [30, 16, .8], [-12, -6, 1], [14, -2, .95]]) { ctx.moveTo(c.x + dx + c.r * m, c.y + dy); ctx.arc(c.x + dx, c.y + dy, c.r * m, 0, 6.2832); }
@@ -2014,6 +2591,13 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       d.append(n, m); li.append(d);
       if (item.sold) {
         const g = document.createElement('span'); g.className = 'gone'; g.textContent = '已完售'; li.append(g);
+      } else if (SHOPS.includes(st)) {
+        // 攤位商品：按愛心記下「想去」，存在這台裝置，護照和找攤位會標出來
+        const b = document.createElement('button'), key = heartKey(st, item), act = (st === MINE ? ACTION_BY_KIND[st.kind] : st.action) || ACTION_BY_KIND[st.kind] || '想去'; b.className = 'want';
+        const paint = () => { const on = hearts.has(key); b.textContent = `${on ? '♥' : '♡'} ${act}`; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.setAttribute('aria-label', `${on ? '已經按了' : ''}${act}：${item.n}`); };
+        paint();
+        b.onclick = () => { const on = !hearts.has(key); on ? hearts.add(key) : hearts.delete(key); saveHearts(); paint(); if (on) { extraLine = true; speak(st.thanks); } };
+        li.append(b);
       } else {
         const b = document.createElement('button'); b.className = 'want';
         const paint = () => { b.textContent = `${item.on ? (st.actionOn || '已想買') : st.action} ${item.c}`; b.setAttribute('aria-pressed', item.on ? 'true' : 'false'); };
@@ -2039,7 +2623,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     $('whoName').textContent = ownerName;
     $('whoStall').textContent = `${nameOf(st)}・${own && st.roleSet ? st.roleSet : st.role}`;
     renderGoods(st);
-    $('ringPlay').hidden = !(st.kind === 'play' && !st.grade); stamp(st);
+    // 三年級固定套圈圈，其他年級各有自己的小遊戲；跟品項無關，品項確定後也一直都在
+    $('ringPlay').hidden = !(st.grade === 3 || (st.kind === 'play' && !st.mine && !st.grade)); stamp(st);
+    $('gamePlay').hidden = !(st.grade && st.grade !== 3); if (st.grade && st.grade !== 3) $('gamePlayText').textContent = `玩一局「${GAME_TITLES[st.grade - 1]}」`;
     $('mineOpen').hidden = !(st === MINE && !v); $('mineShare').hidden = !(st === MINE && v);
     if (st === MINE && v) { $('ownTools').hidden = false; renderStatusRow(st); }
     panel.hidden = false; bottom.hidden = true; brand.hidden = true;
@@ -2100,6 +2686,14 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   const setFn = open => { fnMenu.hidden = !open; fnBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); if (open) { menu.hidden = true; setShow(false); } };
   fnBtn.onclick = () => setFn(fnMenu.hidden);
   fnMenu.addEventListener('click', e => { if (e.target.closest('button')) setFn(false); });
+  // 「功能」或「說句話」的選單開著時，點旁邊任何地方就收起來；點在街景上只收選單，不會順便走動或走進攤位
+  document.addEventListener('pointerdown', e => {
+    const open = [[fnMenu, fnBtn], [menu, $('speak')], [showMenu, venueBtn]].filter(([m]) => !m.hidden);
+    if (!open.length) return;
+    let closed = false;
+    for (const [m, btn] of open) if (!m.contains(e.target) && !btn.contains(e.target)) { if (m === fnMenu) setFn(false); else if (m === showMenu) setShow(false); else m.hidden = true; closed = true; }
+    if (closed && e.target === canvas) { e.stopPropagation(); e.preventDefault(); }
+  }, true);
   showBtn.onclick = () => openProgram();
   // 功能 → 場地：選主舞台或草地音樂會直接走過去
   venueBtn.onclick = () => setShow(showMenu.hidden);
@@ -2146,28 +2740,32 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   $('program').addEventListener('click', e => { if (e.target.id === 'program') closeProgram(); });
   // ---------- 找攤位：依類別篩選，點一下走過去
   let finderOpen = false, finderCat = '';
+  const CAT_OF = { bread: 'eat', fried: 'eat', meal: 'eat', coffee: 'drink', drink: 'drink', icecream: 'drink', craft: 'craft', plant: 'life', hair: 'life', play: 'life' };
+  // 手作・文創：買得到的手作商品；生活體驗：現場動手做、畫畫、種植栽、剪髮
+  const CAT_LABEL = { eat: '吃的', drink: '喝的・冰品', craft: '手作・文創', life: '生活體驗' };
+  const catOf = s => s.cat || (s.short === '社區' ? 'life' : CAT_OF[s.kind]);
   const FINDER_GROUPS = [[['class'], '班級攤', '一到六年級'], [['front', 'back'], '市集攤位', ''], [['intro', 'info', 'show'], '入口、學校和舞台', '']];
   function renderFinder() {
     const cats = $('finderCats'); cats.textContent = '';
-    const kinds = Object.keys(CATS).filter(k => STALLS.some(s => s.kind === k));
-    [['', '全部'], ...kinds.map(k => [k, CATS[k].short])].forEach(([k, text]) => {
+    const kinds = Object.keys(CAT_LABEL).filter(k => STALLS.some(s => catOf(s) === k));
+    [['', '全部'], ...kinds.map(k => [k, CAT_LABEL[k]])].forEach(([k, text]) => {
       const b = document.createElement('button'); b.textContent = text; b.setAttribute('aria-pressed', finderCat === k ? 'true' : 'false');
       b.onclick = () => { const at = [...cats.children].indexOf(b); finderCat = k; renderFinder(); const nb = $('finderCats').children[at]; if (nb) nb.focus({ preventScroll: true }); };
       cats.append(b);
     });
     const list = $('finderList'); list.textContent = '';
     for (const [zones, title, sub] of FINDER_GROUPS) {
-      const rows = STOPS.filter(s => zones.includes(s.zone) && (!finderCat || (finderCat === 'show' ? s.zone === 'show' : s.kind === finderCat))).sort((p, q) => p.x - q.x);
+      const rows = STOPS.filter(s => zones.includes(s.zone) && (!finderCat || catOf(s) === finderCat)).sort((p, q) => p.x - q.x);
       if (!rows.length) continue;
       const h = document.createElement('h2'); h.textContent = title;
       if (sub) { const sm = document.createElement('small'); sm.textContent = sub; h.append(sm); }
       const grid = document.createElement('div'); grid.className = 'flist';
       for (const s of rows) {
-        const stall = STALLS.includes(s), info = stall ? STATUS[statusOf(s)] : null;
+        const stall = STALLS.includes(s), info = stall ? plateOf(s) : null;
         const b = document.createElement('button'), dot = document.createElement('span'), txt = document.createElement('div');
         dot.className = 'lotdot'; dot.style.background = info ? info.c : s.dot;
         const nm = document.createElement('b'); nm.textContent = s === INTRO ? '市集入口' : nameOf(s);
-        const meta = document.createElement('span'); meta.textContent = stall ? `${s.id}・${s.short}・${info.label}` : s === STAGE ? '市集中間・今日節目' : s === LAWN ? `市集最後面・${s.role}` : s.statusText || s.role;
+        const meta = document.createElement('span'); meta.textContent = stall ? `${s.id}・${s.short}・${info.label}${hearted(s) ? '・♥ 想去' : ''}` : s === STAGE ? '市集中間・今日節目' : s === LAWN ? `市集最後面・${s.role}` : s.statusText || s.role;
         txt.append(nm, meta); b.append(dot, txt);
         b.setAttribute('aria-label', `走到${nameOf(s)}，${meta.textContent}`);
         b.onclick = () => { closeFinder(); walkTo(s); };
@@ -2229,10 +2827,10 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   function cleanCfg(p) {
     if (!p || typeof p !== 'object') return null;
     return {
-      name: cleanName(p.name), title: strip(p.title, 8), intro: strip(p.intro, 120), kind: typeof p.kind === 'string' && CATS[p.kind] ? p.kind : '', tone: Number.isInteger(p.tone) && p.tone >= 0 && p.tone < TONES.length ? p.tone : -1, look: LOOK_KEYS.includes(p.look) ? p.look : LOOK_KEYS[0],
+      name: cleanName(p.name), title: strip(p.title, 8), intro: strip(p.intro, 120), kind: typeof p.kind === 'string' && CATS[p.kind] ? p.kind : '', tone: Number.isInteger(p.tone) && p.tone >= 0 && p.tone < TONES.length ? p.tone : -1, look: LOOK_KEYS.includes(p.look) ? p.look : LOOK_KEYS[0], ...(lp => ({ hairStyle: HAIR_KEYS.includes(p.hairStyle) ? p.hairStyle : lp.hairStyle, hat: HAT_KEYS.includes(p.hat) ? p.hat : lp.hat, face: FACE_KEYS.includes(p.face) ? p.face : lp.face, hairC: Number.isInteger(p.hairC) && p.hairC >= 0 && p.hairC < HAIR_COLORS.length ? p.hairC : lp.hairC }))(lookParts(p.look)),
       c: num(p.c, COLORS.length), s: num(p.s, SKINS.length),
       props: Array.isArray(p.props) ? p.props.filter(k => PROP_KEYS.includes(k)) : [],
-      slogan: strip(p.slogan, 20), status: STATUS_KEYS.includes(p.status) ? p.status : '',
+      slogan: strip(p.slogan, 20), plate: p.plate !== false, status: STATUS_KEYS.includes(p.status) ? p.status : '',
       items: (Array.isArray(p.items) ? p.items : []).slice(0, MAX_ITEMS).map(x => ({ n: strip(x && x.n, 12), p: Math.max(0, Math.floor(Number(x && x.p)) || 0), d: strip(x && x.d, 40) })).filter(x => x.n),
     };
   }
@@ -2277,6 +2875,14 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (vdraft.slogan) bubble(st.x, 138, vdraft.slogan, 1, 16);
     ctx = saved;
   }
+  // 道具小圖：把這個攤位只擺這一樣道具畫出來，再裁到道具的位置
+  function paintPropThumb(cv, key) {
+    const base = studioBase(), c = cv.getContext('2d'), saved = ctx, [fx, fy, fw, fh] = PROP_FOCUS[key], k = Math.min(cv.width / fw, cv.height / fh);
+    ctx = c; c.setTransform(1, 0, 0, 1, 0, 0);
+    const g = c.createLinearGradient(0, 0, 0, cv.height); g.addColorStop(0, P.sky[1]); g.addColorStop(1, P.sky[3]); c.fillStyle = g; c.fillRect(0, 0, cv.width, cv.height);
+    try { c.setTransform(k, 0, 0, k, cv.width / 2 - (fx + fw / 2) * k, cv.height / 2 - (fy + fh / 2) * k); drawStall({ ...base, x: 0, deco: undefined, near: 0, vendor: { ...vdraft, slogan: '', props: [key] } }, 0); }
+    finally { ctx = saved; }
+  }
   function swatches(host, list, obj, key, name, again) {
     host.textContent = '';
     list.forEach((col, i) => {
@@ -2294,21 +2900,22 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       const role = VISITORS[key], b = document.createElement('button'), cv = document.createElement('canvas');
       cv.width = 128; cv.height = 144; cv.setAttribute('aria-hidden', 'true');
       const name = document.createElement('b'); name.textContent = role.label;
-      const tip = document.createElement('small'); tip.textContent = role.tip;
-      b.append(cv, name, tip); b.setAttribute('aria-pressed', draft.a === key ? 'true' : 'false');
+      // 手機上字太小會太花，只留角色名字；說明放在讀屏用的標籤裡（兩位盛裝的族人靠圖分男女服飾）
+      b.append(cv, name); b.setAttribute('aria-label', `${role.label}，${role.tip}`); b.setAttribute('aria-pressed', draft.a === key ? 'true' : 'false');
       b.onclick = () => { draft.a = key; renderVisitor(); };
       host.append(b);
       paint(cv, { ...draft, a: key }, 1.4, 136, Math.PI / 2, 0);
     });
   }
-  const LOOK_BY_KIND = { coffee: 'cap', bread: 'toque', fried: 'band', craft: 'flower', icecream: 'visor', meal: 'straw', play: 'cap', drink: 'long' };
-  function freshCfg(i) { const c = stallCfg[i]; return c ? cleanCfg(c) : { name: '', title: '', intro: '', tone: -1, look: LOOK_BY_KIND[STALLS[i].kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: defaultStatus(STALLS[i]), items: [] }; }
+  const LOOK_BY_KIND = { coffee: 'cap', bread: 'toque', fried: 'band', craft: 'flower', icecream: 'visor', meal: 'straw', play: 'cap', drink: 'long', plant: 'straw', hair: 'cap' };
+  // 攤主第一次打開佈置畫面時，從幫他設定好的扮裝開始改
+  function freshCfg(i) { const c = stallCfg[i], L = STALLS[i].look; return cleanCfg(c || { name: '', title: '', intro: '', tone: -1, look: LOOK_BY_KIND[STALLS[i].kind] || 'toque', c: 0, s: 0, ...(L || {}), props: [], slogan: '', status: defaultStatus(STALLS[i]), items: [] }); }
   function renderStudio() {
     const chips = $('stallChips'); chips.textContent = '';
     $('stallChipsLabel').textContent = mineMode ? '你想開哪一種攤位' : '你的攤位';
     if (mineMode) Object.keys(CATS).forEach(k => {
       const b = document.createElement('button'); b.textContent = CATS[k].short; b.setAttribute('aria-pressed', vdraft.kind === k ? 'true' : 'false');
-      b.onclick = () => { if (vdraft.look === (LOOK_BY_KIND[vdraft.kind] || 'toque')) vdraft.look = LOOK_BY_KIND[k] || 'toque'; vdraft.kind = k; renderStudio(); };
+      b.onclick = () => { if (vdraft.hat === lookParts(LOOK_BY_KIND[vdraft.kind]).hat) vdraft.hat = lookParts(LOOK_BY_KIND[k]).hat; vdraft.kind = k; renderStudio(); };
       chips.append(b);
     });
     (mineMode ? [] : STALLS).forEach((st, i) => {
@@ -2320,31 +2927,41 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (vdraft.tone < 0) { const k = TONES.findIndex(x => x.aw[0] === studioBase().aw[0]); const b = $('vTones').children[k]; if (b) b.setAttribute('aria-pressed', 'true'); }
     swatches($('vColors'), COLORS, vdraft, 'c', '衣服顏色', renderStudio);
     swatches($('vSkins'), SKINS, vdraft, 's', '膚色', renderStudio);
-    const looks = $('looks'); looks.textContent = '';
-    LOOK_KEYS.forEach(key => {
-      const b = document.createElement('button'), cv = document.createElement('canvas');
-      cv.width = 128; cv.height = 144; cv.setAttribute('aria-hidden', 'true');
-      const name = document.createElement('b'); name.textContent = LOOKS[key].label;
-      b.append(cv, name); b.setAttribute('aria-pressed', vdraft.look === key ? 'true' : 'false');
-      b.onclick = () => { vdraft.look = key; renderStudio(); };
-      looks.append(b);
-      paintLook(cv, { ...vdraft, look: key });
-    });
+    const lookGrid = (host, labels, field, preview) => {
+      host.textContent = '';
+      Object.keys(labels).forEach(key => {
+        const b = document.createElement('button'), cv = document.createElement('canvas'), name = document.createElement('b');
+        cv.width = 128; cv.height = 144; cv.setAttribute('aria-hidden', 'true'); name.textContent = labels[key];
+        b.append(cv, name); b.setAttribute('aria-pressed', vdraft[field] === key ? 'true' : 'false');
+        b.onclick = () => { vdraft[field] = key; renderStudio(); const nb = [...host.children][Object.keys(labels).indexOf(key)]; if (nb) nb.focus({ preventScroll: true }); };
+        host.append(b);
+        paintLook(cv, preview(key));
+      });
+    };
+    lookGrid($('hairs'), HAIR_STYLES, 'hairStyle', k => ({ ...vdraft, hairStyle: k, hat: 'none', face: 'none' }));
+    swatches($('hairCs'), HAIR_COLORS, vdraft, 'hairC', '髮色', renderStudio);
+    lookGrid($('hats'), HATS, 'hat', k => ({ ...vdraft, hat: k }));
+    lookGrid($('faces'), FACES, 'face', k => ({ ...vdraft, hat: 'none', face: k }));  // 配件小圖不戴帽子，才看得清楚
+    // 燈箱：五種狀態，或最後一個「不用燈箱」
     const sc = $('statusChips'); sc.textContent = '';
-    const curStatus = vdraft.status || defaultStatus(studioBase());
-    STATUS_KEYS.forEach(key => {
+    const curStatus = vdraft.plate === false ? 'none' : vdraft.status || defaultStatus(studioBase());
+    [...STATUS_KEYS, 'none'].forEach(key => {
       const b = document.createElement('button'), on = curStatus === key;
-      b.textContent = STATUS[key].label; b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      if (on) { b.style.background = STATUS[key].c; b.style.borderColor = 'var(--ink)'; }
-      b.onclick = () => { vdraft.status = key; renderStudio(); };
+      b.textContent = key === 'none' ? '不用燈箱' : STATUS[key].label; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) { b.style.background = key === 'none' ? 'var(--ink)' : STATUS[key].c; b.style.borderColor = 'var(--ink)'; }
+      b.onclick = () => { if (key === 'none') vdraft.plate = false; else { vdraft.plate = true; vdraft.status = key; } renderStudio(); };
       sc.append(b);
     });
     const props = $('props'); props.textContent = '';
+    $('propCount').textContent = vdraft.props.length ? `擺上道具（已經擺了 ${vdraft.props.length} 個）` : '擺上道具';
+    $('propClear').hidden = !vdraft.props.length;
     PROP_KEYS.forEach(key => {
-      const b = document.createElement('button'), on = vdraft.props.includes(key);
-      b.textContent = PROPS[key]; b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.onclick = () => { vdraft.props = on ? vdraft.props.filter(k => k !== key) : [...vdraft.props, key]; renderStudio(); };
+      const b = document.createElement('button'), on = vdraft.props.includes(key), cv = document.createElement('canvas'), nm = document.createElement('span');
+      cv.width = 168; cv.height = 140; cv.setAttribute('aria-hidden', 'true'); nm.textContent = PROPS[key];
+      b.append(cv, nm); b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.setAttribute('aria-label', `${PROPS[key]}，${on ? '已經擺上，點一下拿掉' : '點一下擺上去'}`);
+      b.onclick = () => { vdraft.props = on ? vdraft.props.filter(k => k !== key) : [...vdraft.props, key]; renderStudio(); const nb = [...$('props').children][PROP_KEYS.indexOf(key)]; if (nb) nb.focus({ preventScroll: true }); };
       props.append(b);
+      paintPropThumb(cv, key);
     });
     const sl = $('slogans'); sl.textContent = '';
     PRESET_SLOGANS.forEach(text => {
@@ -2361,15 +2978,29 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       li.append(d, del); list.append(li);
     });
   }
+  // 佈置分四步：一次只看一步，上方預覽一直都在
+  let vstep = 1;
+  const STEP_HINTS = { 1: '先幫攤位取名字，再挑雨棚的顏色。', 2: '打扮你的攤主：先選髮型，再戴上帽子或頭帶。', 3: '點一下就擺上去，再點一下拿掉，可以擺很多個！', 4: '寫一句叫賣口號和要賣的東西，客人走進來時攤主會說給他聽。' };
+  function renderSteps() {
+    for (const el of document.querySelectorAll('#vendorForm [data-step]')) el.hidden = +el.dataset.step !== vstep;
+    for (const b of $('stepTabs').children) b.setAttribute('aria-current', +b.dataset.go === vstep ? 'step' : 'false');
+    $('stepHint').textContent = STEP_HINTS[vstep];
+    $('stepPrev').hidden = vstep === 1; $('stepNext').hidden = vstep === 4;
+  }
+  function goStep(n) { vstep = clamp(n, 1, 4); renderSteps(); $('picker').scrollTop = 0; }
+  for (const b of $('stepTabs').children) b.onclick = () => goStep(+b.dataset.go);
+  $('stepPrev').onclick = () => goStep(vstep - 1);
+  $('stepNext').onclick = () => goStep(vstep + 1);
+  $('propClear').onclick = () => { vdraft.props = []; renderStudio(); };
   function loadStudio() {
-    vdraft = !mineMode ? freshCfg(vstall) : MINE.vendor ? cleanCfg(MINE.vendor) : { name: '', title: '', intro: '', kind: MINE.kind, tone: -1, look: LOOK_BY_KIND[MINE.kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: 'go', items: [] };
+    vdraft = !mineMode ? freshCfg(vstall) : cleanCfg(MINE.vendor || { name: '', title: '', intro: '', kind: MINE.kind, tone: -1, look: LOOK_BY_KIND[MINE.kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: 'go', items: [] });
     if (mineMode && !CATS[vdraft.kind]) vdraft.kind = MINE.kind;
     $('ownerName').value = vdraft.name;
     $('stallTitle').value = vdraft.title;
     $('stallIntro').value = vdraft.intro || '';
     $('sloganOwn').value = PRESET_SLOGANS.includes(vdraft.slogan) ? '' : vdraft.slogan;
     $('gErr').hidden = true;
-    renderStudio();
+    renderStudio(); renderSteps();
   }
   function renderMode() {
     const vendor = mode === 's';
@@ -2399,7 +3030,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     draft = me ? { ...me } : { r: 'v', a: 'cat', c: 0, s: 0, n: '' };
     $('nick').value = me ? me.n : '';
     vstall = myStall >= 0 ? myStall : 0;
-    mineMode = startMode === 'm';
+    mineMode = startMode === 'm'; vstep = 1;
     mode = mineMode || (startMode === 's' && canVendor) ? 's' : 'v';
     $('modeSeg').hidden = mineMode || !canVendor;
     pickerOpen = true; $('picker').hidden = false; menu.hidden = true;
@@ -2453,16 +3084,18 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   function renderStatusRow(st) {
     const row = $('statusRow'); row.textContent = '';
     const tag = document.createElement('span'); tag.textContent = '燈箱'; row.append(tag);
-    STATUS_KEYS.forEach(key => {
-      const b = document.createElement('button'), on = statusOf(st) === key;
-      b.textContent = STATUS[key].label; b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      if (on) b.style.background = STATUS[key].c;
+    const noPlate = st.vendor && st.vendor.plate === false;
+    [...STATUS_KEYS, 'none'].forEach(key => {
+      const b = document.createElement('button'), on = key === 'none' ? noPlate : !noPlate && statusOf(st) === key, text = key === 'none' ? '不用燈箱' : STATUS[key].label;
+      b.textContent = text; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) b.style.background = key === 'none' ? INK : STATUS[key].c;
+      const set = cfg => { if (key === 'none') cfg.plate = false; else { cfg.plate = true; cfg.status = key; } };
       b.onclick = () => {
-        if (st === MINE) { st.vendor.status = key; setMine(st.vendor); renderStatusRow(st); showCast(`${nameOf(st)}：${STATUS[key].label}`, '燈箱更新'); return; }
+        if (st === MINE) { set(st.vendor); setMine(st.vendor); renderStatusRow(st); showCast(`${nameOf(st)}：${text}`, '燈箱更新'); return; }
         if (!canVendor || !vendorSession) return;
-        const i = STALLS.indexOf(st), cfg = st.vendor; cfg.status = key;
+        const i = STALLS.indexOf(st), cfg = st.vendor; set(cfg);
         applyCfg(i, cfg); renderStatusRow(st); persist(i, cfg);
-        showCast(`${nameOf(st)}：${STATUS[key].label}`, '燈箱更新');
+        showCast(`${nameOf(st)}：${text}`, '燈箱更新');
       };
       row.append(b);
     });
@@ -2526,7 +3159,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
         menu.hidden = true;
         mySay = text; mySayUntil = clock + 4;
         const k = walkers.filter(w => Math.abs(w.x - cam) < 170).sort((p, q) => Math.abs(p.x - cam) - Math.abs(q.x - cam))[0];
-        if (k) { k.replyText = anyOf(REPLIES); k.replyAt = clock + 1.1; k.replyUntil = clock + 4.4; }
+        if (k) { k.replyText = anyOf(SAY_REPLIES[text] || REPLIES); k.replyAt = clock + 1.1; k.replyUntil = clock + 4.4; }
       };
       menu.append(b);
     });
@@ -2535,7 +3168,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   // 運勢只放好籤；新的請加在後面，前面的順序不要動（已經抽過的人存的是第幾個）
   const LOTS = ['大吉', '中吉', '小吉', '吉', '上上籤', '好運到', '口福運', '貴人運', '人氣旺', '笑口常開'];
   const LOT_LINES = ['今天胃口特別好', '會遇到聊得來的人', '慢慢逛就會有好東西', '記得帶朋友一起來', '會吃到今天最合你的一口', '走到哪都有人跟你打招呼', '第一眼看到的攤位就很合你', '會學到一句新的布農語', '今天的笑聲特別多', '排隊也會遇到有趣的人', '適合嘗試沒吃過的味道', '逛到最後還有力氣聽音樂會', '跟家人朋友一起逛更開心', '你的好心情會傳給旁邊的人', '適合買一份跟別人分享', '今天拍照特別好看'];
-  const LOT_TIPS = { coffee: '去喝一杯桂花拿鐵', bread: '小米甜甜圈還有幾個', fried: '跟師傅說暗號，有加料', craft: '挑一個最像你的胸針', icecream: '小米牛奶口味先吃一球', meal: '竹筒飯剛好出爐', play: '套圈圈挑戰一下', drink: '來一杯洛神花茶解渴' };
+  const LOT_TIPS = { coffee: '來一杯咖啡，慢慢逛', bread: '嚐嚐手作甜點', fried: '帶自己的碗來裝香腸', craft: '挑一件喜歡的手作小物', icecream: '吃一球冰淇淋消暑', meal: '嚐嚐今天的好味道', play: '來玩一下', drink: '帶自己的杯子來一杯', plant: '挑一盆帶回家', hair: '剪一個清爽的髮型' };
   let lotOpen = false, lotStall = null;
   function closeLot() { lotOpen = false; $('lot').hidden = true; canvas.focus({ preventScroll: true }); }
   const LOT_MAX = 3, LOT_STORE = 'market-lot-v3';
@@ -2567,7 +3200,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   function showLot(fresh) {
     const n = lotState.draws.length, pick = lotState.draws[n - 1], left = LOT_MAX - n;
     const st = STALLS[lotIdx(pick.s)] || STALLS[0]; lotStall = st;
-    const info = STATUS[statusOf(st)] || {};
+    const info = plateOf(st) || {};
     $('lotKick').textContent = fresh ? KICKS[n - 1] : '今天的 3 次機會都用完囉，這是你最後抽到的一攤：';
     $('lotNo').textContent = `第 ${n} 抽・共 ${LOT_MAX} 抽`;
     $('lotLuck').textContent = LOTS[pick.l];
@@ -2621,7 +3254,13 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     '有你在，事情就有滋味',
     '衝第一個，帶大家往前走',
   ];
-  const STAMP_STORE = 'market-stamps-v1', RING_STORE = 'market-ring-v1';
+  const STAMP_STORE = 'market-stamps-v1', RING_STORE = 'market-ring-v1', HEART_STORE = 'market-hearts-v1';
+  // 想去：記的是「攤位編號|商品名稱」，攤位順序調整也不會指錯
+  const hearts = new Set();
+  try { const a = JSON.parse(localStorage.getItem(HEART_STORE) || '[]'); if (Array.isArray(a)) for (const k of a) if (typeof k === 'string') hearts.add(k); } catch (e) {}
+  const heartKey = (st, item) => `${st.id}|${item.n}`;
+  const hearted = st => [...hearts].some(k => k.startsWith(`${st.id}|`));
+  function saveHearts() { try { localStorage.setItem(HEART_STORE, JSON.stringify([...hearts])); } catch (e) {} if (finderOpen) renderFinder(); }
   const stamps = new Set();
   let ringBest = 0;
   try {
@@ -2664,6 +3303,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       zh.textContent = on ? `${CLASS_NAMES[i][1]}・${GRADES[i]}年級` : `${GRADES[i]}年級的樹`;
       tx.textContent = on ? TREE_NOTES[i] : '走進這個年級的攤位，就能認識這棵樹。';
       b.append(nm, zh, tx); b.onclick = () => passGo(st);
+      if (hearted(st)) { const hm = document.createElement('span'); hm.className = 'heartmark'; hm.textContent = '♥'; hm.setAttribute('aria-hidden', 'true'); b.append(hm); }
       trees.append(b);
     });
     const host = $('passStamps'); host.textContent = '';
@@ -2672,7 +3312,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       const on = stamps.has(st.id), b = document.createElement('button'), seal = document.createElement('i'), nm = document.createElement('span');
       b.style.setProperty('--c', toneOf(st).aw[0]); if (on) b.className = 'on';
       seal.textContent = st.short; seal.setAttribute('aria-hidden', 'true'); nm.textContent = nameOf(st);
-      b.append(seal, nm); b.setAttribute('aria-label', `${nameOf(st)}，${on ? '已經蓋章' : '還沒蓋章'}，走過去`);
+      b.append(seal, nm); b.setAttribute('aria-label', `${nameOf(st)}，${on ? '已經蓋章' : '還沒蓋章'}${hearted(st) ? '，想去' : ''}，走過去`);
+      if (hearted(st)) { const hm = document.createElement('span'); hm.className = 'heartmark'; hm.textContent = '♥'; hm.setAttribute('aria-hidden', 'true'); b.append(hm); }
       b.onclick = () => passGo(st);
       host.append(b);
     }
@@ -2685,7 +3326,176 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   $('pass').addEventListener('click', e => { if (e.target.id === 'pass') closePass(); });
   paintPass();
 
-  // 套圈圈：瞄準圈在三排瓶子上來回跑，越遠的一排跑得越快、分數越高
+  // ---------- 班級攤小遊戲：每個年級一個，跟著年級走、不跟品項走，品項確定後也不會消失（三年級固定是套圈圈）
+  let gameOpen = false, gm = null;
+  const gameCv = $('gameCv'), gx = gameCv.getContext('2d');
+  const GW = 340, GH = 370, GAME_TIME = 30;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const gCircle = (x, y, r) => { gx.beginPath(); gx.arc(x, y, r, 0, 6.2832); };
+  const gFill = (f, s, w) => { gx.fillStyle = f; gx.fill(); if (s) { gx.strokeStyle = s; gx.lineWidth = w || 2; gx.stroke(); } };
+  const gText = (t, x, y, size, col, font) => { gx.font = `700 ${size}px ${font || FACE}`; gx.textAlign = 'center'; gx.textBaseline = 'middle'; gx.fillStyle = col; gx.fillText(t, x, y); };
+  const gBg = (top, bottom) => { const g = gx.createLinearGradient(0, 0, 0, GH); g.addColorStop(0, top); g.addColorStop(1, bottom); gx.fillStyle = g; gx.fillRect(0, 0, GW, GH); };
+  const gRR = (x, y, w, h, r) => { gx.beginPath(); gx.roundRect(x, y, w, h, r); };
+  // 共用的小圖
+  const acornAt = (x, y, k) => { gx.save(); gx.translate(x, y); gx.scale(k, k); gx.beginPath(); gx.ellipse(0, 3, 11, 14, 0, 0, 6.2832); gFill('#b07a42', INK, 2); gx.beginPath(); gx.ellipse(0, -8, 13, 7, 0, 0, 6.2832); gFill('#5b3a2a', INK, 2); gx.fillStyle = 'rgba(255,255,255,.4)'; gx.beginPath(); gx.ellipse(-4, 2, 2.4, 5, -.3, 0, 6.2832); gx.fill(); gx.strokeStyle = INK; gx.lineWidth = 2; gx.beginPath(); gx.moveTo(0, -14); gx.lineTo(2, -19); gx.stroke(); gx.restore(); };
+  const berryAt = (x, y, r) => { gCircle(x, y, r); gFill('#e8452f', INK, 1.6); gx.fillStyle = '#ffb38a'; for (let k = 0; k < 6; k++) { const a = k / 6 * 6.2832; gCircle(x + Math.cos(a) * r * .55, y + Math.sin(a) * r * .55, r * .18); gx.fill(); } };
+  const treeAt = (x, base, h, col) => { gx.fillStyle = '#6b4a30'; gx.fillRect(x - 3, base - h * .4, 6, h * .4); gx.beginPath(); gx.ellipse(x, base - h * .62, h * .26, h * .42, 0, 0, 6.2832); gFill(col, INK, 2); };
+  const leafIcon = (x, y) => { gx.strokeStyle = '#3f7d3f'; gx.lineWidth = 2; gx.beginPath(); gx.moveTo(x, y + 20); gx.lineTo(x, y - 20); gx.stroke(); for (const [dy, d] of [[-14, 1], [-14, -1], [-3, 1], [-3, -1], [8, 1], [8, -1]]) { gx.beginPath(); gx.ellipse(x + d * 8, y + dy, 8, 4, d * .5, 0, 6.2832); gFill('#5aa85d', INK, 1.2); } gx.beginPath(); gx.ellipse(x, y - 22, 4, 7, 0, 0, 6.2832); gFill('#5aa85d', INK, 1.2); };
+  const ICONS = {
+    leaf: leafIcon,
+    salt: (x, y) => { for (const [dx, dy, s] of [[-10, 6, 14], [6, 8, 12], [-2, -8, 13]]) { gRR(x + dx - s / 2, y + dy - s / 2, s, s, 2); gFill('#fbf8ef', INK, 1.6); gx.fillStyle = 'rgba(120,160,190,.35)'; gx.fillRect(x + dx - s / 2 + 2, y + dy - s / 2 + 2, s / 3, s - 4); } },
+    fruit: (x, y) => { gx.strokeStyle = '#3f7d3f'; gx.lineWidth = 2; gx.beginPath(); gx.moveTo(x, y - 22); gx.lineTo(x, y - 8); gx.stroke(); for (const [dx, dy] of [[0, -6], [-7, 0], [7, 0], [-4, 8], [4, 8], [0, 16], [-10, 10], [10, 10]]) { gCircle(x + dx, y + dy, 5); gFill('#c23b2e', INK, 1.2); } },
+    bird: (x, y) => { gx.beginPath(); gx.ellipse(x, y + 4, 16, 12, 0, 0, 6.2832); gFill('#3f6fb0', INK, 1.8); gCircle(x + 12, y - 8, 9); gFill('#3f6fb0', INK, 1.8); gx.beginPath(); gx.moveTo(x + 20, y - 9); gx.lineTo(x + 28, y - 6); gx.lineTo(x + 20, y - 4); gx.closePath(); gFill('#efc25a', INK, 1.2); gCircle(x + 14, y - 10, 1.8); gFill(INK); gx.beginPath(); gx.ellipse(x - 4, y + 2, 9, 5, -.4, 0, 6.2832); gFill('#6fa8c9', INK, 1.2); },
+    acorn: (x, y) => acornAt(x, y + 2, 1.15),
+    millet: (x, y) => { gx.strokeStyle = '#7d9a4a'; gx.lineWidth = 2.4; gx.lineCap = 'round'; gx.beginPath(); gx.moveTo(x - 6, y + 22); gx.quadraticCurveTo(x - 6, y - 14, x + 6, y - 18); gx.stroke(); gx.strokeStyle = INK; gx.lineWidth = 9; gx.beginPath(); gx.moveTo(x + 4, y - 18); gx.quadraticCurveTo(x + 18, y - 10, x + 14, y + 12); gx.stroke(); gx.strokeStyle = '#e9b53f'; gx.lineWidth = 6.5; gx.stroke(); },
+  };
+  const GAMES = {
+    1: { title: GAME_TITLES[0], intro: '泡泡往上飄，點一下把它戳破！30 秒內戳破越多越厲害。', timed: true,
+      init: g => { g.b = []; g.spawn = 0; g.pops = []; },
+      step: (g, dt) => {
+        if ((g.spawn -= dt) <= 0) { g.spawn = rand(.32, .6); g.b.push({ x: rand(30, 310), y: GH + 30, r: rand(15, 27), vy: rand(45, 90), ph: rand(0, 6) }); }
+        for (const b of g.b) { b.y -= b.vy * dt; b.x += Math.sin(g.t * 2 + b.ph) * .5; }
+        g.b = g.b.filter(b => b.y > -40); for (const p of g.pops) p.t += dt; g.pops = g.pops.filter(p => p.t < .4);
+      },
+      tap: (g, x, y) => { for (let i = g.b.length - 1; i >= 0; i--) { const b = g.b[i]; if (Math.hypot(x - b.x, y - b.y) < b.r + 8) { g.b.splice(i, 1); g.score++; g.pops.push({ x: b.x, y: b.y, r: b.r, t: 0 }); return; } } },
+      draw: g => {
+        gBg('#bfe6f4', '#eef7ef');
+        gx.strokeStyle = '#6b4a30'; gx.lineWidth = 7; gx.lineCap = 'round'; gx.beginPath(); gx.moveTo(-10, 34); gx.quadraticCurveTo(170, 6, 350, 30); gx.stroke();
+        for (let i = 0; i < 9; i++) { const x = 20 + i * 38; gx.beginPath(); gx.ellipse(x, 46, 10, 6, .3, 0, 6.2832); gFill('#6fae4a', INK, 1.2); gCircle(x + 10, 52, 7); gFill('#d9a03a', INK, 1.4); }
+        gRR(70, 330, 200, 40, 14); gFill('#8a5a3c', INK, 2); gx.fillStyle = '#fff'; for (let i = 0; i < 9; i++) { gCircle(84 + i * 22, 330, 10 + (i % 3) * 3); gx.fill(); }
+        for (const b of g.b) { gCircle(b.x, b.y, b.r); gFill('rgba(255,255,255,.35)', 'rgba(70,130,175,.85)', 2); gx.fillStyle = 'rgba(255,255,255,.9)'; gx.beginPath(); gx.ellipse(b.x - b.r * .35, b.y - b.r * .4, b.r * .22, b.r * .14, -.6, 0, 6.2832); gx.fill(); }
+        for (const p of g.pops) { gx.globalAlpha = 1 - p.t / .4; gCircle(p.x, p.y, p.r + p.t * 40); gx.strokeStyle = 'rgba(70,130,175,.9)'; gx.lineWidth = 2; gx.stroke(); gx.globalAlpha = 1; }
+      },
+      hud: g => [`剩 ${Math.ceil(g.left)} 秒`, `${g.score} 個泡泡`],
+      done: g => `30 秒戳破了 ${g.score} 個泡泡！${g.score >= 40 ? '泡泡大師！' : g.score >= 20 ? '手好快！' : '再來一次會更多！'}` },
+    2: { title: GAME_TITLES[1], intro: '紅紅的構樹果實掉下來了，手指左右拖曳（或按鍵盤左右鍵）移動籃子接住它！', timed: true,
+      init: g => { g.bx = 170; g.f = []; g.spawn = .3; g.kd = 0; g.pops = []; },
+      step: (g, dt) => {
+        g.bx = clamp(g.bx + g.kd * 280 * dt, 32, 308);
+        if ((g.spawn -= dt) <= 0) { g.spawn = rand(.45, .8); g.f.push({ x: rand(30, 310), y: 96, vy: rand(95, 150) + (GAME_TIME - g.left) * 3 }); }
+        for (const f of g.f) f.y += f.vy * dt;
+        g.f = g.f.filter(f => { if (f.y > 318 && f.y < 342 && Math.abs(f.x - g.bx) < 36) { g.score++; g.pops.push({ x: f.x, t: 0 }); return false; } return f.y < GH + 12; });
+        for (const p of g.pops) p.t += dt; g.pops = g.pops.filter(p => p.t < .6);
+      },
+      move: (g, x) => { g.bx = clamp(x, 32, 308); },
+      draw: g => {
+        gBg('#cfe9f5', '#e6f2dc'); gx.fillStyle = '#7dbf5a'; gx.fillRect(0, 344, GW, 26);
+        gx.fillStyle = '#6b4a30'; gx.fillRect(40, 60, 14, 290); gx.fillRect(286, 60, 14, 290);
+        for (const [x, y, r] of [[50, 50, 70], [170, 30, 90], [290, 50, 70]]) { gx.beginPath(); gx.ellipse(x, y, r, 54, 0, 0, 6.2832); gFill('#4f9c5a', INK, 2); }
+        for (const [x, y] of [[20, 70], [80, 82], [140, 64], [200, 78], [250, 60], [310, 80], [110, 40], [230, 30]]) berryAt(x, y, 6);
+        for (const f of g.f) berryAt(f.x, f.y, 9);
+        gx.beginPath(); gx.moveTo(g.bx - 36, 318); gx.lineTo(g.bx + 36, 318); gx.lineTo(g.bx + 28, 344); gx.lineTo(g.bx - 28, 344); gx.closePath(); gFill('#c9a15f', INK, 2.2);
+        gx.strokeStyle = 'rgba(110,70,36,.5)'; gx.lineWidth = 1.2; for (const yy of [326, 335]) { gx.beginPath(); gx.moveTo(g.bx - 32, yy); gx.lineTo(g.bx + 32, yy); gx.stroke(); }
+        for (const p of g.pops) { gx.globalAlpha = 1 - p.t / .6; gText('+1', p.x, 300 - p.t * 40, 18, '#a93a15'); gx.globalAlpha = 1; }
+      },
+      hud: g => [`剩 ${Math.ceil(g.left)} 秒`, `接到 ${g.score} 顆`],
+      done: g => `接到了 ${g.score} 顆構樹果實！${g.score >= 35 ? '接果實高手！' : g.score >= 18 ? '籃子都快裝滿了！' : '再來一次會接更多！'}` },
+    4: { title: GAME_TITLES[3], intro: '橡實會從洞裡冒出來，趁它躲回去之前點一下，幫松鼠收集橡實！', timed: true,
+      init: g => { g.h = Array(9).fill(0); g.max = Array(9).fill(1); g.spawn = .4; g.hits = []; },
+      step: (g, dt) => {
+        if ((g.spawn -= dt) <= 0) { const free = g.h.map((v, i) => v <= 0 ? i : -1).filter(i => i >= 0); if (free.length) { const i = free[Math.floor(Math.random() * free.length)]; g.h[i] = g.max[i] = Math.max(.55, 1 - (GAME_TIME - g.left) * .015); } g.spawn = rand(.35, .7); }
+        for (let i = 0; i < 9; i++) if (g.h[i] > 0) g.h[i] -= dt;
+        for (const p of g.hits) p.t += dt; g.hits = g.hits.filter(p => p.t < .5);
+      },
+      tap: (g, x, y) => { for (let i = 0; i < 9; i++) { const hx = 70 + (i % 3) * 100, hy = 120 + Math.floor(i / 3) * 90; if (g.h[i] > 0 && Math.hypot(x - hx, y - (hy - 14)) < 38) { g.h[i] = 0; g.score++; g.hits.push({ x: hx, y: hy - 30, t: 0 }); return; } } },
+      draw: g => {
+        gBg('#9fd08a', '#6fae5a');
+        gx.fillStyle = '#4f9c5a'; for (const [x, y] of [[20, 40], [320, 36], [170, 18]]) { gx.beginPath(); gx.ellipse(x, y, 60, 26, 0, 0, 6.2832); gx.fill(); }
+        for (let i = 0; i < 9; i++) {
+          const hx = 70 + (i % 3) * 100, hy = 120 + Math.floor(i / 3) * 90;
+          gx.beginPath(); gx.ellipse(hx, hy + 6, 38, 14, 0, 0, 6.2832); gFill('#8a5a3c');
+          gx.save(); gx.beginPath(); gx.rect(hx - 50, hy - 60, 100, 66); gx.clip();
+          if (g.h[i] > 0) { const k = g.h[i] / g.max[i], up = Math.min(1, Math.min(1 - k, k) * 6); acornAt(hx, hy + 20 - up * 30, 1.3); }
+          gx.restore();
+          gx.beginPath(); gx.ellipse(hx, hy + 6, 38, 14, 0, 0, Math.PI); gFill('#3a2a20');
+          gx.beginPath(); gx.ellipse(hx, hy + 6, 38, 14, 0, 0, 6.2832); gx.strokeStyle = INK; gx.lineWidth = 2; gx.stroke();
+        }
+        for (const p of g.hits) { gx.globalAlpha = 1 - p.t / .5; gText('+1', p.x, p.y - p.t * 40, 20, '#fff'); gx.globalAlpha = 1; }
+      },
+      hud: g => [`剩 ${Math.ceil(g.left)} 秒`, `${g.score} 顆橡實`],
+      done: g => `幫松鼠收集了 ${g.score} 顆橡實！${g.score >= 35 ? '松鼠的好朋友！' : g.score >= 18 ? '松鼠吃得飽飽的！' : '再來一次會撿更多！'}` },
+    5: { title: GAME_TITLES[4], intro: '翻開兩張一樣的牌就配成一對，用最少的次數把 6 對全部配完！', timed: false,
+      init: g => { const ks = Object.keys(ICONS), deck = [...ks, ...ks]; for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; } g.c = deck.map(k => ({ k, open: false, done: false })); g.sel = []; g.moves = 0; g.wait = 0; },
+      step: (g, dt) => { if (g.wait > 0 && (g.wait -= dt) <= 0) { for (const i of g.sel) g.c[i].open = false; g.sel = []; } },
+      tap: (g, x, y) => {
+        if (g.wait > 0) return;
+        const col = Math.floor((x - 15) / 80), row = Math.floor((y - 30) / 106);
+        if (col < 0 || col > 3 || row < 0 || row > 2 || (x - 15) % 80 > 70 || (y - 30) % 106 > 96) return;
+        const i = row * 4 + col, c = g.c[i]; if (c.open || c.done) return;
+        c.open = true; g.sel.push(i);
+        if (g.sel.length === 2) {
+          g.moves++; const [a, b] = g.sel;
+          if (g.c[a].k === g.c[b].k) { g.c[a].done = g.c[b].done = true; g.sel = []; g.score++; if (g.score === 6) gameEnd(); }
+          else g.wait = .8;
+        }
+      },
+      draw: g => {
+        gBg('#f6e3b8', '#f1d9a6');
+        g.c.forEach((c, i) => {
+          const x = 15 + (i % 4) * 80, y = 30 + Math.floor(i / 4) * 106;
+          gRR(x, y, 70, 96, 10);
+          if (c.open || c.done) { gFill(c.done ? '#fffaf0' : '#fff', c.done ? '#2e9e6b' : INK, c.done ? 3 : 2); ICONS[c.k](x + 35, y + 48); }
+          else { gFill('#4f9c5a', INK, 2); gx.strokeStyle = 'rgba(255,255,255,.35)'; gx.lineWidth = 1.5; gRR(x + 6, y + 6, 58, 84, 7); gx.stroke(); gText('Halus', x + 35, y + 48, 15, '#fff3d6', UI); }
+        });
+      },
+      hud: g => [`翻了 ${g.moves} 次`, `${g.score}/6 對`],
+      done: g => `6 對全部配完了！只翻了 ${g.moves} 次。${g.moves <= 9 ? '記憶力超強！' : g.moves <= 14 ? '很厲害喔！' : '多玩幾次會越來越快！'}` },
+    6: { title: GAME_TITLES[5], intro: '指針移到綠色區域時，按「種！」或點畫面，就能種下一棵赤楊木。10 棵樹苗，看你能種活幾棵！', timed: false, pressLabel: '種！',
+      init: g => { g.seeds = 10; g.p = 0; g.dir = 1; g.zc = rand(.25, .75); g.zw = .26; g.trees = []; g.flash = null; },
+      step: (g, dt) => {
+        g.p += g.dir * (.75 + g.score * .07) * dt; if (g.p > 1 || g.p < 0) { g.p = clamp(g.p, 0, 1); g.dir = -g.dir; }
+        for (const t of g.trees) t.grow = Math.min(1, t.grow + dt * 2.5); if (g.flash && (g.flash.t += dt) > .7) g.flash = null;
+      },
+      press: g => {
+        const ok = Math.abs(g.p - g.zc) < g.zw / 2, slot = 10 - g.seeds;
+        if (ok) { g.score++; g.trees.push({ slot, grow: 0 }); g.zw = Math.max(.1, g.zw - .018); }
+        g.flash = { ok, t: 0 }; g.seeds--; g.zc = rand(.15, .85);
+        if (g.seeds <= 0) gameEnd();
+      },
+      tap: g => GAMES[6].press(g),
+      draw: g => {
+        gBg('#bfe6f4', '#e9f4e4');
+        gx.beginPath(); gx.moveTo(0, 300); gx.quadraticCurveTo(170, 230, 340, 300); gx.lineTo(340, 370); gx.lineTo(0, 370); gx.closePath(); gFill('#8a6a48');
+        gx.beginPath(); gx.moveTo(0, 300); gx.quadraticCurveTo(170, 230, 340, 300); gx.strokeStyle = INK; gx.lineWidth = 2; gx.stroke();
+        for (let s = 0; s < 10; s++) { const x = 22 + s * 33, y = 300 - 4 * (x / 340) * (1 - x / 340) * 35 + 2; gx.beginPath(); gx.ellipse(x, y, 9, 4, 0, 0, 6.2832); gFill('#5a4030'); }
+        for (const t of g.trees) { const x = 22 + t.slot * 33, y = 300 - 4 * (x / 340) * (1 - x / 340) * 35 + 2; treeAt(x, y, 30 + 46 * t.grow, '#4f9c5a'); }
+        gRR(30, 40, 280, 26, 13); gFill('#fff', INK, 2);
+        gx.save(); gRR(30, 40, 280, 26, 13); gx.clip(); gx.fillStyle = '#7fd08a'; gx.fillRect(30 + (g.zc - g.zw / 2) * 280, 40, g.zw * 280, 26); gx.restore();
+        gRR(30, 40, 280, 26, 13); gx.strokeStyle = INK; gx.lineWidth = 2; gx.stroke();
+        const mx = 30 + g.p * 280; gx.beginPath(); gx.moveTo(mx, 72); gx.lineTo(mx - 8, 86); gx.lineTo(mx + 8, 86); gx.closePath(); gFill('#e85d2f', INK, 1.6); gx.fillStyle = INK; gx.fillRect(mx - 1.5, 36, 3, 34);
+        if (g.flash) { gx.globalAlpha = 1 - g.flash.t / .7; gText(g.flash.ok ? '種下去了！' : '差一點！', 170, 130, 26, g.flash.ok ? '#2e7d4f' : '#a93a15'); gx.globalAlpha = 1; }
+      },
+      hud: g => [`剩 ${g.seeds} 棵樹苗`, `種了 ${g.score} 棵`],
+      done: g => `10 棵樹苗種活了 ${g.score} 棵！${g.score >= 9 ? '森林小守護者！' : g.score >= 6 ? '山坡變綠了！' : '再來一次，種出一片森林！'}` },
+  };
+  function gameHud(msg) { const [l, r] = gm.def.hud(gm); $('gameLeft').textContent = l; $('gameScore').textContent = r; if (msg != null) $('gameMsg').textContent = msg; }
+  function gameReset() { gm = { def: gm.def, playing: false, over: false, score: 0, left: GAME_TIME, t: 0 }; gm.def.init(gm); $('gameGo').textContent = '開始'; gameHud(gm.def.intro); }
+  function gameStart() { gameReset(); gm.playing = true; $('gameGo').textContent = gm.def.pressLabel || '重新開始'; gameHud(''); }
+  function gameEnd() {
+    if (!gm.playing) return;
+    gm.playing = false; gm.over = true; gm.flash = null; $('gameGo').textContent = '再玩一次'; gameHud(gm.def.done(gm));
+    if (inside && inside.grade) { extraLine = true; speak('謝謝你來玩！市集當天也來我們的攤位逛逛喔！'); }
+  }
+  function gameFrame(dt) {
+    if (!gm) return;
+    if (gm.playing) { gm.t += dt; if (gm.def.timed && (gm.left -= dt) <= 0) { gm.left = 0; gameEnd(); } else gm.def.step(gm, dt); gameHud(); }
+    const c = gx; c.setTransform(2, 0, 0, 2, 0, 0); gm.def.draw(gm);
+    if (!gm.playing) { c.fillStyle = 'rgba(29,26,54,.45)'; c.fillRect(0, 0, GW, GH); gText(gm.over ? '結束！' : gm.def.title, 170, 165, 28, PAPER); gText(gm.over ? '按「再玩一次」重新挑戰' : '按下面的「開始」', 170, 205, 15, '#f6e3b8', UI); }
+  }
+  function openGame(grade) {
+    const def = GAMES[grade]; if (!def) return;
+    gm = { def }; gameReset(); $('gameTitle').textContent = def.title; gameCv.setAttribute('aria-label', `${def.title}小遊戲。${def.intro}`);
+    gameOpen = true; $('game').hidden = false; $('game').scrollTop = 0; $('gameGo').focus({ preventScroll: true });
+  }
+  function closeGame() { gameOpen = false; if (gm) gm.playing = false; $('game').hidden = true; (inside ? $('say') : canvas).focus({ preventScroll: true }); }
+  $('gameGo').onclick = () => { if (!gm) return; if (gm.playing) { if (gm.def.press) gm.def.press(gm); else gameStart(); } else gameStart(); };
+  $('gameClose').onclick = closeGame;
+  $('gamePlay').onclick = () => { if (inside && inside.grade) openGame(inside.grade); };
+  const gamePt = e => { const r = gameCv.getBoundingClientRect(); return [(e.clientX - r.left) / r.width * GW, (e.clientY - r.top) / r.height * GH]; };
+  gameCv.addEventListener('pointerdown', e => { e.preventDefault(); if (!gm || !gm.playing) return; const [x, y] = gamePt(e); if (gm.def.move) gm.def.move(gm, x); if (gm.def.tap) gm.def.tap(gm, x, y); });
+  gameCv.addEventListener('pointermove', e => { if (!gm || !gm.playing || !gm.def.move || (e.pointerType !== 'mouse' && !e.buttons)) return; gm.def.move(gm, gamePt(e)[0]); });
+
+  // 楓香套圈圈（三年級 Dala 楓香）：瞄準圈在三排楓香樹苗上來回跑，越遠的一排跑得越快、分數越高
   let ringOpen = false, rg = null;
   const ringCv = $('ringCv'), rc = ringCv.getContext('2d');
   const RING_ROWS = [[100, [70, 170, 270], 3, .8, 230], [172, [50, 130, 210, 290], 2, .95, 190], [248, [40, 105, 170, 235, 300], 1, 1.1, 150]];
@@ -2696,10 +3506,10 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   }
   function ringReset() {
     const bottles = []; let k = 0;
-    for (const [y, xs, pts, s] of RING_ROWS) for (const x of xs) { const gold = pts === 3 && x === 170; bottles.push({ x, y, s, pts: gold ? 5 : pts, gold, col: gold ? '#efc25a' : ['#e85d2f', '#4fa7a0', '#6fa8c9', '#c98ab8'][k++ % 4], rings: 0 }); }
+    for (const [y, xs, pts, s] of RING_ROWS) for (const x of xs) { const gold = pts === 3 && x === 170; bottles.push({ x, y, s, pts: gold ? 5 : pts, gold, col: gold ? '#d9342f' : ['#6fbf5a', '#9fd36a', '#e9b33b', '#e0783a'][k++ % 4], rings: 0 }); }
     rg = { bottles, left: 10, score: 0, hits: 0, row: 2, ax: 18, dir: 1, fly: null, miss: null, flash: null, over: false };
     $('ringThrow').textContent = '丟！';
-    ringHud('瞄準圈移到瓶口的時候按「丟！」。越後面的瓶子分數越高，金色瓶子 5 分。');
+    ringHud('瞄準圈移到樹苗上的時候按「丟！」。越後面的樹苗分數越高，正中間的紅葉楓香 5 分。');
   }
   function ringThrow() {
     if (!rg || rg.fly) return;
@@ -2710,7 +3520,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const f = rg.fly, y = RING_ROWS[f.row][0]; rg.fly = null;
     let best = null, bd = 12;
     for (const b of rg.bottles) { const d = Math.abs(f.x - b.x); if (b.y === y && d < bd) { bd = d; best = b; } }
-    if (best) { best.rings++; rg.score += best.pts; rg.hits++; rg.flash = { b: best, t: 0 }; ringHud(`套中了！+${best.pts} 分${best.gold ? '，是金色瓶子！' : ''}`); }
+    if (best) { best.rings++; rg.score += best.pts; rg.hits++; rg.flash = { b: best, t: 0 }; ringHud(`套中了！+${best.pts} 分${best.gold ? '，套中紅葉楓香！' : ''}`); }
     else { rg.miss = { x: f.x, y, t: 0 }; ringHud(anyOf(MISSES)); }
     if (rg.left > 0) return;
     rg.over = true;
@@ -2721,10 +3531,23 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     ringHud(`十個圈丟完了！套中 ${rg.hits} 個，總共 ${s} 分。${rec ? '新紀錄！' : ''}${word}`);
     if (inside) { extraLine = true; speak(s > 0 ? `套中 ${rg.hits} 個、${s} 分！市集當天來現場玩真的喔。` : '沒關係，市集當天來現場，我教你訣竅！'); }
   }
+  // 楓香葉：三裂、像手掌，葉柄在下面
+  function mapleLeaf(c, x, y, r, col, rot) {
+    c.save(); c.translate(x, y); c.rotate(rot || 0);
+    const pts = [[0, .72], [-15, 1], [-30, .78], [-52, .55], [-74, .8], [-90, 1.08], [-106, .8], [-128, .55], [-150, .78], [-165, 1], [-180, .72], [140, .45], [90, .32], [40, .45]];
+    c.beginPath(); pts.forEach(([a, k], i) => { const rad = a * Math.PI / 180, px = Math.cos(rad) * r * k, py = Math.sin(rad) * r * k; i ? c.lineTo(px, py) : c.moveTo(px, py); }); c.closePath();
+    c.fillStyle = col; c.fill(); c.strokeStyle = INK; c.lineWidth = 1.4; c.stroke();
+    c.strokeStyle = 'rgba(29,26,54,.35)'; c.lineWidth = .9; c.beginPath(); for (const a of [-15, -90, -165]) { const rad = a * Math.PI / 180; c.moveTo(0, r * .2); c.lineTo(Math.cos(rad) * r * .8, Math.sin(rad) * r * .8); } c.moveTo(0, r * .2); c.lineTo(0, r * .55); c.stroke();
+    c.restore();
+  }
   function ringDraw() {
     const c = rc; c.setTransform(2, 0, 0, 2, 0, 0);
     c.fillStyle = '#f6e3b8'; c.fillRect(0, 0, 340, 370);
     c.beginPath(); c.roundRect(10, 44, 320, 268, 14); c.fillStyle = '#4f9c5a'; c.fill(); c.strokeStyle = INK; c.lineWidth = 2; c.stroke();
+    // 背景慢慢飄落的楓香紅葉、黃葉
+    { const t = reduced ? 0 : performance.now() / 1000; c.save(); c.beginPath(); c.roundRect(11, 45, 318, 266, 13); c.clip(); c.globalAlpha = .55;
+      for (let i = 0; i < 7; i++) mapleLeaf(c, 20 + ((i * 53 + t * 9) % 300), 50 + ((t * 16 + i * 41) % 262), 6, ['#d9432f', '#e9b33b', '#e0783a'][i % 3], t * .8 + i);
+      c.restore(); }
     c.textAlign = 'left'; c.textBaseline = 'middle';
     RING_ROWS.forEach(([y, , pts], i) => {
       if (!rg.over && i === rg.row) { c.fillStyle = 'rgba(255,243,214,.2)'; c.fillRect(11, y - 16, 318, 34); }
@@ -2732,11 +3555,15 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     });
     for (const b of rg.bottles) {
       const s = b.s;
-      c.beginPath(); c.ellipse(b.x, b.y + 44 * s, 13 * s, 4 * s, 0, 0, 6.2832); c.fillStyle = 'rgba(29,26,54,.25)'; c.fill();
-      c.beginPath(); c.roundRect(b.x - 11 * s, b.y + 13 * s, 22 * s, 31 * s, 5 * s); c.fillStyle = b.col; c.fill(); c.strokeStyle = INK; c.lineWidth = 2; c.stroke();
-      c.beginPath(); c.roundRect(b.x - 4.5 * s, b.y, 9 * s, 15 * s, 2 * s); c.fillStyle = b.col; c.fill(); c.stroke();
-      c.fillStyle = 'rgba(255,255,255,.55)'; c.fillRect(b.x - 7 * s, b.y + 18 * s, 3 * s, 18 * s);
-      if (b.gold) { c.font = `700 ${13 * s}px ${UI}`; c.textAlign = 'center'; c.fillStyle = INK; c.fillText('5', b.x + 1, b.y + 30 * s); c.textAlign = 'left'; }
+      // 一盆楓香小樹苗：陶盆、細細的樹幹、三片三裂的楓香葉；5 分的是紅葉楓香
+      c.beginPath(); c.ellipse(b.x, b.y + 44 * s, 14 * s, 4 * s, 0, 0, 6.2832); c.fillStyle = 'rgba(29,26,54,.25)'; c.fill();
+      c.strokeStyle = INK; c.lineWidth = 4.4 * s; c.lineCap = 'round'; c.beginPath(); c.moveTo(b.x, b.y + 30 * s); c.lineTo(b.x, b.y + 4 * s); c.stroke();
+      c.strokeStyle = '#7a4a2a'; c.lineWidth = 2.4 * s; c.stroke();
+      const lr = (b.gold ? 11.5 : 10) * s;
+      for (const [dx, dy, rot] of [[-9, 6, -.55], [9, 6, .55], [0, -3, 0]]) mapleLeaf(c, b.x + dx * s, b.y + dy * s, lr, b.col, rot);
+      c.beginPath(); c.moveTo(b.x - 12 * s, b.y + 28 * s); c.lineTo(b.x + 12 * s, b.y + 28 * s); c.lineTo(b.x + 9 * s, b.y + 44 * s); c.lineTo(b.x - 9 * s, b.y + 44 * s); c.closePath(); c.fillStyle = '#b8623a'; c.fill(); c.strokeStyle = INK; c.lineWidth = 2; c.stroke();
+      c.beginPath(); c.roundRect(b.x - 13.5 * s, b.y + 25 * s, 27 * s, 5 * s, 1.5 * s); c.fillStyle = '#c9744a'; c.fill(); c.stroke();
+      if (b.gold) { c.font = `700 ${12 * s}px ${UI}`; c.textAlign = 'center'; c.fillStyle = '#fff'; c.fillText('5', b.x, b.y + 37 * s); c.textAlign = 'left'; }
       for (let i = 0; i < Math.min(b.rings, 3); i++) { c.beginPath(); c.ellipse(b.x, b.y + (15 - i * 4) * s, 15 * s, 5 * s, 0, 0, 6.2832); c.strokeStyle = INK; c.lineWidth = 6; c.stroke(); c.strokeStyle = '#fff3d6'; c.lineWidth = 3; c.stroke(); }
     }
     if (rg.miss) { const m = rg.miss; c.globalAlpha = 1 - m.t / .8; c.beginPath(); c.ellipse(m.x, m.y + 40, 15, 5, 0, 0, 6.2832); c.strokeStyle = INK; c.lineWidth = 6; c.stroke(); c.strokeStyle = '#fff3d6'; c.lineWidth = 3; c.stroke(); c.globalAlpha = 1; }
@@ -2934,6 +3761,9 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 
   // ---------- main stage programme. Demo clock: 1 market minute passes every 3 seconds.
   const PROGRAMME = STAGE.items, DAY_START = 765, DAY_END = 1191, MIN_PER_SEC = 1 / 3;
+  // 市集當天（台灣時間 MARKET.date）改用真正的時間，提醒會照實際時刻跳出；其他日子用示範快轉
+  const taipeiNow = () => { const d = new Date(Date.now() + 8 * 3600e3); return { day: d.toISOString().slice(0, 10), min: d.getUTCHours() * 60 + d.getUTCMinutes() + d.getUTCSeconds() / 60 }; };
+  const realDay = () => !!MARKET.date && taipeiNow().day === MARKET.date;
   const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(Math.floor(m % 60)).padStart(2, '0')}`;
   let sbUntil = 0, marketMin = DAY_START, stageLive = false, stageBoard = '今日節目 14:30 開始', sbKey = '', hotUntil = 0;
   const sb = $('stagebar'), autoDusk = { on: false, done: false, prev: 1 };
@@ -2954,16 +3784,30 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   }
     function stageTick(dt) {
     if (pickerOpen) return;
-    marketMin += dt * MIN_PER_SEC;
-    // 兩場之間空檔太長（例如下午到月亮晚會）就直接快轉到開演前 15 分鐘
-    { const nx = EVENTS.find(e => marketMin < e.start), cur = EVENTS.find(e => e.go !== INFO && marketMin >= e.start && marketMin < e.end);
-      if (!cur && nx && nx.start - marketMin > 20) marketMin = nx.start - 15; }
+    const real = realDay();
+    if (real) marketMin = taipeiNow().min;
+    else {
+      marketMin += dt * MIN_PER_SEC;
+      // 兩場之間空檔太長（例如下午到月亮晚會）就直接快轉到開演前 15 分鐘
+      const nx = EVENTS.find(e => marketMin < e.start), cur = EVENTS.find(e => e.go !== INFO && marketMin >= e.start && marketMin < e.end);
+      if (!cur && nx && nx.start - marketMin > 20) marketMin = nx.start - 15;
+    }
     // 18:00 之後自動切到傍晚（月亮晚會），回到下午時恢復原本的設定；中途自己切換就以你的選擇為準
     if (marketMin >= 1080 && marketMin < DAY_END && !autoDusk.on && !autoDusk.done) { autoDusk.on = true; autoDusk.done = true; autoDusk.prev = dayTarget; dayTarget = 0; paintTime(); }
-    if (marketMin >= DAY_END) { if (autoDusk.on) { dayTarget = autoDusk.prev; paintTime(); } autoDusk.on = autoDusk.done = false; marketMin = DAY_START; for (const e of EVENTS) e.soon = e.began = false; }
+    if (!real && marketMin >= DAY_END) { if (autoDusk.on) { dayTarget = autoDusk.prev; paintTime(); } autoDusk.on = autoDusk.done = false; marketMin = DAY_START; for (const e of EVENTS) e.soon = e.began = false; }
     for (const e of EVENTS) {
       if (!e.soon && marketMin >= e.start - 10 && marketMin < e.start) { e.soon = true; if (e.on) stageAlert(`你的提醒：${e.n} 10 分鐘後開始`, e.go); }
       if (!e.began && marketMin >= e.start && marketMin < e.end) { e.began = e.soon = true; stageAlert(`${e.go === LAWN ? '草地音樂會・' : ''}${e.n} 開始了！`, e.go); }
+    }
+    const clockTag = `${real ? '現在' : '示範快轉'} ${hhmm(marketMin)}`;
+    // 市集當天節目都演完了：舞台寫謝謝光臨，不再倒數下一場
+    if (real && PROGRAMME.every(x => marketMin >= x.end)) {
+      if (stageLive) { stageLive = false; sb.classList.remove('live'); }
+      stageBoard = '今天的節目都結束了，謝謝光臨！';
+      if (hotUntil && clock > hotUntil) { hotUntil = 0; sb.classList.remove('hot'); }
+      if (!hotUntil && sbKey !== 'over') { sbKey = 'over'; $('sbTag').textContent = '主舞台'; $('sbText').textContent = stageBoard; $('sbRemind').hidden = true; $('sbGo').textContent = '走去舞台'; alertGo = null; }
+      $('sbMeta').textContent = clockTag;
+      return;
     }
     const e = focusEvent(), live = marketMin >= e.start && marketMin < e.end;
     if (live !== stageLive) { stageLive = live; sb.classList.toggle('live', live); }
@@ -2974,11 +3818,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (key !== sbKey) {
       if (!hotUntil) $('sbText').textContent = live ? e.n : `${hhmm(e.start)} ${e.n}`;
       if (!hotUntil) { $('sbTag').textContent = live ? '主舞台進行中' : '主舞台'; $('sbGo').textContent = '走去舞台'; alertGo = null; }
-      $('sbMeta').textContent = `示範快轉 ${hhmm(marketMin)}・${live ? `再 ${left} 分鐘結束` : `還有 ${left} 分鐘`}`;
+      $('sbMeta').textContent = `${clockTag}・${live ? `再 ${left} 分鐘結束` : `還有 ${left} 分鐘`}`;
       const b = $('sbRemind'); b.hidden = live || !!(hotUntil && alertGo && alertGo !== STAGE); b.textContent = e.on ? '已提醒' : '提醒我'; b.setAttribute('aria-pressed', e.on ? 'true' : 'false');
       sbKey = hotUntil ? key : key;
     } else if (!hotUntil && $('sbMeta').textContent.indexOf(hhmm(marketMin)) < 0) {
-      $('sbMeta').textContent = `示範快轉 ${hhmm(marketMin)}・${live ? `再 ${left} 分鐘結束` : `還有 ${left} 分鐘`}`;
+      $('sbMeta').textContent = `${clockTag}・${live ? `再 ${left} 分鐘結束` : `還有 ${left} 分鐘`}`;
     }
   }
   $('sbRemind').onclick = () => {
@@ -3025,6 +3869,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     vel = clamp(vel, -900, 900);
   }, { passive: false });
   addEventListener('keydown', e => {
+    if (gameOpen) { if (e.key === 'Escape') closeGame(); else if (gm && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { gm.kd = e.key === 'ArrowLeft' ? -1 : 1; e.preventDefault(); } else if (gm && gm.playing && gm.def.press && (e.key === ' ' || e.key === 'Enter') && document.activeElement !== $('gameGo')) { gm.def.press(gm); e.preventDefault(); } return; }
     if (passOpen || ringOpen || shareOpen) { if (e.key === 'Escape') (passOpen ? closePass : ringOpen ? closeRing : closeShare)(); return; }
     if (pactOpen) { if (e.key === 'Escape') closePact(); return; }
     if (finderOpen) { if (e.key === 'Escape') closeFinder(); return; }
@@ -3038,7 +3883,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (e.key === 'Escape' && inside) closeStop();
     if (e.key === 'Enter' && !inside && document.activeElement === canvas) { const n = nearest(); if (n) openStop(n); }
   });
-  addEventListener('keyup', e => { if (e.key === 'ArrowLeft') keys.l = false; if (e.key === 'ArrowRight') keys.r = false; });
+  addEventListener('keyup', e => { if (e.key === 'ArrowLeft') keys.l = false; if (e.key === 'ArrowRight') keys.r = false; if (gm && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) gm.kd = 0; });
   addEventListener('resize', () => { baseSm = 0; resize(); });
 
   let nextCast = 10 + Math.random() * 10, castEnd = 0;
@@ -3060,8 +3905,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 
     zt += ((inside ? 1 : 0) - zt) * Math.min(1, dt * (reduced ? 30 : 6.5));
     const z = ease(clamp(zt, 0, 1));
-    // fit the whole stall (sign at ~y130) and your feet (y530) between the top and the buttons
-    const targetS = Math.min(H > W ? H / 640 : H / 600, Math.max(.4, (H - bottomH - 14) / 410), W / 360);
+    // fit the whole stall plus the greeting bubble above its sign (~y70) and your feet (y530) between the top and the buttons
+    const targetS = Math.min(H > W ? H / 640 : H / 600, Math.max(.4, (H - bottomH - 16) / 460), W / 360);
     baseSm = baseSm ? baseSm + (targetS - baseSm) * Math.min(1, dt * 8) : targetS;
     const baseS = baseSm;
     S = baseS + (zoomS - baseS) * z;
@@ -3175,7 +4020,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   function frame(now) {
     requestAnimationFrame(frame);
     const dt = Math.min((now - last) / 1000, .05); last = now; clock += dt;
-    try { if (W && H) { update(dt, clock); render(clock); if (ringOpen) ringFrame(dt); if (pickerOpen) { previewT += dt * (reduced ? 0 : 5); if (mode === 's') paintStall($('stallPreview')); else paint($('preview'), draft, 2.6, 252, previewT, reduced ? 0 : .8); } } }
+    try { if (W && H) { update(dt, clock); render(clock); if (ringOpen) ringFrame(dt); if (gameOpen) gameFrame(dt); if (pickerOpen) { previewT += dt * (reduced ? 0 : 5); if (mode === 's') paintStall($('stallPreview')); else paint($('preview'), draft, 2.6, 252, previewT, reduced ? 0 : .8); } } }
     catch (err) { if (!frame.warned) { frame.warned = true; console.error(err); } }
   }
   if (document.fonts && document.fonts.load) {

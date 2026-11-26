@@ -190,6 +190,13 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
 .text { display: block; width: 100%; min-height: 40px; margin-top: 5px; padding: 4px 10px; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 8px; font: 500 16px var(--ui); user-select: text; -webkit-user-select: text; }
 .goodform { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 0 6px; }
 .goodform .wide { grid-column: 1 / -1; }
+.quickhead { margin: 8px 0 0; font-size: 13px; color: var(--ink-soft); font-weight: 700; }
+details.more { margin-top: 10px; }
+details.more summary { display: flex; align-items: center; min-height: 42px; padding: 4px 12px; background: #fff; border: 2px dashed var(--ink-soft); border-radius: 10px; font-size: 14px; font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "＋"; margin-right: 6px; color: var(--persimmon); }
+details.more[open] summary::before { content: "－"; }
+details.more > :not(summary) { margin-top: 8px; }
 .add { width: 100%; min-height: 42px; margin-top: 6px; background: var(--paper-2); border: 2px solid var(--ink); border-radius: 8px; font-size: 15px; font-weight: 700; }
 .err { margin: 4px 0 0; font-size: 13px; color: var(--busy); font-weight: 700; }
 .mygoods { list-style: none; margin: 5px 0 0; padding: 0; }
@@ -352,21 +359,28 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
           <div class="propgrid" id="props"></div>
         </div>
         <div class="stepbox" data-step="4" hidden>
-          <div><span class="sect">叫賣口號（會冒在攤位上方）</span><div class="slogans" id="slogans"></div>
+          <div><span class="sect">選一句叫賣口號（會冒在攤位上方）</span><div class="slogans" id="slogans"></div>
             <label class="sect" for="sloganOwn" style="margin-top:8px">或自己寫一句</label>
             <input class="text" id="sloganOwn" maxlength="20" autocomplete="off" placeholder="最多 20 個字">
           </div>
-          <div class="fields"><label for="stallIntro">想對客人說的話（客人走進攤位時，攤主會說給他聽）</label><textarea class="text" id="stallIntro" maxlength="120" rows="3" autocomplete="off" placeholder="介紹你的攤位、東西是怎麼做的，最多 120 個字"></textarea></div>
-          <div><span class="sect">要賣的東西（最多 3 樣）</span>
+          <div><span class="sect">要賣的東西（最多 3 樣，可以不放）</span>
             <ul class="mygoods" id="myGoods"></ul>
-            <div class="goodform">
-              <input class="text" id="gName" maxlength="12" autocomplete="off" placeholder="商品名稱" aria-label="商品名稱">
-              <input class="text" id="gPrice" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="價格" aria-label="價格">
-              <input class="text wide" id="gIntro" maxlength="40" autocomplete="off" placeholder="一句話介紹，攤主會親口說給客人聽" aria-label="商品介紹">
-            </div>
-            <p class="err" id="gErr" hidden></p>
-            <button class="add" id="gAdd">加入商品</button>
+            <p class="quickhead">點一下就放上去，再點一下拿掉：</p>
+            <div class="chips wrap" id="quickGoods"></div>
+            <p class="err" id="qErr" hidden></p>
+            <details class="more" id="goodMore"><summary>自己寫一樣東西</summary>
+              <div class="goodform">
+                <input class="text" id="gName" maxlength="12" autocomplete="off" placeholder="東西的名字" aria-label="商品名稱">
+                <input class="text" id="gPrice" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="價格" aria-label="價格，可以不填">
+                <input class="text wide" id="gIntro" maxlength="40" autocomplete="off" placeholder="一句話介紹（可以不填）" aria-label="商品介紹，可以不填">
+              </div>
+              <p class="err" id="gErr" hidden></p>
+              <button class="add" id="gAdd">加入</button>
+            </details>
           </div>
+          <details class="more" id="introMore"><summary>想對客人多說幾句話？（可以不寫）</summary>
+            <div class="fields"><label for="stallIntro">客人走進攤位時，攤主會說給他聽</label><textarea class="text" id="stallIntro" maxlength="120" rows="3" autocomplete="off" placeholder="介紹你的攤位、東西是怎麼做的，最多 120 個字"></textarea></div>
+          </details>
         </div>
         <div class="stepnav"><button id="stepPrev">← 上一步</button><button id="stepNext">下一步 →</button></div>
       </div>
@@ -864,7 +878,12 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   const statusOf = st => (st.vendor && st.vendor.status) || defaultStatus(st);
   // 邀請中的攤位燈箱寫「邀請中」，不顯示營業狀態
   const plateOf = st => st.invite && !st.vendor ? { label: '邀請中', c: '#5a5468' } : STATUS[statusOf(st)];
-  const PRESET_SLOGANS = ['現做現賣，錯過等明年！', '不買沒關係，來聊聊天！'];
+  const PRESET_SLOGANS = ['現做現賣，錯過等明年！', '不買沒關係，來聊聊天！', '好吃又好玩，快來看看！', '歡迎光臨，慢慢逛喔！', '今天限量，先搶先贏！'];
+  // 一日攤主「叫賣」那一步：每種攤位點一下就能放上去的東西，不用打字
+  const QUICK_GOODS = { craft: ['手鍊', '鑰匙圈', '小卡片', '書籤'], fried: ['炸雞塊', '薯條', '烤玉米'], plant: ['小盆栽', '多肉植物', '種子包'], coffee: ['冰咖啡', '熱拿鐵', '奶茶'],
+    bread: ['餅乾', '蛋糕', '布丁'], meal: ['飯糰', '炒麵', '湯圓'], drink: ['檸檬汁', '紅茶', '愛玉'], icecream: ['香草冰淇淋', '巧克力冰淇淋', '雪花冰'], hair: ['剪瀏海', '編辮子', '綁頭髮'], play: ['套圈圈', '丟沙包', '釣魚遊戲'] };
+  // 商品下面那行小字：有價格寫價格，有介紹寫介紹，都沒有就空白
+  const goodMeta = x => [x.p != null ? `$${x.p}` : '', x.d || ''].filter(Boolean).join('・');
   const VIS_KEYS = ['grandma', 'uncle', 'photog', 'explorer', 'cat', 'hero', 'musician', 'bununW', 'bunun'], LOOK_KEYS = Object.keys(LOOKS), PROP_KEYS = Object.keys(PROPS);
   const roleOf = av => VISITORS[av.a] || VISITORS.cat;
   const anyOf = a => a[Math.floor(Math.random() * a.length)];
@@ -2585,7 +2604,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const head = $('goodsHead'), hasItems = (st.vendor && st.vendor.items.length) || (st.items && st.items.length);
     head.hidden = !hasItems;
     head.textContent = st === STAGE ? '今日節目' : st === LAWN ? '演出節目' : st === INFO ? '校園活動' : '主打商品';
-    const extra = st.vendor ? st.vendor.items.map(x => (x.view = x.view || { n: x.n, d: `$${x.p}${x.d ? `・${x.d}` : ''}`, c: 0 })) : [];
+    const extra = st.vendor ? st.vendor.items.map(x => (x.view = x.view || { n: x.n, d: goodMeta(x) || '　', c: 0 })) : [];
     (extra.length ? extra : st.items).slice(0, st === STAGE ? 99 : MAX_ITEMS).forEach(item => {
       const li = document.createElement('li');
       const d = document.createElement('div');
@@ -2619,7 +2638,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const v = st.vendor, ownerName = (v && v.name) || st.owner;
     // 攤主寫了自己的話或商品，就不再唸示範台詞
     const own = !!(v && (v.intro || v.items.length)), introLines = v && v.intro ? (v.intro.match(/[^。！？!?]+[。！？!?]*/g) || [v.intro]).map(s => s.trim()).filter(Boolean) : [];
-    activeLines = v ? [`我是${ownerName}。${v.slogan || ''}`, ...(own ? introLines : st.mine ? ['歡迎光臨，慢慢看喔！'] : st.lines.slice(1)), ...v.items.map(x => `今天主打「${x.n}」，${x.d || `只要 ${x.p} 元`}`)] : st.lines;
+    activeLines = v ? [`我是${ownerName}。${v.slogan || ''}`, ...(own ? introLines : st.mine ? ['歡迎光臨，慢慢看喔！'] : st.lines.slice(1)), ...v.items.map(x => `今天主打「${x.n}」，${x.d || (x.p != null ? `只要 ${x.p} 元` : '歡迎來看看！')}`)] : st.lines;
     $('ownTools').hidden = !canVendor || !vendorSession || STALLS.indexOf(st) < 0 || STALLS.indexOf(st) !== myStall;
     $('shout').hidden = !(v && v.slogan);
     if (!$('ownTools').hidden && v) renderStatusRow(st); else $('statusRow').textContent = '';
@@ -2834,7 +2853,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       c: num(p.c, COLORS.length), s: num(p.s, SKINS.length),
       props: Array.isArray(p.props) ? p.props.filter(k => PROP_KEYS.includes(k)) : [],
       slogan: strip(p.slogan, 20), plate: p.plate !== false, status: STATUS_KEYS.includes(p.status) ? p.status : '',
-      items: (Array.isArray(p.items) ? p.items : []).slice(0, MAX_ITEMS).map(x => ({ n: strip(x && x.n, 12), p: Math.max(0, Math.floor(Number(x && x.p)) || 0), d: strip(x && x.d, 40) })).filter(x => x.n),
+      items: (Array.isArray(p.items) ? p.items : []).slice(0, MAX_ITEMS).map(x => ({ n: strip(x && x.n, 12), p: x && x.p != null && x.p !== '' && Number.isFinite(Number(x.p)) ? Math.max(0, Math.floor(Number(x.p))) : null, d: strip(x && x.d, 40) })).filter(x => x.n),
     };
   }
   function applyCfg(i, cfg) {
@@ -2873,18 +2892,41 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     g.addColorStop(0, P.sky[0]); g.addColorStop(.7, P.sky[2]); g.addColorStop(.92, P.grass); g.addColorStop(1, P.track);
     c.fillStyle = g; c.fillRect(0, 0, cv.width, cv.height);
     c.setTransform(k, 0, 0, k, cv.width / 2 - st.x * k, -72 * k);
-    const temp = { ...st, vendor: vdraft, near: 1 };
+    // 一日攤主還沒取招牌時，預覽先顯示開張後會用的「○○的小攤」
+    const temp = { ...st, vendor: mineMode && !vdraft.title && me ? { ...vdraft, title: strip(`${me.n}的小攤`, 8) } : vdraft, near: 1 };
     drawStall(temp, sceneT);
     if (vdraft.slogan) bubble(st.x, 138, vdraft.slogan, 1, 16);
     ctx = saved;
   }
   // 道具小圖：把這個攤位只擺這一樣道具畫出來，再裁到道具的位置
+  // 道具小圖：同一個攤位各畫一次「有這樣道具」和「沒有這樣道具」，只留下不一樣的地方，所以小圖裡只有道具本身
+  const propThumbCache = new Map();
+  function propCutout(key) {
+    const base = studioBase(), tone = vdraft && vdraft.tone, ck = `${key}|${base.kind}|${tone}|${dayT > .5 ? 'd' : 'n'}`;
+    if (propThumbCache.has(ck)) return propThumbCache.get(ck);
+    const W0 = 520, H0 = 520, k0 = 1.1;
+    const render = props => {
+      const o = document.createElement('canvas'); o.width = W0; o.height = H0; const c = o.getContext('2d'), saved = ctx; ctx = c;
+      try { c.setTransform(k0, 0, 0, k0, W0 / 2, 10 - 40 * k0); drawStall({ ...base, x: 0, deco: undefined, near: 0, vendor: { ...vdraft, slogan: '', props } }, 0); } finally { ctx = saved; }
+      return c.getImageData(0, 0, W0, H0);
+    };
+    const a = render([key]), b = render([]), out = new ImageData(W0, H0);
+    // 整體範圍和左半邊範圍；左右各一個的道具（燈籠、小米穗、吊盆…）太寬時，只放大左邊那一個
+    const all = [W0, H0, -1, -1], left = [W0, H0, -1, -1], grow = (q, px, py) => { if (px < q[0]) q[0] = px; if (py < q[1]) q[1] = py; if (px > q[2]) q[2] = px; if (py > q[3]) q[3] = py; };
+    for (let i = 0; i < a.data.length; i += 4) {
+      const d = Math.abs(a.data[i] - b.data[i]) + Math.abs(a.data[i + 1] - b.data[i + 1]) + Math.abs(a.data[i + 2] - b.data[i + 2]) + Math.abs(a.data[i + 3] - b.data[i + 3]);
+      if (d > 36) { out.data[i] = a.data[i]; out.data[i + 1] = a.data[i + 1]; out.data[i + 2] = a.data[i + 2]; out.data[i + 3] = a.data[i + 3]; const px = (i / 4) % W0, py = Math.floor(i / 4 / W0); grow(all, px, py); if (px < W0 / 2 - 4) grow(left, px, py); }
+    }
+    const res = document.createElement('canvas'); res.width = W0; res.height = H0; res.getContext('2d').putImageData(out, 0, 0);
+    const toBox = q => [q[0], q[1], q[2] - q[0] + 1, q[3] - q[1] + 1], A = all[2] < 0 ? [0, 0, W0, H0] : toBox(all);
+    const r = { cv: res, box: A[2] > A[3] * 1.8 && left[2] >= 0 ? toBox(left) : A };
+    if (propThumbCache.size > 200) propThumbCache.clear(); propThumbCache.set(ck, r); return r;
+  }
   function paintPropThumb(cv, key) {
-    const base = studioBase(), c = cv.getContext('2d'), saved = ctx, [fx, fy, fw, fh] = PROP_FOCUS[key], k = Math.min(cv.width / fw, cv.height / fh);
-    ctx = c; c.setTransform(1, 0, 0, 1, 0, 0);
-    const g = c.createLinearGradient(0, 0, 0, cv.height); g.addColorStop(0, P.sky[1]); g.addColorStop(1, P.sky[3]); c.fillStyle = g; c.fillRect(0, 0, cv.width, cv.height);
-    try { c.setTransform(k, 0, 0, k, cv.width / 2 - (fx + fw / 2) * k, cv.height / 2 - (fy + fh / 2) * k); drawStall({ ...base, x: 0, deco: undefined, near: 0, vendor: { ...vdraft, slogan: '', props: [key] } }, 0); }
-    finally { ctx = saved; }
+    const c = cv.getContext('2d'), g = c.createLinearGradient(0, 0, 0, cv.height);
+    c.setTransform(1, 0, 0, 1, 0, 0); g.addColorStop(0, '#d7eef8'); g.addColorStop(1, '#f6ecd6'); c.fillStyle = g; c.fillRect(0, 0, cv.width, cv.height);
+    const { cv: src, box: [bx, by, bw, bh] } = propCutout(key), pad = 12, k = Math.min((cv.width - pad * 2) / bw, (cv.height - pad * 2) / bh, 2.2);
+    c.drawImage(src, bx, by, bw, bh, (cv.width - bw * k) / 2, (cv.height - bh * k) / 2, bw * k, bh * k);
   }
   function swatches(host, list, obj, key, name, again) {
     host.textContent = '';
@@ -2975,15 +3017,29 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     const list = $('myGoods'); list.textContent = '';
     vdraft.items.forEach((x, i) => {
       const li = document.createElement('li'), d = document.createElement('div'), n = document.createElement('b'), m = document.createElement('small'), del = document.createElement('button');
-      n.textContent = x.n; m.textContent = `$${x.p}${x.d ? `・${x.d}` : ''}`; d.append(n, m);
+      n.textContent = x.n; m.textContent = goodMeta(x); d.append(n, m);
       del.textContent = '移除'; del.setAttribute('aria-label', `移除${x.n}`);
       del.onclick = () => { vdraft.items.splice(i, 1); renderStudio(); };
       li.append(d, del); list.append(li);
     });
+    const qg = $('quickGoods'); qg.textContent = ''; $('qErr').hidden = true;
+    const qkind = mineMode ? vdraft.kind : studioBase().kind;
+    (QUICK_GOODS[qkind] || []).forEach(name => {
+      const b = document.createElement('button'), on = vdraft.items.some(x => x.n === name);
+      b.textContent = name; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.onclick = () => {
+        const k = vdraft.items.findIndex(x => x.n === name);
+        if (k >= 0) vdraft.items.splice(k, 1);
+        else if (vdraft.items.length >= MAX_ITEMS) { $('qErr').textContent = `最多放 ${MAX_ITEMS} 樣，先拿掉一樣再加。`; $('qErr').hidden = false; return; }
+        else vdraft.items.push({ n: name, p: null, d: '' });
+        renderStudio(); const nb = [...$('quickGoods').children].find(x => x.textContent === name); if (nb) nb.focus({ preventScroll: true });
+      };
+      qg.append(b);
+    });
   }
   // 佈置分四步：一次只看一步，上方預覽一直都在
   let vstep = 1;
-  const STEP_HINTS = { 1: '先幫攤位取名字，再挑雨棚的顏色。', 2: '打扮你的攤主：先選髮型，再戴上帽子或頭帶。', 3: '點一下就擺上去，再點一下拿掉，可以擺很多個！', 4: '寫一句叫賣口號和要賣的東西，客人走進來時攤主會說給他聽。' };
+  const STEP_HINTS = { 1: '選一種攤位、取個招牌名字，再挑雨棚的顏色。', 2: '打扮你的攤主：先選髮型，再戴上帽子或頭帶。', 3: '點一下就擺上去，再點一下拿掉，可以擺很多個！', 4: '點一句叫賣口號、放上要賣的東西，就可以開張囉！' };
   function renderSteps() {
     for (const el of document.querySelectorAll('#vendorForm [data-step]')) el.hidden = +el.dataset.step !== vstep;
     for (const b of $('stepTabs').children) b.setAttribute('aria-current', +b.dataset.go === vstep ? 'step' : 'false');
@@ -2999,6 +3055,11 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     vdraft = !mineMode ? freshCfg(vstall) : mineDraft ? cleanCfg(mineDraft) : cleanCfg(MINE.vendor || { name: '', title: '', intro: '', kind: MINE.kind, tone: -1, look: LOOK_BY_KIND[MINE.kind] || 'toque', c: 0, s: 0, props: [], slogan: '', status: 'go', items: [] });
     if (mineMode && !CATS[vdraft.kind]) vdraft.kind = MINE.kind;
     $('ownerName').value = vdraft.name;
+    // 一日攤主不用另外取名字，直接用逛街時取的名字
+    $('ownerName').parentElement.hidden = mineMode;
+    // 一日攤主不用選燈箱（太抽象），預設「順暢」，開張後在自己的攤位裡還能換
+    $('statusChips').parentElement.hidden = mineMode;
+    $('introMore').open = !!vdraft.intro; $('goodMore').open = false;
     $('stallTitle').value = vdraft.title;
     $('stallIntro').value = vdraft.intro || '';
     $('sloganOwn').value = PRESET_SLOGANS.includes(vdraft.slogan) ? '' : vdraft.slogan;
@@ -3069,10 +3130,10 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
   $('gAdd').onclick = () => {
     const n = strip($('gName').value, 12), raw = $('gPrice').value.trim(), d = strip($('gIntro').value, 40), err = $('gErr');
     const fail = text => { err.textContent = text; err.hidden = false; };
-    if (!n) return fail('請填商品名稱。');
-    if (!/^\d{1,6}$/.test(raw)) return fail('價格請填數字，例如 80。');
-    if (vdraft.items.length >= MAX_ITEMS) return fail(`主打商品最多 ${MAX_ITEMS} 樣，先移除一樣再加。`);
-    vdraft.items.push({ n, p: Number(raw), d });
+    if (!n) return fail('請寫東西的名字。');
+    if (raw && !/^\d{1,6}$/.test(raw)) return fail('價格請填數字，例如 80；也可以不填。');
+    if (vdraft.items.length >= MAX_ITEMS) return fail(`最多放 ${MAX_ITEMS} 樣，先移除一樣再加。`);
+    vdraft.items.push({ n, p: raw ? Number(raw) : null, d });
     $('gName').value = ''; $('gPrice').value = ''; $('gIntro').value = '';
     renderStudio();
   };
@@ -3113,6 +3174,8 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
     if (mode === 'v') {
       me = cleanAv({ ...draft, n: $('nick').value });
       try { localStorage.setItem(STORE, JSON.stringify(me)); } catch (e) {}
+      // 換了逛街的名字，一日攤位上的攤主名字也跟著換
+      if (MINE.vendor && MINE.vendor.name !== cleanName(me.n)) setMine({ ...MINE.vendor, name: cleanName(me.n) });
       setRole(false);
       closePicker(); buildMenu();
       if (!pactSeen()) openPact();
@@ -3122,7 +3185,7 @@ button:focus-visible { outline: 3px solid var(--persimmon); outline-offset: 2px;
       // 第一次打開就直接當一日攤主：先給一個預設的逛街角色，街上才有自己
       if (!me) { me = { r: 'v', a: 'cat', c: 0, s: 0, n: '逛街的人' }; try { localStorage.setItem(STORE, JSON.stringify(me)); } catch (e) {} }
       const cfg = cleanCfg(vdraft); if (!CATS[cfg.kind]) cfg.kind = MINE.kind;
-      if (!cfg.name && me) cfg.name = cleanName(me.n);
+      cfg.name = cleanName(me.n);
       if (!cfg.title) cfg.title = strip(`${cfg.name || '我'}的小攤`, 8);
       mineDraft = null; setMine(cfg); closePicker(); buildMenu();
       cam = lastCam = MINE.x; travelled = 99; openStop(MINE);

@@ -524,7 +524,7 @@ details.more > :not(summary) { margin-top: 8px; }
   const LATER = '價格現場公布';
   // 攤主交回販售資料的攤位：寫了 items 就不再顯示「品項確認中」。順序不要動，攤位編號（A01…）跟著順序走
   const SHOP_LIST = [
-    ['fried', '小森時光', '津君', '炸物・蜜餞小番茄', 5, { look: lk('pony', 'straw', 'none', 2, 2, 1), tip: '嚐一口杉林的好滋味',
+    ['fried', '小森時光', '津君', '炸物・蜜餞小番茄', 5, { short: '炸物', look: lk('pony', 'straw', 'none', 2, 2, 1), tip: '嚐一口杉林的好滋味',
       hello: '嚐一口杉林的好滋味！',
       lines: ['歡迎來到「小森時光」！我是津君。', '我們從高雄杉林出發，串起土地的故事、在地好物和人的溫度。', '以在地農產為起點，透過飲食、手作和低碳小旅行實踐地方創生，支持在地農業和青年留鄉。', '今天有小米甜甜圈和蔬菜炸物，還有蜜餞小番茄。', '從一口美味，認識杉林的風土和人情味！', CUP_LINE],
       items: [{ n: '炸物（小米甜甜圈、蔬菜）', d: '$100／份', c: 0 }, { n: '蜜餞小番茄', d: LATER, c: 0 }] }],
@@ -532,7 +532,14 @@ details.more > :not(summary) { margin-top: 8px; }
       hello: '來做一盆自己的綠植！', action: '想體驗', thanks: '謝謝你！市集當天記得來找廖桑體驗喔！',
       lines: ['歡迎來到「麒麟貓工作室」！我是廖桑。', '我們用綠植設計，搭配水泥模造、玻璃藝術、真皮皮革、水晶選品和雷射雕刻，手造出獨一無二的作品。', '今天有多肉植物、觀葉植物、鹿角蕨和空氣鳳梨。', '還有手作體驗課程：多肉組盆、苔球、鹿角蕨上板，都可以來玩玩看！', '晚上的月亮晚會，我們也還在這裡喔。', BAG_LINE],
       items: [{ n: '繽紛多肉組盆課程', d: LATER, c: 0 }, { n: '療癒滾滾苔球課程', d: LATER, c: 0 }, { n: '鹿角蕨上板課程', d: LATER, c: 0 }] }],
-    ['coffee', '水邊坐坐', 'mooi', '咖啡', 4, { deco: ['surf'], look: lk('wavy', 'visor', 'none', 1, 5, 2) }],
+    ['coffee', '水邊坐坐 Cafe', 'mooi', '咖啡・世界選物', 4, { deco: ['surf', 'world'], look: lk('wavy', 'visor', 'none', 1, 5, 2), action: '想買',
+      hello: '來水邊坐坐，喝杯咖啡！',
+      lines: ['歡迎來到「水邊坐坐 Cafe」！我是 mooi。', '水邊坐坐是美濃溪前的咖啡藝文空間，店裡保留了基地前身「美濃第一大戲院」的故事。', '我們的創意特調結合在地小農的產品，讓你坐在水邊，也能探索這片土地的風味。', '還有世界「有」善選物：是我們到尼泊爾、泰北、泰緬邊境和不丹當海外志工時，從當地帶回來的特色選品。', '選物的部分收入會捐給國際慈善，投入需要的地方。', '旁邊是一起共攤的椰樓，也去看看喔！', CUP_LINE],
+      items: [{ n: '坐坐拿鐵', d: LATER, c: 0 }, { n: '尼泊爾香料茶葉包', d: '$300・世界「有」善選物', c: 0 }, { n: '手繪祝福圖騰', d: '$550・世界「有」善選物', c: 0 }] }],
+    ['drink', '椰樓', '柏堯', '椰子水・剝殼椰子', 5, { deco: ['coconut'], look: lk('buzz', 'cap', 'none', 0, 2, 2),
+      hello: '來一顆新鮮椰子！',
+      lines: ['歡迎來到「椰樓」！我是柏堯。', '我們是來自杉林在地的椰子小農。', '想用品牌化的思維，賦予台灣椰子新的價值。', '今天有椰子水和剝殼椰子，我們跟水邊坐坐一起共攤喔！', CUP_LINE],
+      items: [{ n: '椰子水', d: '$40・350cc', c: 0 }, { n: '剝殼椰子', d: '$100', c: 0 }] }],
     ['craft', '小怡飾品', '欣怡', '髮飾・小物', 3, { deco: ['trinket'], look: lk('bob', 'flower', 'none', 2, 4, 1),
       hello: '可愛小物都在這裡！',
       lines: ['歡迎來到「小怡飾品」！我是欣怡。', '這裡有精緻可愛的髮夾、髮飾、鑰匙圈和各種小物。', '還有玩偶小包包，慢慢挑，一定有你喜歡的！', BAG_LINE],
@@ -547,8 +554,14 @@ details.more > :not(summary) { margin-top: 8px; }
       items: [{ n: '七色小花吊飾', d: '$580／$680', c: 0 }, { n: '達摩擺飾', d: '$450', c: 0 }, { n: '手作包包', d: LATER, c: 0 }] }],
     ['meal', '邀請中攤位', '邀請中', '', 6, { invite: true, look: lk('short', 'cap', 'mask', 0, 0, 0), role: '攤位邀請中', statusText: '邀請中', tip: '先記住這個位置',
       hello: '這個攤位正在邀請中，敬請期待！', lines: ['這裡是預留的攤位，正在邀請中。', '確定之後會在這裡公布，敬請期待！'] }],
-    ['craft', '糸.糸.縫', '芳蘭', '手縫布偶', 2, { deco: ['plush'], look: lk('bun', 'none', 'glasses', 2, 2, 3) }],
-    ['drink', '花酵', '俊英', '飲品', 3, { look: lk('long', 'flower', 'none', 0, 4, 0) }],
+    ['craft', '糸糸縫', '芳蘭', '刺繡・手作小物', 2, { deco: ['plush', 'embroidery'], look: lk('bun', 'none', 'glasses', 2, 2, 3),
+      hello: '來看看一針一線的小創作！',
+      lines: ['歡迎來到「糸糸縫」！我是芳蘭。', '我們的刺繡用的是一般的縫衣線，一針一線，微小而且緩慢。', '求的不是精美的技巧，而是縫出小蝸牛、小貓、香菇花生人這些微小的創作。', '每一件都是用雙手誕生，讓人療癒又開心的作品。', '今天有手作別針、手作吊飾和手作束口袋。', BAG_LINE],
+      items: [{ n: '各式創意別針', d: '$200', c: 0 }, { n: '手作吊飾', d: LATER, c: 0 }, { n: '手作束口袋', d: LATER, c: 0 }] }],
+    ['drink', '花酵', '俊英姐', '仙草', 3, { look: lk('long', 'flower', 'none', 0, 4, 0),
+      hello: '來一碗仙草，消暑又解渴！',
+      lines: ['歡迎來到「花酵」！我是俊英姐。', '花酵在美濃的花樹下，以發酵為主體。', '我們結合客庄的漬物和發酵工藝，食材取之於自然、用之於土地，一切都回歸地方。', '用時間醞釀出最好的味道，用味覺感受自然的奧妙。', '今天帶來仙草和仙草凍，晚上的月亮晚會我們也還在喔！', CUP_LINE],
+      items: [{ n: '仙草', d: '$60', c: 0 }, { n: '仙草凍', d: '$60', c: 0 }] }],
     ['drink', '悠綠客檸檬', '存存', '凍檸茶・檸檬爆米花', 1, { deco: ['lemon'], look: lk('curly', 'cap', 'none', 2, 1, 2),
       hello: '自家種的檸檬，來一杯！',
       lines: ['歡迎來到「悠綠客檸檬」！我是存存。', '我們用的是自家種的優利卡黃檸檬，產地直送。', '凍檸茶現做現榨，果香清爽回甘、不會死甜。', '還有獨家的黃檸檬爆米花，酥脆裡帶著清新檸香，一口接一口停不下來！', '來杯凍檸茶配爆米花，嚐嚐檸檬的好滋味。', CUP_LINE],
@@ -561,17 +574,23 @@ details.more > :not(summary) { margin-top: 8px; }
       hello: '來找陪伴你的種子與陶！',
       lines: ['歡迎來到「種子與陶」！我是旺哥。', '每顆種子，都代表一個單純熱愛手作的希望；陶，則是和另一半相互支持、陪伴的心。', '我把各式種子依照外形搭配組合，做成小巧精緻的飾品，替生活的小角落添一點趣味。', '柴燒陶藝讓火、土、灰互相融合，燒出最原始天然的樣子。', '歡迎一起來尋找陪伴自己生活的種子與陶！', BAG_LINE],
       items: [{ n: '種子飾品', d: '$100–880', c: 0 }, { n: '柴燒陶器', d: '$300–8000', c: 0 }] }],
-    ['icecream', '小露吃', '攤主', '冰淇淋', 4, { look: lk('curly', 'none', 'beard', 1, 3, 2),
-      hello: '來一球冰淇淋消暑！',
-      lines: ['歡迎來到「小露吃」！', '今天的冰淇淋有香草、芒果和芋頭三種口味。', '口味還在確認中，以市集當天現場為準喔！', CUP_LINE],
-      items: [{ n: '香草冰淇淋', d: '口味暫定', c: 0 }, { n: '芒果冰淇淋', d: '口味暫定', c: 0 }, { n: '芋頭冰淇淋', d: '口味暫定', c: 0 }] }],
-    ['craft', '拾物木作', '阿倪', '木作體驗', 5, { cat: 'life', action: '想去', deco: ['wood'], look: lk('short', 'capback', 'glasses', 2, 3, 1) }],
+    ['icecream', '小露吃 GELATO', '小豪', '義式冰淇淋', 4, { look: lk('curly', 'none', 'beard', 1, 3, 2),
+      hello: '來一球義式冰淇淋！',
+      lines: ['歡迎來到「小露吃 GELATO」！我是小豪。', '我們來自旗山，帶來超好吃的義式冰淇淋。', '今天是當季的秘密口味，市集當天才會揭曉喔！', CUP_LINE],
+      items: [{ n: '義式冰淇淋', d: '$60・當季秘密口味，市集當天揭曉', c: 0 }] }],
+    ['craft', '拾物 ShiWood', '阿倪', '木作體驗', 5, { cat: 'life', action: '想去', deco: ['wood'], look: lk('short', 'capback', 'glasses', 2, 3, 1),
+      hello: '來動手做一個木作！',
+      lines: ['歡迎來到「拾物 ShiWood」！我是阿倪。', '拾物 ShiWood 不只是一個木作品牌，更是一個半木半農的樸門生活實踐。', '今天有 100 元的木作自由創作體驗，還有小招牌和木托盤。', BAG_LINE],
+      items: [{ n: '木作自由創作體驗', d: '$100', c: 0 }, { n: '小招牌', d: '約 $400', c: 0 }, { n: '木托盤', d: '$950', c: 0 }] }],
     ['fried', '日光小林黃金香腸', '攤主', '黃金香腸', 2, { look: lk('buzz', 'band', 'none', 0, 0, 2),
       hello: '來一根黃金香腸！',
       lines: ['歡迎來到「日光小林黃金香腸」！', '我們賣的就是黃金香腸，逛累了來一根吧！', CUP_LINE],
       items: [{ n: '黃金香腸', d: LATER, c: 0 }] }],
     ['drink', '美濃草高高', '文相', '愛玉飲料', 0, { deco: ['aiyu'], look: lk('short', 'straw', 'none', 0, 2, 1) }],
-    ['craft', '邊畫邊話', '美辰', '畫畫體驗', 3, { cat: 'life', action: '想去', deco: ['easel'], look: lk('bob', 'none', 'none', 1, 1, 0) }],
+    ['craft', '邊畫邊話', '美辰', '畫畫體驗', 3, { cat: 'life', action: '想去', deco: ['easel'], look: lk('bob', 'none', 'none', 1, 1, 0),
+      hello: '來畫畫、休息一下吧！',
+      lines: ['歡迎來到「邊畫邊話」！我是美辰。', '熱熱鬧鬧的人群裡，創作與發呆也可以是其中一攤。', '來我這邊休息，找到自己的呼吸吧！', '可以一對一畫畫互動，也可以在自由畫畫看書區慢慢待著。', BAG_LINE],
+      items: [{ n: '一對一畫畫互動', d: '$300／次', c: 0 }, { n: '節氣曆、小誌', d: '$150 起', c: 0 }, { n: '自由畫畫看書區', d: '$50／次', c: 0 }] }],
     ['hair', '剪單有品', '品品', '快剪', 4, { look: lk('pony', 'none', 'glasses', 3, 2, 0), tip: '剪一個清爽的髮型',
       hello: '來剪個清爽髮型！', action: '想剪', thanks: '謝謝你！市集當天記得來找品品剪喔！',
       lines: ['歡迎來到「剪單有品」！我是品品。', '現場快剪，幫你剪出帥哥、美女的髮型！', '男生剪髮 100 元、女生 150 元，只修劉海 50 元。', '剪個清清爽爽的髮型，再繼續逛市集！', BAG_LINE],
@@ -2071,6 +2090,30 @@ details.more > :not(summary) { margin-top: 8px; }
       return;
     }
     if (st.deco && st.deco.includes('plush')) {
+      if (st.deco.includes('embroidery')) {
+        // 糸糸縫：左邊一個刺繡繃（布上繡一隻小蝸牛）和一隻布偶，右邊一塊別針板（蝸牛、小貓、香菇、花生人）和一個束口袋
+        const hx = -96, hy = y - 20; circle(hx, hy, 17); fs('#c9a15f', INK, 2); circle(hx, hy, 13.5); fs('#fbf6ea', INK, 1.2);
+        rr(hx - 3, hy - 22, 6, 6, 1); fs('#a8743e', INK, 1);
+        ctx.strokeStyle = '#c85c9a'; ctx.lineWidth = 1.6; ctx.setLineDash([2, 1.6]); ctx.beginPath(); ctx.arc(hx + 1, hy, 5, 0, Math.PI * 1.7); ctx.stroke(); ctx.beginPath(); ctx.arc(hx + 1, hy, 2.4, 0, Math.PI * 1.7); ctx.stroke();
+        ctx.strokeStyle = '#4f9c5a'; ctx.beginPath(); ctx.moveTo(hx - 9, hy + 6); ctx.lineTo(hx + 9, hy + 6); ctx.stroke(); ctx.setLineDash([]);
+        ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(hx + 8, hy - 8); ctx.lineTo(hx + 20, hy - 22); ctx.stroke();
+        plush(-66, y, .9, 'bunny');
+        rr(10, y - 34, 50, 34, 3); fs('#4f7f6a', INK, 2);
+        const pin = (x, yy, kind) => { circle(x, yy, 7); fs('#fbf6ea', INK, 1.2); ctx.save(); ctx.translate(x, yy);
+          if (kind === 'snail') { ctx.strokeStyle = '#c85c9a'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(.5, -.5, 3, 0, 5.5); ctx.stroke(); ctx.strokeStyle = '#a8743e'; ctx.beginPath(); ctx.moveTo(-4, 3); ctx.lineTo(4, 3); ctx.stroke(); }
+          else if (kind === 'cat') { ctx.fillStyle = '#f0a54a'; circle(0, .5, 3.2); ctx.fill(); ctx.beginPath(); ctx.moveTo(-3, -1); ctx.lineTo(-2.4, -4); ctx.lineTo(-.6, -2); ctx.moveTo(3, -1); ctx.lineTo(2.4, -4); ctx.lineTo(.6, -2); ctx.fill(); }
+          else if (kind === 'mush') { ctx.fillStyle = '#d9432f'; ctx.beginPath(); ctx.arc(0, 0, 4, Math.PI, 0); ctx.fill(); ctx.fillStyle = '#f0dcc0'; ctx.fillRect(-1.3, 0, 2.6, 3.6); }
+          else { ctx.fillStyle = '#d9a86a'; ctx.beginPath(); ctx.ellipse(0, -1.6, 2.4, 2.6, 0, 0, 6.2832); ctx.ellipse(0, 2, 2.6, 2.8, 0, 0, 6.2832); ctx.fill(); ctx.fillStyle = INK; circle(-.8, -1.8, .5); ctx.fill(); circle(.8, -1.8, .5); ctx.fill(); }
+          ctx.restore(); };
+        pin(22, y - 24, 'snail'); pin(42, y - 24, 'cat'); pin(22, y - 9, 'mush'); pin(42, y - 9, 'peanut');
+        // 束口袋：布袋上面收口、兩條抽繩
+        const bx = 84; ctx.beginPath(); ctx.moveTo(bx - 13, y - 20); ctx.quadraticCurveTo(bx - 16, y - 2, bx - 10, y); ctx.lineTo(bx + 10, y); ctx.quadraticCurveTo(bx + 16, y - 2, bx + 13, y - 20); ctx.closePath(); fs('#e9b33b', INK, 1.8);
+        ctx.beginPath(); ctx.moveTo(bx - 13, y - 20); ctx.lineTo(bx - 9, y - 28); ctx.lineTo(bx + 9, y - 28); ctx.lineTo(bx + 13, y - 20); ctx.closePath(); fs('#f2cc6a', INK, 1.4);
+        ctx.strokeStyle = '#c23b2e'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(bx - 13, y - 21); ctx.lineTo(bx + 13, y - 21); ctx.moveTo(bx + 5, y - 21); ctx.quadraticCurveTo(bx + 10, y - 12, bx + 6, y - 6); ctx.moveTo(bx + 8, y - 21); ctx.quadraticCurveTo(bx + 14, y - 13, bx + 11, y - 7); ctx.stroke();
+        ctx.strokeStyle = '#c85c9a'; ctx.setLineDash([2, 1.6]); ctx.beginPath(); ctx.arc(bx - 2, y - 10, 3.5, 0, 6.2832); ctx.stroke(); ctx.setLineDash([]);
+        plush(110, y, .75, 'chick');
+        return;
+      }
       // 手縫布偶攤：櫃台上坐滿布偶，中間一籃線團和針
       plush(-98, y, 1, 'bunny'); plush(-70, y, .9, 'bear');
       rr(12, y - 14, 30, 14, 4); fs('#c9a15f', INK, 1.6); for (const [dx, col] of [[19, '#e85d2f'], [27, '#4fa7a0'], [35, '#efc25a']]) { circle(dx, y - 16, 5); fs(col, INK, 1.2); }
@@ -2111,7 +2154,19 @@ details.more > :not(summary) { margin-top: 8px; }
       return;
     }
     if (st.kind === 'coffee') {
-      for (const x of [-96, -72, 52, 78]) {
+      const world = !!(st.deco && st.deco.includes('world'));
+      if (world) {
+        // 世界「有」善選物：不丹手工香皂（紙包、綁麻繩）、尼泊爾香料茶葉包、一片手繪祝福圖騰立在小木架上
+        for (const [sx, col] of [[48, '#f4e6c8'], [64, '#e9d3a8']]) { rr(sx - 8, y - 11, 16, 11, 2); fs(col, INK, 1.4); ctx.strokeStyle = '#a8743e'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(sx, y - 11); ctx.lineTo(sx, y); ctx.moveTo(sx - 8, y - 5.5); ctx.lineTo(sx + 8, y - 5.5); ctx.stroke(); }
+        rr(48, y - 19, 14, 8, 2); fs('#f8efdc', INK, 1.3); ctx.strokeStyle = '#a8743e'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(55, y - 19); ctx.lineTo(55, y - 11); ctx.stroke();
+        rr(76, y - 26, 16, 26, 2); fs('#c23b2e', INK, 1.6); rr(78, y - 20, 12, 9, 1); fs('#efc25a'); ctx.fillStyle = '#c23b2e'; circle(84, y - 15.5, 2.4); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(76, y - 26); ctx.lineTo(84, y - 31); ctx.lineTo(92, y - 26); ctx.closePath(); fs('#a02c22', INK, 1.2);
+        ctx.fillStyle = WOOD; ctx.fillRect(98, y - 4, 22, 4); ctx.fillRect(100, y - 30, 3, 26);
+        ctx.save(); ctx.translate(110, y - 18); ctx.rotate(.08); rr(-11, -14, 22, 28, 2); fs('#fff8ec', INK, 1.6);
+        circle(0, -2, 7); ctx.strokeStyle = '#3f6fb0'; ctx.lineWidth = 1.6; ctx.stroke(); ctx.fillStyle = '#e85d2f'; for (let k = 0; k < 6; k++) { const a = k / 6 * 6.2832; circle(Math.cos(a) * 7, -2 + Math.sin(a) * 7, 1.6); ctx.fill(); } circle(0, -2, 2.4); fs('#efc25a');
+        ctx.strokeStyle = '#4f9c5a'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(-7, 10); ctx.quadraticCurveTo(0, 6, 7, 10); ctx.stroke(); ctx.restore();
+      }
+      for (const x of world ? [-96, -72] : [-96, -72, 52, 78]) {
         rr(x - 9, y - 21, 18, 21, 3); fs('#fff8e6', INK, 2); ctx.fillStyle = '#b5764a'; ctx.fillRect(x - 8, y - 14, 16, 6);
         steam(x, y - 23, t + x, 3, 4, 30);
       }
@@ -2209,9 +2264,9 @@ details.more > :not(summary) { margin-top: 8px; }
       });
     } else if (st.kind === 'drink') {
       // two glass dispensers on the left, filled cups on the right（愛玉攤：飲料是金黃色的，裡面有一塊塊愛玉凍）
-      const aiyu = !!(st.deco && st.deco.includes('aiyu'));
+      const aiyu = !!(st.deco && st.deco.includes('aiyu')), coco = !!(st.deco && st.deco.includes('coconut'));
       const jelly = (x0, y0, w, h) => { ctx.fillStyle = 'rgba(255,248,215,.75)'; for (let k = 0; k < 4; k++) { const jx = x0 + 2 + (k * 7) % (w - 4), jy = y0 + h - 5 - Math.floor(k / 2) * 5; ctx.fillRect(jx, jy, 3.6, 3.2); } };
-      for (const [jx, col] of aiyu ? [[-94, '#e3bd4a'], [-62, '#f0d77a']] : [[-94, '#c23b5a'], [-62, '#efc25a']]) {
+      for (const [jx, col] of coco ? [] : aiyu ? [[-94, '#e3bd4a'], [-62, '#f0d77a']] : [[-94, '#c23b5a'], [-62, '#efc25a']]) {
         rr(jx - 13, y - 46, 26, 40, 6); fs('rgba(230,240,250,.88)', INK, 2);
         ctx.fillStyle = col; ctx.fillRect(jx - 11, y - 32, 22, 24);
         ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fillRect(jx - 8, y - 42, 3, 30);
@@ -2230,6 +2285,17 @@ details.more > :not(summary) { margin-top: 8px; }
         ctx.restore();
       }
       const lemonStall = !!(st.deco && st.deco.includes('lemon'));
+      if (coco) {
+        // 椰樓：右邊一堆綠色的整顆椰子和一顆剝了殼、插著吸管的白椰子，旁邊一排椰子水瓶
+        const nut = (x, yy, k, rot) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.scale(k, k); ctx.beginPath(); ctx.ellipse(0, 0, 12, 10.5, 0, 0, 6.2832); fs('#6fae3a', INK, 1.8); ctx.fillStyle = 'rgba(255,255,255,.3)'; ctx.beginPath(); ctx.ellipse(-4, -4, 4, 2.5, -.5, 0, 6.2832); ctx.fill(); rr(-2, -13, 4, 4, 1); fs('#8a6a3a', INK, 1); ctx.restore(); };
+        nut(84, y - 10, 1, .2); nut(108, y - 10, .95, -.3); nut(96, y - 27, .9, .1);
+        // 剝殼椰子：白色、上尖下圓，插一根吸管
+        const px = 58; ctx.beginPath(); ctx.moveTo(px - 13, y - 2); ctx.quadraticCurveTo(px - 15, y - 20, px - 6, y - 27); ctx.lineTo(px, y - 34); ctx.lineTo(px + 6, y - 27); ctx.quadraticCurveTo(px + 15, y - 20, px + 13, y - 2); ctx.closePath(); fs('#f7f0de', INK, 1.8);
+        ctx.strokeStyle = 'rgba(160,130,80,.45)'; ctx.lineWidth = 1; for (const dx of [-6, 0, 6]) { ctx.beginPath(); ctx.moveTo(px + dx * .4, y - 30); ctx.quadraticCurveTo(px + dx, y - 16, px + dx * 1.3, y - 3); ctx.stroke(); }
+        ctx.strokeStyle = INK; ctx.lineWidth = 3.4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(px + 1, y - 32); ctx.lineTo(px + 7, y - 46); ctx.stroke(); ctx.strokeStyle = '#4fa7a0'; ctx.lineWidth = 1.8; ctx.stroke();
+        // 椰子水瓶（左邊兩桶改成一排小瓶）
+        for (const bx of [-104, -88, -72, -56]) { rr(bx - 6, y - 26, 12, 26, 3); fs('rgba(240,248,240,.95)', INK, 1.5); ctx.fillStyle = '#e9f2dc'; ctx.fillRect(bx - 5, y - 18, 10, 17); rr(bx - 4, y - 31, 8, 5, 1); fs('#6fae3a', INK, 1); rr(bx - 5, y - 14, 10, 7, 1); fs('#4f8a2a'); }
+      }
       if (lemonStall) {
         // 悠綠客檸檬：右邊一個木碗，爆米花堆成圓圓高高的一球
         const bx = 50, rimY = y - 18;
@@ -2243,7 +2309,7 @@ details.more > :not(summary) { margin-top: 8px; }
         ctx.strokeStyle = 'rgba(255,230,190,.45)'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(bx - 26, rimY + 4); ctx.quadraticCurveTo(bx - 22, y - 5, bx - 12, y - 4); ctx.stroke();
         ctx.beginPath(); ctx.ellipse(bx, rimY, 34, 3.2, 0, 0, Math.PI); ctx.strokeStyle = '#7a4a2a'; ctx.lineWidth = 2.4; ctx.stroke();
       }
-      for (const [cx, col] of lemonStall ? [] : aiyu ? [[30, '#e3bd4a'], [56, '#f0d77a'], [82, '#e3bd4a']] : [[30, '#c23b5a'], [56, '#9fd36a'], [82, '#efc25a']]) {
+      for (const [cx, col] of lemonStall || coco ? [] : aiyu ? [[30, '#e3bd4a'], [56, '#f0d77a'], [82, '#e3bd4a']] : [[30, '#c23b5a'], [56, '#9fd36a'], [82, '#efc25a']]) {
         ctx.beginPath(); ctx.moveTo(cx - 9, y - 28); ctx.lineTo(cx + 9, y - 28); ctx.lineTo(cx + 7, y); ctx.lineTo(cx - 7, y); ctx.closePath(); fs('rgba(235,245,250,.92)', INK, 1.8);
         ctx.beginPath(); ctx.moveTo(cx - 8, y - 19); ctx.lineTo(cx + 8, y - 19); ctx.lineTo(cx + 6.5, y - 1.5); ctx.lineTo(cx - 6.5, y - 1.5); ctx.closePath(); ctx.fillStyle = col; ctx.fill();
         if (aiyu) jelly(cx - 7, y - 18, 14, 16);
@@ -2320,6 +2386,7 @@ details.more > :not(summary) { margin-top: 8px; }
         else if (st.deco && st.deco.includes('pottery')) { ctx.beginPath(); ctx.moveTo(jx - 6, sy - 12); ctx.lineTo(jx + 6, sy - 12); ctx.lineTo(jx + 5, sy); ctx.lineTo(jx - 5, sy); ctx.closePath(); fs(['#b8623a', '#7fa7b8', '#d9b07a'][i], INK, 1.3); ctx.beginPath(); ctx.ellipse(jx, sy - 12, 6, 1.6, 0, 0, 6.2832); fs('#3a2a24', INK, .8); }
         else if (st.deco && st.deco.includes('crochet')) { circle(jx, sy - 7, 6.5); fs(['#c85c9a', '#efc25a', '#4fa7a0'][i], INK, 1.3); ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = .9; ctx.beginPath(); ctx.arc(jx, sy - 7, 3.5, -.6, 2.2); ctx.stroke(); }
         else if (st.deco && st.deco.includes('trinket')) { rr(jx - 3.5, sy - 11, 7, 11, 2.5); fs(['#e85d8a', '#6fa8c9', '#efc25a'][i], INK, 1.2); rr(jx - 2, sy - 17, 4, 6, 1); fs(INK); }
+        else if (st.deco && st.deco.includes('embroidery')) { rr(jx - 4.5, sy - 13, 9, 13, 1.5); fs('#c9a15f', INK, 1.1); rr(jx - 3.4, sy - 11, 6.8, 9, 1); fs(['#c85c9a', '#4fa7a0', '#efc25a', '#e85d2f', '#6fa8c9', '#5aa85d'][i + (side > 0 ? 3 : 0)]); }
         else if (st.deco && st.deco.includes('plush')) plush(jx, sy, .55, ['bear', 'bunny', 'chick', 'cat', 'dog', 'bear'][i + (side > 0 ? 3 : 0)]);
         else if (st.kind === 'coffee') { rr(jx - 6, sy - 17, 12, 17, 3); fs(['#c98a45', '#7a4a30', '#e9b33b'][i], INK, 1.5); ctx.fillStyle = '#fff3d6'; ctx.fillRect(jx - 4, sy - 11, 8, 5); }
         else if (st.kind === 'bread') { ctx.beginPath(); ctx.ellipse(jx, sy - 6, 7.5, 6, 0, Math.PI, 0); ctx.closePath(); fs('#d9963f', INK, 1.5); ctx.strokeStyle = '#8a4f22'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(jx - 3, sy - 9); ctx.lineTo(jx - 1, sy - 4); ctx.moveTo(jx + 2, sy - 10); ctx.lineTo(jx + 4, sy - 5); ctx.stroke(); }
